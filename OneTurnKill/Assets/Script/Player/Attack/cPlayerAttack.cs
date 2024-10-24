@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class cPlayerAttack : MonoBehaviour
 {
-    public void Attack()
+    public void Attack(string skillName)
     {
         Debug.Log("АјАн!");
     }

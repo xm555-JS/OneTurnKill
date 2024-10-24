@@ -30,8 +30,8 @@ public abstract class cPlayerStatsUI : MonoBehaviour
         statButton.onClick.AddListener(StatUp);
     }
 
-    public void UpdateStat(float statValue/*, float nextStatValue*/)
+    public void UpdateStat(float statValue, float nextStatValue)
     {
-        statText.text = statValue.ToString()/* + "->" + nextStatValue.ToString()*/;
+        statText.text = statValue.ToString() + " -> " + nextStatValue.ToString();
     }
 }
