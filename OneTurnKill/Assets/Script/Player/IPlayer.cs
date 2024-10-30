@@ -6,10 +6,10 @@ public interface IPlayerStats
     float ExpRate { get; }
 }
 
-public interface IPlayerAttack
-{
-    void Attack();
-}
+//public interface IPlayerAttack
+//{
+//    void Attack();
+//}
 
 public interface IPlayerAudio
 {
