@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IPlayerAttack
 {
-    void Execution(string skillName);
+    void Execution(SkillData skill);
 }

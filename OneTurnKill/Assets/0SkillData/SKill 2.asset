@@ -12,4 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d3acdb62b0dcef44adf85e8163464a6, type: 3}
   m_Name: SKill 2
   m_EditorClassIdentifier: 
-  skillName: Skill 2
+  skillName: Skill2
+  skillEffect: {fileID: 0}
+  sklilAnim: {fileID: 0}
+  skillSound: {fileID: 0}

@@ -561,6 +561,7 @@ GameObject:
   - component: {fileID: 590757569}
   - component: {fileID: 590757568}
   - component: {fileID: 590757567}
+  - component: {fileID: 590757570}
   m_Layer: 5
   m_Name: Skill2
   m_TagString: Untagged
@@ -671,6 +672,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 590757565}
   m_CullTransparentMesh: 1
+--- !u!114 &590757570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 590757565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5b9a491b0195b343a56912d299587a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillName: Skill2
 --- !u!1 &693416721
 GameObject:
   m_ObjectHideFlags: 0
@@ -761,10 +775,11 @@ GameObject:
   m_Component:
   - component: {fileID: 711222045}
   - component: {fileID: 711222044}
+  - component: {fileID: 711222047}
   - component: {fileID: 711222042}
   - component: {fileID: 711222041}
   - component: {fileID: 711222046}
-  - component: {fileID: 711222047}
+  - component: {fileID: 711222048}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -875,7 +890,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5115a61a261d56b4bbb6c18b99787616, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &711222047
+--- !u!95 &711222047
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 711222040}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &711222048
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -884,10 +920,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 711222040}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0363c5e03c25ccf47984b35ad7ceacac, type: 3}
+  m_Script: {fileID: 11500000, guid: 36da8331f30bc5b46af6bc8f07668285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dataManager: {fileID: 0}
 --- !u!1 &729271103
 GameObject:
   m_ObjectHideFlags: 0
@@ -1099,6 +1134,7 @@ GameObject:
   - component: {fileID: 881713913}
   - component: {fileID: 881713912}
   - component: {fileID: 881713911}
+  - component: {fileID: 881713914}
   m_Layer: 5
   m_Name: Skill1
   m_TagString: Untagged
@@ -1209,6 +1245,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 881713909}
   m_CullTransparentMesh: 1
+--- !u!114 &881713914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 881713909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5b9a491b0195b343a56912d299587a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillName: Skill1
 --- !u!1 &998617936
 GameObject:
   m_ObjectHideFlags: 0
@@ -1353,9 +1402,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 998617936}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d76734b3c8f5c5f44b6d6ea5aff437f5, type: 3}
+  m_Script: {fileID: 11500000, guid: e5b9a491b0195b343a56912d299587a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skillName: Base
 --- !u!1 &1012632085
 GameObject:
   m_ObjectHideFlags: 0
@@ -2055,7 +2105,7 @@ GameObject:
   - component: {fileID: 1984390692}
   m_Layer: 0
   m_Name: SkillDataManager
-  m_TagString: Untagged
+  m_TagString: SkillData
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
