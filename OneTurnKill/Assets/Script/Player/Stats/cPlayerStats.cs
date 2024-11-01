@@ -17,6 +17,10 @@ public class cPlayerStats : MonoBehaviour
     public float nextStr { get => strength + hpIncrease + IncreaseAmount; }
     public float nextDefen { get => defense + hpIncrease + IncreaseAmount; }
 
+    public void HpDown(float damage) { hp -= damage; }
+
+    #region Stat_Up
+
     public void HpUp()
     {
         hpIncrease += IncreaseAmount;
@@ -37,6 +41,8 @@ public class cPlayerStats : MonoBehaviour
         defense += defenseIncrease;
         Debug.Log("Defense : " + defense);
     }
+
+    #endregion
 
     void Awake()
     {
