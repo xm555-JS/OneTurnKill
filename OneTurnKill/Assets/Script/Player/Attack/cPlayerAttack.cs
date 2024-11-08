@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,8 @@ public class cPlayerAttack : MonoBehaviour
     SkillDataManager dataManager;
     Animator anim;
     IPlayerAttack skill;
+
+    public event Action OnAttack;
 
     void Awake()
     {
@@ -53,5 +56,6 @@ public class cPlayerAttack : MonoBehaviour
         SkillData skillData = dataManager.GetSkillData(skillName);
         Setskill(skillName);
         skill.Execution(skillData);
+        OnAttack?.Invoke();
     }
 }

@@ -6,18 +6,31 @@ using UnityEngine.UI;
 public class cSkillUI : MonoBehaviour
 {
     Button skillButton;
+
+    StageManager stageManager;
+
     cPlayerAttack playerAttack;
     [SerializeField] string skillName;
 
     void Awake()
     {
         skillButton = GetComponent<Button>();
+        skillButton.interactable = false;
     }
 
     void Start()
     {
         GetPlayerAttack();
+        GetStageManager();
         SetAddListner();
+    }
+
+    void Update()
+    {
+        if (stageManager.IsAttackReady)
+            skillButton.interactable = true;
+        else
+            skillButton.interactable = false;
     }
 
     void GetPlayerAttack()
@@ -25,6 +38,11 @@ public class cSkillUI : MonoBehaviour
         playerAttack = GameObject.FindWithTag("Player").GetComponent<cPlayerAttack>();
         if (!playerAttack)
             Debug.LogError("cSkillUI - playerAttack is null.");
+    }
+
+    void GetStageManager()
+    {
+        stageManager = GameObject.Find("StageManager").GetComponent<StageManager>();
     }
 
     void SetAddListner()

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,8 @@ using UnityEngine;
 
 public class cMonster : MonoBehaviour
 {
+    public event Action OnDead;
+
     [SerializeField] protected float hp;
     [SerializeField] protected float defence;
 
@@ -16,6 +19,8 @@ public class cMonster : MonoBehaviour
     protected GameObject player;
 
     protected bool isArrive;
+
+    public bool IsArrive { get => isArrive; }
 
     void Awake()
     {
@@ -54,7 +59,11 @@ public class cMonster : MonoBehaviour
         Reaction();
 
         if (hp <= 0)
+        {
             Debug.Log("Á×À½");
+            Destroy(this.gameObject);
+            OnDead?.Invoke();
+        }
     }
 
     void Reaction()
