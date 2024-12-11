@@ -16,7 +16,7 @@ public class cPlayerStatsPresent
     public void OnHpUp()
     {
         playerStats.HpUp();
-        statsView.UpdateStat(playerStats.hp, playerStats.nextHp);
+        statsView.UpdateStat(playerStats.maxHp, playerStats.nextHp);
     }
     public void OnStrengthUp()
     {

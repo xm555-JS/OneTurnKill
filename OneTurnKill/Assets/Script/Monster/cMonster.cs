@@ -2,36 +2,76 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
 
 #pragma warning disable 0108
 
 public class cMonster : MonoBehaviour
 {
     public event Action OnDead;
+    public event EventHandler<float> OnDamage;
 
-    [SerializeField] protected float hp;
+    [SerializeField] protected float maxHP;
     [SerializeField] protected float defence;
+    float hp;
 
     protected Rigidbody2D rigid;
     protected Animator anim;
     protected SpriteRenderer renderer;
 
+    // test
+    float originColrR;
+    float originColrG;
+    float originColrB;
+    // test
+
     protected GameObject player;
 
     protected bool isArrive;
 
+    // hp
+    GameObject hpBarPrefab;
+    GameObject hpBar;
+
+    // test
+    IObjectPool<GameObject> objectPool;
+    public IObjectPool<GameObject> ObjectPool { get => objectPool; set => objectPool = value; }
+    // test
+
     public bool IsArrive { get => isArrive; }
+    public float MaxHP { get => maxHP; }
+    public float CurrentHP { get => hp; }
 
     void Awake()
     {
+        hp = maxHP;
         //anim = GetComponent<Animator>();
         rigid = GetComponent<Rigidbody2D>();
         renderer = GetComponent<SpriteRenderer>();
+
+        //test
+        originColrR = renderer.color.r;
+        originColrG = renderer.color.g;
+        originColrB = renderer.color.b;
+    }
+
+    void OnEnable()
+    {
+        hp = maxHP;
+        if (hpBar)
+        {
+            HpBar hpUI = hpBar.GetComponent<HpBar>();
+            hpUI.Initialize();
+        }
+        Debug.Log("작동 잘 됨?");
+        isArrive = false;
+        renderer.color = new Color(originColrR, originColrG, originColrB);
     }
 
     void Start()
     {
         player = GameObject.FindWithTag("Player");
+        HpBarInitialize();
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -54,14 +94,16 @@ public class cMonster : MonoBehaviour
 
 
         /*test code*/
-        hp -= 1000;
+        hp -= 200;
 
+        OnDamage?.Invoke(this, hp);
         Reaction();
 
         if (hp <= 0)
         {
             Debug.Log("죽음");
-            Destroy(this.gameObject);
+            //Destroy(this.gameObject);
+            objectPool.Release(this.gameObject);
             OnDead?.Invoke();
         }
     }
@@ -78,6 +120,19 @@ public class cMonster : MonoBehaviour
 
         yield return new WaitForSeconds(0.1f);
 
-        renderer.color = Color.yellow;
+        renderer.color = new Color(originColrR, originColrG, originColrB);
+        /* renderer.color = Color.white; /*나중에 sprite 생기면 이걸로 변경*/
+    }
+
+    void HpBarInitialize()
+    {
+        hpBarPrefab = Resources.Load<GameObject>("UI/HPBar");
+        hpBar = Instantiate(hpBarPrefab);
+
+        Transform parent = GameObject.FindWithTag("MonsterHpBar").transform;
+        hpBar.transform.SetParent(parent);
+
+        HpBar hpUI = hpBar.GetComponent<HpBar>();
+        hpUI.Initialize(this);
     }
 }

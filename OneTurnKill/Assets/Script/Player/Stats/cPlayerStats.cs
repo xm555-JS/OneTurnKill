@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class cPlayerStats : MonoBehaviour
 {
+    public float maxHp { get; private set; }
     public float hp { get; private set; }
     public float strength { get; private set; }
     public float defense { get; private set; }
@@ -13,19 +14,19 @@ public class cPlayerStats : MonoBehaviour
     float hpIncrease, strengthIncrease, defenseIncrease;
     static float IncreaseAmount = 100;
 
-    public float nextHp { get => hp + hpIncrease + IncreaseAmount; }
+    #region Next_Stats
+    public float nextHp { get => maxHp + hpIncrease + IncreaseAmount; }
     public float nextStr { get => strength + hpIncrease + IncreaseAmount; }
     public float nextDefen { get => defense + hpIncrease + IncreaseAmount; }
-
-    public void HpDown(float damage) { hp -= damage; }
+    #endregion
 
     #region Stat_Up
 
     public void HpUp()
     {
         hpIncrease += IncreaseAmount;
-        hp += hpIncrease;
-        Debug.Log("HP : " + hp);
+        maxHp += hpIncrease;
+        Debug.Log("MaxHP : " + maxHp);
     }
 
     public void StrengthUp()
@@ -44,6 +45,10 @@ public class cPlayerStats : MonoBehaviour
 
     #endregion
 
+    #region Stat_Down
+    public void HpDown(float damage) { hp -= damage; }
+    #endregion
+
     void Awake()
     {
         InitializeStats();
@@ -51,7 +56,8 @@ public class cPlayerStats : MonoBehaviour
 
     void InitializeStats()
     {
-        hp = 100f;
+        maxHp = 100f;
+        hp = maxHp;
         strength = 10f;
         defense = 10f;
     }
