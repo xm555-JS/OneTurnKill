@@ -16,7 +16,7 @@ public class cPlayerAttack : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
-    void Start()
+    void OnEnable()
     {
         dataManager = GameObject.FindWithTag("SkillData").GetComponent<SkillDataManager>();
     }

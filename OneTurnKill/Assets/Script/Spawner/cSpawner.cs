@@ -13,12 +13,14 @@ public class cSpawner : MonoBehaviour
 
     static int monsterCount = 0;
     static bool isArrive;
-
+    static int monsterIndex = 0;
+    static int preMonsterIndex = 0;
     // test
     ObjectPool objPool;
 
     public int MonsterCount { get => monsterCount; }
     public bool IsArrive { get => isArrive; }
+    public void PrefabIndex(int prefabIndex) { monsterIndex = prefabIndex; }
 
     void Start()
     {
@@ -65,6 +67,12 @@ public class cSpawner : MonoBehaviour
         //cMonster monster = monsterObj.GetComponent<cMonster>();
 
         //test
+        if (monsterIndex != preMonsterIndex)
+        {
+            objPool.ChangeObjectPool(monsterPrefabs[monsterIndex]);
+            preMonsterIndex = monsterIndex;
+        }
+        
         GameObject monsterObj = objPool.Spawn();
         cMonster monster = monsterObj.GetComponent<cMonster>();
         monster.transform.SetParent(this.transform);

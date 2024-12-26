@@ -48,6 +48,7 @@ public class StageManager : MonoBehaviour
                 spawn.StartSpawn(stageNum);
 
             stageNum++;
+            spawners[0].PrefabIndex(stageNum / 10);
             Debug.Log("현재 스테이지는 " + stageNum);
         }
     }

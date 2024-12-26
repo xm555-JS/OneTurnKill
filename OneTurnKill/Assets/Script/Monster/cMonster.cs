@@ -17,7 +17,7 @@ public class cMonster : MonoBehaviour
 
     protected Rigidbody2D rigid;
     protected Animator anim;
-    protected SpriteRenderer renderer;
+    //protected SpriteRenderer renderer;
 
     // test
     float originColrR;
@@ -47,12 +47,12 @@ public class cMonster : MonoBehaviour
         hp = maxHP;
         //anim = GetComponent<Animator>();
         rigid = GetComponent<Rigidbody2D>();
-        renderer = GetComponent<SpriteRenderer>();
+        //renderer = GetComponent<SpriteRenderer>();
 
-        //test
-        originColrR = renderer.color.r;
-        originColrG = renderer.color.g;
-        originColrB = renderer.color.b;
+        ////test
+        //originColrR = renderer.color.r;
+        //originColrG = renderer.color.g;
+        //originColrB = renderer.color.b;
     }
 
     void OnEnable()
@@ -65,7 +65,7 @@ public class cMonster : MonoBehaviour
         }
         Debug.Log("작동 잘 됨?");
         isArrive = false;
-        renderer.color = new Color(originColrR, originColrG, originColrB);
+        //renderer.color = new Color(originColrR, originColrG, originColrB);
     }
 
     void Start()
@@ -116,12 +116,12 @@ public class cMonster : MonoBehaviour
 
     IEnumerator ChangeRenderer()
     {
-        renderer.color = Color.red;
+        //renderer.color = Color.red;
 
         yield return new WaitForSeconds(0.1f);
 
-        renderer.color = new Color(originColrR, originColrG, originColrB);
-        /* renderer.color = Color.white; /*나중에 sprite 생기면 이걸로 변경*/
+        //renderer.color = new Color(originColrR, originColrG, originColrB);
+        ///* renderer.color = Color.white; /*나중에 sprite 생기면 이걸로 변경*/
     }
 
     void HpBarInitialize()
