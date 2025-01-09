@@ -7,9 +7,9 @@ public class SkillObserver : MonoBehaviour
     GameObject skill;
     void Update()
     {
-        skill = GameObject.FindWithTag("Skill");
-        if (skill)
-            StartCoroutine(destroySkill());
+        //skill = GameObject.FindWithTag("Skill");
+        //if (skill)
+        //    StartCoroutine(destroySkill());
     }
 
     IEnumerator destroySkill()

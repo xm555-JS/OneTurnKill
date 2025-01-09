@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Base
   m_EditorClassIdentifier: 
   skillName: Base
-  skillEffect: {fileID: 777503481627623541, guid: 0298a85bc27af834a8611fd94ae07fb4, type: 3}
+  skillEffect: {fileID: 5958181339013577753, guid: a560fdb0922a4954b993b8a5f966ab21, type: 3}
   sklilAnim: {fileID: 0}
   skillSound: {fileID: 0}

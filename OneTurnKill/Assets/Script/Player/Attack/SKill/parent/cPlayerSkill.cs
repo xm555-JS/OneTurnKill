@@ -7,9 +7,12 @@ using UnityEngine;
 
 public abstract class cPlayerSkill
 {
+    protected cPlayer player;
     protected Animator anim;
     protected Transform transform;
 
+
+    public void SetPlayer(cPlayer PlayerObj) { player = PlayerObj; }
     public void SetAnim(Animator playerAnim) { anim = playerAnim; }
     public void SetTransform(Transform playerTransform) { transform = playerTransform; }
 

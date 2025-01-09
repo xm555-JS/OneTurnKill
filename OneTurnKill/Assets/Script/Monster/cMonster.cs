@@ -29,6 +29,8 @@ public class cMonster : MonoBehaviour
 
     protected bool isArrive;
 
+    WaitForSeconds takeDamageTime = new WaitForSeconds(1f);
+
     // hp
     GameObject hpBarPrefab;
     GameObject hpBar;
@@ -94,6 +96,13 @@ public class cMonster : MonoBehaviour
 
 
         /*test code*/
+        StartCoroutine(OnTakeDamage());
+    }
+
+    IEnumerator OnTakeDamage()
+    {
+        yield return takeDamageTime;
+
         hp -= 200;
 
         OnDamage?.Invoke(this, hp);

@@ -16,6 +16,9 @@ public class cDefaultSkill : cPlayerSkill, IPlayerAttack
     protected override void PlayAnimation(SkillData skillData)
     {
         Debug.Log("Base 애니메이션 실행");
+        Debug.Log(anim);
+        anim.SetTrigger("Attack");
+        int a = 0;
     }
 
     protected override void PlayEffect(SkillData skillData)
