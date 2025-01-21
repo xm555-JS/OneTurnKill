@@ -68,7 +68,7 @@ public class StageManager : MonoBehaviour
         {
             // 공격했을 때 몬스터가 남아있다면 해당 스테이지 다시 시작
             foreach (var spawn in spawners)
-                spawn.ResetMonster();
+                spawn.ClearMonster();
             
             stageNum--;
             Debug.Log("현재 스테이지는 " + stageNum);

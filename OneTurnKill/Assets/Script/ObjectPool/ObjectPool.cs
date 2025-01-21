@@ -31,6 +31,9 @@ public class ObjectPool : MonoBehaviour
 
     void OnReleaseFromPool(GameObject pooledMonster)
     {
+        Animator anim = pooledMonster.GetComponentInChildren<Animator>();
+        anim.Rebind();
+        anim.Update(0);
         pooledMonster.SetActive(false);
     }
 

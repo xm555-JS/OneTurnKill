@@ -77,8 +77,14 @@ public class cSpawner : MonoBehaviour
         cMonster monster = monsterObj.GetComponent<cMonster>();
         monster.transform.SetParent(this.transform);
         monster.transform.position = this.transform.position;
-        // test
+        if (this.gameObject.name == "Left_Top")
+            monster.transform.localScale = new Vector3(-2f, 2f, 2f);
+        else if (this.gameObject.name == "Left_Bottom")
+            monster.transform.localScale = new Vector3(-2f, 2f, 2f);
+        else
+            monster.transform.localScale = new Vector3(2f, 2f, 2f);
 
+        // test
         monster.OnDead += CheckMonsterDead;
         monsterList.Add(monster);
 
@@ -86,7 +92,7 @@ public class cSpawner : MonoBehaviour
         Debug.Log(monsterCount);
     }
 
-    public void ResetMonster()
+    public void ClearMonster()
     {
         cMonster monster = GetComponentInChildren<cMonster>();
         if (!monster)
@@ -97,8 +103,8 @@ public class cSpawner : MonoBehaviour
 
         //Destroy(monster.gameObject);
 
-        foreach (var mon in monsterList)
-            mon.OnDead -= CheckMonsterDead;
+        //foreach (var mon in monsterList)
+        //    mon.OnDead -= CheckMonsterDead;
 
         // test
         objPool.Release(monster.gameObject);

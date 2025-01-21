@@ -29,7 +29,7 @@ public class cMonster : MonoBehaviour
 
     protected bool isArrive;
 
-    WaitForSeconds takeDamageTime = new WaitForSeconds(1f);
+    WaitForSeconds takeDamageTime = new WaitForSeconds(0.5f);
 
     // hp
     GameObject hpBarPrefab;
@@ -47,7 +47,7 @@ public class cMonster : MonoBehaviour
     void Awake()
     {
         hp = maxHP;
-        //anim = GetComponent<Animator>();
+        anim = GetComponentInChildren<Animator>();
         rigid = GetComponent<Rigidbody2D>();
         //renderer = GetComponent<SpriteRenderer>();
 
@@ -55,6 +55,8 @@ public class cMonster : MonoBehaviour
         //originColrR = renderer.color.r;
         //originColrG = renderer.color.g;
         //originColrB = renderer.color.b;
+
+        player = GameObject.FindWithTag("Player");
     }
 
     void OnEnable()
@@ -72,7 +74,6 @@ public class cMonster : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.FindWithTag("Player");
         HpBarInitialize();
     }
 
@@ -103,6 +104,7 @@ public class cMonster : MonoBehaviour
     {
         yield return takeDamageTime;
 
+        // test code 데미지 방식을 적용시킬 것.
         hp -= 200;
 
         OnDamage?.Invoke(this, hp);
@@ -110,11 +112,28 @@ public class cMonster : MonoBehaviour
 
         if (hp <= 0)
         {
-            Debug.Log("죽음");
-            //Destroy(this.gameObject);
+            anim.SetTrigger("Die");
+
+            yield return new WaitForSeconds(0.1f);
+            Time.timeScale = 0.2f;
+
+            yield return new WaitForSeconds(0.1f);
+            Time.timeScale = 1f;
+
+            yield return new WaitForSeconds(1f);
             objectPool.Release(this.gameObject);
             OnDead?.Invoke();
         }
+    }
+
+    IEnumerator Dead()
+    {
+        anim.SetTrigger("Dead");
+        Debug.Log("잘 들어오니?");
+        yield return new WaitForSeconds(1f);
+
+        objectPool.Release(this.gameObject);
+        OnDead?.Invoke();
     }
 
     void Reaction()
