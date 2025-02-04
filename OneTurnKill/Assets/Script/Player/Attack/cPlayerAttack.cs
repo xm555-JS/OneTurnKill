@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class cPlayerAttack : MonoBehaviour
 {
@@ -18,7 +19,9 @@ public class cPlayerAttack : MonoBehaviour
 
     void OnEnable()
     {
-        dataManager = GameObject.FindWithTag("SkillData").GetComponent<SkillDataManager>();
+        Scene gamePlayScene =  SceneManager.GetSceneByName("SampleScene");
+        if (gamePlayScene.name == "SampleScene")
+            dataManager = GameObject.FindWithTag("SkillData").GetComponent<SkillDataManager>();
     }
 
     void Setskill(string skillName)
