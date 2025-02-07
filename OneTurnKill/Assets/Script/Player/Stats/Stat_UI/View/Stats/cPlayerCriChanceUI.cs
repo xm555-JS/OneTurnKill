@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class cPlayerHpUI : cPlayerStatsUI
+public class cPlayerCriChanceUI : cPlayerStatsUI
 {
     protected override void StatUp()
     {
-        present.OnHpUp();
+        present.OnCriChanceUp();
     }
 }
 

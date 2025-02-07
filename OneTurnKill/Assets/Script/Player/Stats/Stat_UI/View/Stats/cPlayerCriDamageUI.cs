@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class cPlayerDefenseUI : cPlayerStatsUI
+public class cPlayerCriDamageUI : cPlayerStatsUI
 {
     protected override void StatUp()
     {
-        present.OnDefenseUp();
+        present.OnCriDamageUp();
     }
 }
 
-// View
+//// View
 //Button hpButton;
 //Text hpText;
 
