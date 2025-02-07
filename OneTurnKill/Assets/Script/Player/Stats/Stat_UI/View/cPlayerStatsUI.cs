@@ -7,7 +7,9 @@ public abstract class cPlayerStatsUI : MonoBehaviour
 {
     // View
     protected Button statButton;
-    protected Text statText;
+    protected Text titleText;
+    protected Text StatText;
+    protected Text nextStatText;
 
     // present
     protected cPlayerStatsPresent present;
@@ -17,7 +19,9 @@ public abstract class cPlayerStatsUI : MonoBehaviour
     protected void Awake()
     {
         statButton = GetComponent<Button>();
-        statText = GetComponentsInChildren<Text>()[1];
+        titleText = GetComponentsInChildren<Text>()[1];
+        StatText = GetComponentsInChildren<Text>()[2];
+        nextStatText = GetComponentsInChildren<Text>()[3];
     }
 
     protected virtual void Start()
@@ -30,8 +34,10 @@ public abstract class cPlayerStatsUI : MonoBehaviour
         statButton.onClick.AddListener(StatUp);
     }
 
-    public void UpdateStat(float statValue, float nextStatValue)
+    public void UpdateStat(int level,float statValue, float nextStatValue)
     {
-        statText.text = statValue.ToString() + " -> " + nextStatValue.ToString();
+        titleText.text = "°ø°Ý·Â Lv." + level;
+        StatText.text = statValue.ToString();
+        nextStatText.text = nextStatValue.ToString();
     }
 }

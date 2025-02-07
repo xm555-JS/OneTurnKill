@@ -16,17 +16,17 @@ public class cPlayerStatsPresent
     public void OnHpUp()
     {
         playerStats.HpUp();
-        statsView.UpdateStat(playerStats.maxHp, playerStats.nextHp);
+        statsView.UpdateStat(playerStats.getHp, playerStats.maxHp, playerStats.nextHp);
     }
     public void OnStrengthUp()
     {
         playerStats.StrengthUp();
-        statsView.UpdateStat(playerStats.strength, playerStats.nextStr);
+        statsView.UpdateStat(playerStats.getStr, playerStats.strength, playerStats.nextStr);
     }
     public void OnDefenseUp()
     {
         playerStats.DefenseUp();
-        statsView.UpdateStat(playerStats.defense, playerStats.nextDefen);
+        statsView.UpdateStat(playerStats.getDefen, playerStats.defense, playerStats.nextDefen);
     }
 }
 
