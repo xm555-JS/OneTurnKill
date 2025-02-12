@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class cDefaultMonster : cMonster
 {
+    float speed = 5f;
+
     void FixedUpdate()
     {
         if (!isArrive)
@@ -13,7 +15,7 @@ public class cDefaultMonster : cMonster
 
             // move
             Vector2 moveVec = player.transform.position - this.transform.position;
-            rigid.MovePosition(rigid.position + moveVec.normalized * 3f * Time.deltaTime);
+            rigid.MovePosition(rigid.position + moveVec.normalized * speed * Time.deltaTime);
         }
         else
             anim.SetBool("Run", false);

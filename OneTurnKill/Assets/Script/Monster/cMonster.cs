@@ -6,6 +6,7 @@ using UnityEngine.Pool;
 
 #pragma warning disable 0108
 
+[RequireComponent(typeof(cDropItem))]
 public class cMonster : MonoBehaviour
 {
     public event Action OnDead;
@@ -40,6 +41,12 @@ public class cMonster : MonoBehaviour
     public IObjectPool<GameObject> ObjectPool { get => objectPool; set => objectPool = value; }
     // test
 
+    //Drop_Item
+    cDropItem dropItem;
+
+    [SerializeField] protected GameObject[] dropItemObj;
+    [SerializeField] protected float[] dropItemProbs;
+
     public bool IsArrive { get => isArrive; }
     public float MaxHP { get => maxHP; }
     public float CurrentHP { get => hp; }
@@ -57,6 +64,9 @@ public class cMonster : MonoBehaviour
         //originColrB = renderer.color.b;
 
         player = GameObject.FindWithTag("Player");
+
+        // Drop_Item
+        dropItem = GetComponent<cDropItem>();
     }
 
     void OnEnable()
@@ -67,7 +77,6 @@ public class cMonster : MonoBehaviour
             HpBar hpUI = hpBar.GetComponent<HpBar>();
             hpUI.Initialize();
         }
-        Debug.Log("¿€µø ¿ﬂ µ ?");
         isArrive = false;
         //renderer.color = new Color(originColrR, originColrG, originColrB);
     }
@@ -123,6 +132,15 @@ public class cMonster : MonoBehaviour
             yield return new WaitForSeconds(1f);
             objectPool.Release(this.gameObject);
             OnDead?.Invoke();
+
+            // drop item
+            GameObject item = dropItemObj[(int)dropItem.Drop_Item(dropItemProbs)];
+
+            if (item != null)
+            {
+                GameObject instItem = Instantiate(item);
+                instItem.transform.position = this.transform.position;
+            }
         }
     }
 

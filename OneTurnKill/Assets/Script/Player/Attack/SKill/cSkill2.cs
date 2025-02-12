@@ -24,6 +24,6 @@ public class cSkill2 : cPlayerSkill, IPlayerAttack
 
     protected override void PlaySound(SkillData skillData)
     {
-        Debug.Log("Skill 2 사운드 실행");
+        //Debug.Log("Skill 2 사운드 실행");
     }
 }

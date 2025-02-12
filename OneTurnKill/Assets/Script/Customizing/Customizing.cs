@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class Customizing : MonoBehaviour
 {
+    #pragma warning disable 0414
+
     [System.Serializable]
     public struct TopCloth
     {

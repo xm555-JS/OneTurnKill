@@ -89,7 +89,6 @@ public class cSpawner : MonoBehaviour
         monsterList.Add(monster);
 
         monsterCount++;
-        Debug.Log(monsterCount);
     }
 
     public void ClearMonster()
@@ -116,7 +115,6 @@ public class cSpawner : MonoBehaviour
     void CheckMonsterDead()
     {
         monsterCount--;
-        Debug.Log(monsterCount);
 
         foreach (var mon in monsterList)
             mon.OnDead -= CheckMonsterDead;

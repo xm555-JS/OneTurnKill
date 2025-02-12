@@ -2879,9 +2879,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3622745370580501757}
   - component: {fileID: 2630454854272944241}
-  - component: {fileID: -8959411589766782805}
   - component: {fileID: -6842676946828796581}
   - component: {fileID: -291418897935050103}
+  - component: {fileID: -8959411589766782805}
+  - component: {fileID: 4331169415397611559}
   m_Layer: 6
   m_Name: Orc1
   m_TagString: Monster
@@ -2932,20 +2933,6 @@ MonoBehaviour:
   UnitTypeChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &-8959411589766782805
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6143901634673671982}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81acea5c82929614bbca11ddaa374a02, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHP: 100
-  defence: 100
 --- !u!50 &-6842676946828796581
 Rigidbody2D:
   serializedVersion: 4
@@ -2983,6 +2970,42 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0.3}
   m_Size: {x: 0.5, y: 0.7}
   m_Direction: 0
+--- !u!114 &-8959411589766782805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6143901634673671982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81acea5c82929614bbca11ddaa374a02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 100
+  defence: 100
+  dropItemObj:
+  - {fileID: 0}
+  - {fileID: 5638075745407087572, guid: 35d9cae894843c84b94e712373f0af4c, type: 3}
+  - {fileID: 2534421795152757046, guid: 124b3507f77b92a4085eccc4473852e8, type: 3}
+  - {fileID: 3484076822065562307, guid: 5d23f87c3c3193249a0e75002bb22bbe, type: 3}
+  dropItemProbs:
+  - 60
+  - 30
+  - 5
+  - 5
+--- !u!114 &4331169415397611559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6143901634673671982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 016f263e34aaf68428bcfe83fe31e8c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6342077471464537425
 GameObject:
   m_ObjectHideFlags: 0

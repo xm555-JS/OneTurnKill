@@ -2259,6 +2259,7 @@ GameObject:
   - component: {fileID: 8659149627212644013}
   - component: {fileID: 2581425124091994278}
   - component: {fileID: -5529313956809756374}
+  - component: {fileID: 2757300124847244513}
   m_Layer: 6
   m_Name: Orc5
   m_TagString: Monster
@@ -2323,6 +2324,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 400
   defence: 400
+  dropItemObj:
+  - {fileID: 0}
+  - {fileID: 5638075745407087572, guid: 35d9cae894843c84b94e712373f0af4c, type: 3}
+  - {fileID: 2534421795152757046, guid: 124b3507f77b92a4085eccc4473852e8, type: 3}
+  - {fileID: 3484076822065562307, guid: 5d23f87c3c3193249a0e75002bb22bbe, type: 3}
+  - {fileID: 3039565731213542839, guid: f59e343be074d4642a3ef26cc69f46bb, type: 3}
+  - {fileID: 2588051990155362009, guid: 5c7f3ec3f921eb84d819a6e1ac43d0ff, type: 3}
+  dropItemProbs:
+  - 56
+  - 30
+  - 5
+  - 5
+  - 2
+  - 2
 --- !u!50 &2581425124091994278
 Rigidbody2D:
   serializedVersion: 4
@@ -2360,6 +2375,18 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0.3}
   m_Size: {x: 0.5, y: 0.7}
   m_Direction: 0
+--- !u!114 &2757300124847244513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4665589939095537808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 016f263e34aaf68428bcfe83fe31e8c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4720296708869901975
 GameObject:
   m_ObjectHideFlags: 0

@@ -23,7 +23,7 @@ public class cDefaultSkill : cPlayerSkill, IPlayerAttack
 
     protected override void PlaySound(SkillData skillData)
     {
-        Debug.Log("Base 사운드 실행");
+        //Debug.Log("Base 사운드 실행");
     }
 
     //IEnumerator ToggleEffect(SkillData skillData)

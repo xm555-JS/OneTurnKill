@@ -9,6 +9,9 @@ TagManager:
   - Area
   - MonsterHpBar
   - Monster
+  - Item
+  - PickUpArea
+  - PickUpCol
   layers:
   - Default
   - TransparentFX
@@ -18,7 +21,7 @@ TagManager:
   - UI
   - Monster
   - Skill
-  - 
+  - Item
   - 
   - 
   - 
