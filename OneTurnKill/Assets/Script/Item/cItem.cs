@@ -16,7 +16,6 @@ public class cItem : MonoBehaviour
 
     float thorowPower = 5f;
     float itemMoveSpeed = 20f;
-    float stayTime = 0f;
     float yRockTime = 0.5f;
 
     static Vector2 coinUIVec = new Vector2(8.4f, 4.4f);
@@ -37,20 +36,6 @@ public class cItem : MonoBehaviour
     {
         Y_Rock();
         MovingItem();
-    }
-
-    void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.CompareTag("PickUpCol"))
-        {
-            stayTime += Time.deltaTime;
-
-            if (stayTime > 0.3f)
-            {
-                Destroy(this.gameObject);
-                stayTime = 0f;
-            }
-        }
     }
 
     void ThrowItem()

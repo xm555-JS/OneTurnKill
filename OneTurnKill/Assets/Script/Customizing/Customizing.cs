@@ -158,4 +158,33 @@ public class Customizing : MonoBehaviour
         pantRightSpriteRender.sprite = spritePants[pantIndex].right;
     }
     #endregion
+
+    #region Wear_Armor
+
+    public void WearArmor(int index)
+    {
+        armorSpriteRenderer.sprite = spriteArmors[index].armorBody;
+        armorArmLeftSpriteRenderer.sprite = spriteArmors[index].armorArmLeft;
+        armorArmRightSpriteRenderer.sprite = spriteArmors[index].armorArmRight;
+    }
+
+    #endregion
+
+    #region Wear_Helmet
+
+    public void WearHelmet(int index)
+    {
+        helmetSpriteRenderer.sprite = spriteHelmets[index];
+    }
+
+    #endregion
+
+    #region Equip_Weapon
+
+    public void EquipWeapon(int index)
+    {
+        weaponSpriteRenderer.sprite = spriteWeapons[index];
+    }
+
+    #endregion
 }
