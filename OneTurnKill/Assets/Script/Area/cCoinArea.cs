@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class cCoinArea : cItemArea
 {
-
-    protected override void GetItem()
+    protected override void GetItem(Collider2D collision)
     {
-        player.AddCoin(100f);
+        player.AddCoin(1000f);
     }
 }

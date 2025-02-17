@@ -4,9 +4,18 @@ using UnityEngine;
 
 public class cItem : MonoBehaviour
 {
-    public enum ITEMTYPE { Coin, Materials, Equip }
+    public enum ITEMTYPE { Coin, Materials, Helmet, Armor, Weapon }
+    //public enum HELMET { None, Helmet2 = 1, Helmet8 = 7, Helmet9 }
+    //public enum ARMOR { None, Armor3 = 2, Armor8 = 7 }
+    //public enum WEAPON { None, weapon1 = 5, Weapon2= 6, Weapon5 = 9 }
 
-    [SerializeField] ITEMTYPE type;
+    public ITEMTYPE type;
+
+    public int index;
+
+    //public HELMET helmet;
+    //public ARMOR armor;
+    //public WEAPON weapon;
 
     Rigidbody2D rigid;
 
@@ -81,9 +90,9 @@ public class cItem : MonoBehaviour
                     this.transform.position = Vector2.MoveTowards(this.transform.position, coinUIVec, Time.deltaTime * itemMoveSpeed);
                     break;
                 case ITEMTYPE.Materials:
-                    this.transform.position = Vector2.MoveTowards(this.transform.position, equipUIVec, Time.deltaTime * itemMoveSpeed);
-                    break;
-                case ITEMTYPE.Equip:
+                case ITEMTYPE.Helmet:
+                case ITEMTYPE.Armor:
+                case ITEMTYPE.Weapon:
                     this.transform.position = Vector2.MoveTowards(this.transform.position, equipUIVec, Time.deltaTime * itemMoveSpeed);
                     break;
             }
