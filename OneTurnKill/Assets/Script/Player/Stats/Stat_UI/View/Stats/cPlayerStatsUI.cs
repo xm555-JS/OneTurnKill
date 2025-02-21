@@ -26,7 +26,7 @@ public abstract class cPlayerStatsUI : MonoBehaviour
 
     protected virtual void Start()
     {
-        GameObject player = GameObject.FindWithTag("Player");
+        GameObject player = GameManager.instance.player;
         cPlayerStats playerStats = player.GetComponentInChildren<cPlayerStats>();
 
         present = new cPlayerStatsPresent(this, playerStats);

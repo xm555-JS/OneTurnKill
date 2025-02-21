@@ -35,7 +35,7 @@ public class cSkillUI : MonoBehaviour
 
     void GetPlayerAttack()
     {
-        playerAttack = GameObject.FindWithTag("Player").GetComponent<cPlayerAttack>();
+        playerAttack = GameManager.instance.player.GetComponent<cPlayerAttack>();
         if (!playerAttack)
             Debug.LogError("cSkillUI - playerAttack is null.");
     }

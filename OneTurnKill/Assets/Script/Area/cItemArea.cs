@@ -6,29 +6,14 @@ public abstract class cItemArea : MonoBehaviour
 {
     protected cPlayer player;
 
-    float stayTime = 0f;
+    //float stayTime = 0f;
 
     protected abstract void GetItem(Collider2D collision);
 
     void Awake()
     {
-        player = GameObject.FindWithTag("Player").GetComponent<cPlayer>();
+        player = GameManager.instance.player.GetComponent<cPlayer>();
     }
-
-    //void OnTriggerStay2D(Collider2D collision)
-    //{
-    //    if (collision.CompareTag("Item"))
-    //    {
-    //        stayTime += Time.deltaTime;
-
-    //        if (stayTime > 0.3f)
-    //        {
-    //            GetItem(collision);
-    //            Destroy(collision.gameObject);
-    //            stayTime = 0f;
-    //        }
-    //    }
-    //}
 
     void OnTriggerEnter2D(Collider2D collision)
     {

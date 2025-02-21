@@ -9,12 +9,14 @@ public class cInvenBox : MonoBehaviour
 
     void Awake()
     {
-    boxImage = GetComponent<Image>();
-
+        boxImage = GetComponent<Image>();
     }
 
     public void ChangeSprite(Sprite sprite)
     {
+        if (sprite == null)
+            return;
+
         boxImage.sprite = sprite;
     }
 }

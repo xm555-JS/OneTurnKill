@@ -63,7 +63,7 @@ public class cMonster : MonoBehaviour
         //originColrG = renderer.color.g;
         //originColrB = renderer.color.b;
 
-        player = GameObject.FindWithTag("Player");
+        player = GameManager.instance.player;
 
         // Drop_Item
         dropItem = GetComponent<cDropItem>();

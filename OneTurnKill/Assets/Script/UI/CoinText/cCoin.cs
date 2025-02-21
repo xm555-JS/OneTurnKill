@@ -5,11 +5,12 @@ using UnityEngine.UI;
 
 public class cCoin : MonoBehaviour
 {
-    [SerializeField] cPlayer player;
+    cPlayer player;
     Text CoinTxt;
 
     void Awake()
     {
+        player = GameManager.instance.player.GetComponent<cPlayer>();
         CoinTxt = GetComponent<Text>();
     }
 

@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public GameManager instance;
+    public static GameManager instance;
     public GameObject player;
 
     Scene curScene;

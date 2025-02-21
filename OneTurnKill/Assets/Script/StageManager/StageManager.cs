@@ -6,12 +6,13 @@ using UnityEngine;
 
 public class StageManager : MonoBehaviour
 {
+    [Header("Spawner")]
     [SerializeField] GameObject spawner;
     cSpawner[] spawners;
 
+    [Header("PlayerAttack")]
     cPlayerAttack playerAttack;
     bool isPlayerAttack;
-
     bool isAttackReady;
 
     WaitForSeconds checkDeadTime = new WaitForSeconds(2f);
@@ -87,6 +88,6 @@ public class StageManager : MonoBehaviour
         isPlayerAttack = false;
 
         spawners = spawner.GetComponentsInChildren<cSpawner>();
-        playerAttack = GameObject.FindWithTag("Player").GetComponent<cPlayerAttack>();
+        playerAttack = GameManager.instance.player.GetComponent<cPlayerAttack>();
     }
 }

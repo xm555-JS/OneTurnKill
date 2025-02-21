@@ -37,45 +37,33 @@ public class cPlayer : MonoBehaviour
     public void AddHelmetList(int index)
     {
         helmetList.Add(index);
+        helmetSprites.Add(custom.ReturnHelmetSprite(index));
     }
 
     public void AddArmorList(int index)
     {
         armorList.Add(index);
+        armorSprites.Add(custom.ReturnArmorSprite(index));
     }
 
     public void AddWeaponList(int index)
     {
         weaponList.Add(index);
+        weaponSprites.Add(custom.ReturnWeaponSprite(index));
     }
 
     public List<Sprite> ReturnHelmetList()
     {
-        foreach (var index in helmetList)
-        {
-            helmetSprites.Add(custom.ReturnHelmetSprite(index));
-        }
-
         return helmetSprites;
     }
 
     public List<Sprite> ReturnArmorList()
     {
-        foreach (var index in armorList)
-        {
-            armorSprites.Add(custom.ReturnArmorSprite(index));
-        }
-
         return armorSprites;
     }
 
     public List<Sprite> ReturnWeaponList()
     {
-        foreach (var index in armorList)
-        {
-            weaponSprites.Add(custom.ReturnWeaponSprite(index));
-        }
-
         return weaponSprites;
     }
 
