@@ -13,6 +13,7 @@ public class cInven : MonoBehaviour
     //[SerializeField] GameObject weaponOwner;
     [SerializeField] GameObject owner;
     [SerializeField] GameObject invenBox;
+    [SerializeField] Text itemCount;
     [SerializeField] GameObject exclamationMark;
 
     cPlayer player;
@@ -45,7 +46,9 @@ public class cInven : MonoBehaviour
         invenItem.GetComponentsInChildren<Image>()[1].sprite = itemData.itemSprite;
         invenItem.GetComponent<Button>().onClick.AddListener(() => player.WearItem(itemData));
 
+        //count
         CheckResize();
+        itemCount.text = curtInvenAmount + "/42";
     }
 
     void CheckResize()

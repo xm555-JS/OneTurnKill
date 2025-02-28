@@ -647,6 +647,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   owner: {fileID: 42518320}
   invenBox: {fileID: 2710567441758282067, guid: 9d20e15cc87205a44b2da413cb57d9c1, type: 3}
+  itemCount: {fileID: 0}
   exclamationMark: {fileID: 885352160}
 --- !u!114 &42518323
 MonoBehaviour:
@@ -1996,7 +1997,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &181343654
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2677,9 +2678,12 @@ MonoBehaviour:
   ownerMenuUI:
   - {fileID: 780368851}
   - {fileID: 525348331}
+  - {fileID: 525348331}
   othderMenuUI:
   - {fileID: 379150653}
   - {fileID: 670023573}
+  - {fileID: 1315173711}
+  - {fileID: 1039934891}
   othderMenu:
   - {fileID: 449540803}
   - {fileID: 2018893194}
@@ -4030,6 +4034,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   owner: {fileID: 379150653}
   invenBox: {fileID: 2710567441758282067, guid: 9d20e15cc87205a44b2da413cb57d9c1, type: 3}
+  itemCount: {fileID: 1315173712}
   exclamationMark: {fileID: 414242677}
 --- !u!1 &383345128
 GameObject:
@@ -4239,7 +4244,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &414242678
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5149,9 +5154,12 @@ MonoBehaviour:
   ownerMenuUI:
   - {fileID: 379150653}
   - {fileID: 1315173711}
+  - {fileID: 1315173711}
   othderMenuUI:
   - {fileID: 780368851}
   - {fileID: 670023573}
+  - {fileID: 525348331}
+  - {fileID: 1039934891}
   othderMenu:
   - {fileID: 297844056}
   - {fileID: 2018893194}
@@ -7967,6 +7975,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   owner: {fileID: 670023573}
   invenBox: {fileID: 7734464699306877927, guid: 299f3b052e5fbe94cb958b78ade9bfe9, type: 3}
+  itemCount: {fileID: 1039934892}
   exclamationMark: {fileID: 181343653}
 --- !u!1 &670057223
 GameObject:
@@ -9788,6 +9797,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   owner: {fileID: 780368851}
   invenBox: {fileID: 2710567441758282067, guid: 9d20e15cc87205a44b2da413cb57d9c1, type: 3}
+  itemCount: {fileID: 525348333}
   exclamationMark: {fileID: 1358372529}
 --- !u!1 &783750612
 GameObject:
@@ -16196,6 +16206,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   owner: {fileID: 894623781}
   invenBox: {fileID: 2710567441758282067, guid: 9d20e15cc87205a44b2da413cb57d9c1, type: 3}
+  itemCount: {fileID: 0}
   exclamationMark: {fileID: 684917723}
 --- !u!114 &894623784
 MonoBehaviour:
@@ -17723,7 +17734,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 387.3, y: 40}
+  m_SizeDelta: {x: 387.3, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1059009396
 MonoBehaviour:
@@ -19966,7 +19977,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 387.3, y: 40}
+  m_SizeDelta: {x: 387.3, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1312113216
 MonoBehaviour:
@@ -28097,9 +28108,12 @@ MonoBehaviour:
   ownerMenuUI:
   - {fileID: 670023573}
   - {fileID: 1039934891}
+  - {fileID: 1039934891}
   othderMenuUI:
   - {fileID: 780368851}
   - {fileID: 379150653}
+  - {fileID: 525348331}
+  - {fileID: 1315173711}
   othderMenu:
   - {fileID: 297844056}
   - {fileID: 449540803}
@@ -30263,7 +30277,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 387.3, y: 40}
+  m_SizeDelta: {x: 387.3, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2132114082
 MonoBehaviour:
