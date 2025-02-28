@@ -4,21 +4,24 @@ using UnityEngine;
 
 public class cExpansion : MonoBehaviour
 {
-    //cInven inven;
     RectTransform rectTransform;
+
+    float baseHeight = 850f;
+    float rowHeight = 230f;
 
     void Awake()
     {
-        //inven = GetComponentInChildren<cInven>();
         rectTransform = GetComponent<RectTransform>();
     }
 
     public void RectHeight(int count)
     {
-        if (count >= 4)
-            rectTransform.sizeDelta = new Vector2(rectTransform.sizeDelta.x, 1600f);
-        else
-            rectTransform.sizeDelta = new Vector2(rectTransform.sizeDelta.x, 800f + (180f * count));
+        if (!rectTransform)
+            return;
+        if (count > 3)
+            return;
+
+        rectTransform.sizeDelta = new Vector2(rectTransform.sizeDelta.x, baseHeight + (rowHeight * count));
     }
 
     //int expansionCount;

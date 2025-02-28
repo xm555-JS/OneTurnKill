@@ -84,7 +84,7 @@ public class StageManager : MonoBehaviour
 
     void StageInitialize()
     {
-        stageNum = 0;
+        stageNum = 20;
         isPlayerAttack = false;
 
         spawners = spawner.GetComponentsInChildren<cSpawner>();

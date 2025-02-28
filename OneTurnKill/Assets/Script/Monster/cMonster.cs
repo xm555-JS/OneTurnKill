@@ -114,7 +114,7 @@ public class cMonster : MonoBehaviour
         yield return takeDamageTime;
 
         // test code 데미지 방식을 적용시킬 것.
-        hp -= 200;
+        hp -= 2000;
 
         OnDamage?.Invoke(this, hp);
         Reaction();

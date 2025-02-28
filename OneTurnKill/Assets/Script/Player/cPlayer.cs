@@ -17,13 +17,16 @@ public class cPlayer : MonoBehaviour
 
     #endregion
 
-    public void AddCoin(float value) { coin += value; }
+    #region AddSpend
+    public void AddCoin(float value) { coin += value; Debug.Log("µ∑ »πµÊ" + value); }
     public void SpendCoin(float value) { coin -= value; }
     public void AddArmorMat(int value) { armorMaterial += value; }
     public void SpendArmorMat(int value) { armorMaterial -= value; }
     public void AddWeaponMat(int value) { weaponMaterial += value; }
     public void SpendWeaponMat(int value) { weaponMaterial -= value; }
+    #endregion
 
+    #region Customizing
     Customizing custom;
 
     List<int> helmetList = new List<int>();
@@ -34,38 +37,27 @@ public class cPlayer : MonoBehaviour
     List<Sprite> armorSprites = new List<Sprite>();
     List<Sprite> weaponSprites = new List<Sprite>();
 
-    public void AddHelmetList(int index)
+    // ø ¿ª ¿‘»˙ ºˆ ¿÷∞‘
+    public void WearItem(cItemData itemData)
     {
-        helmetList.Add(index);
-        helmetSprites.Add(custom.ReturnHelmetSprite(index));
+        switch (itemData.type)
+        {
+            case ItemType.HELMET:
+                custom.WearHelmet(itemData.itemIndex);
+                break;
+            case ItemType.ARMOR:
+                custom.WearArmor(itemData.itemIndex);
+                break;
+            case ItemType.WEAPON:
+                custom.EquipWeapon(itemData.itemIndex);
+                break;
+        }
     }
+    #endregion
 
-    public void AddArmorList(int index)
-    {
-        armorList.Add(index);
-        armorSprites.Add(custom.ReturnArmorSprite(index));
-    }
-
-    public void AddWeaponList(int index)
-    {
-        weaponList.Add(index);
-        weaponSprites.Add(custom.ReturnWeaponSprite(index));
-    }
-
-    public List<Sprite> ReturnHelmetList()
-    {
-        return helmetSprites;
-    }
-
-    public List<Sprite> ReturnArmorList()
-    {
-        return armorSprites;
-    }
-
-    public List<Sprite> ReturnWeaponList()
-    {
-        return weaponSprites;
-    }
+    #region Event
+    public void SubscribeCoinDrop(cCoinArea coinArea) { coinArea.OnCoinDrop += AddCoin; }
+    #endregion
 
     void Awake()
     {
@@ -76,7 +68,46 @@ public class cPlayer : MonoBehaviour
         custom = GetComponent<Customizing>();
     }
 
-    public void WearHelmet(int index) { custom.WearHelmet(index); }
-    public void WearArmor(int index) { custom.WearArmor(index); }
-    public void EquipWeapon(int index) { custom.EquipWeapon(index); }
+
+    //public void WearHelmetTest(cItemData itemData)
+    //{
+    //    custom.WearHelmet(itemData.itemIndex);
+
+
+    //}
+
+    //// «ˆ¿Á «√∑π¿ÃæÓ∞° Ω¿µÊ«— ¿Â∫Ò List
+    //public void AddHelmetList(int index)
+    //{
+    //    helmetList.Add(index);
+    //    helmetSprites.Add(custom.ReturnHelmetSprite(index));
+    //}
+
+    //public void AddArmorList(int index)
+    //{
+    //    armorList.Add(index);
+    //    armorSprites.Add(custom.ReturnArmorSprite(index));
+    //}
+
+    //public void AddWeaponList(int index)
+    //{
+    //    weaponList.Add(index);
+    //    weaponSprites.Add(custom.ReturnWeaponSprite(index));
+    //}
+
+    //// Ω¿µÊ«— ¿Â∫Ò List Return
+    //public List<Sprite> ReturnHelmetList()
+    //{
+    //    return helmetSprites;
+    //}
+
+    //public List<Sprite> ReturnArmorList()
+    //{
+    //    return armorSprites;
+    //}
+
+    //public List<Sprite> ReturnWeaponList()
+    //{
+    //    return weaponSprites;
+    //}
 }

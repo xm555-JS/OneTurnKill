@@ -4987,6 +4987,7 @@ GameObject:
   - component: {fileID: 5652636514400567698}
   - component: {fileID: 5652636514400567697}
   - component: {fileID: 5652636514400567696}
+  - component: {fileID: -8504124390484207412}
   m_Layer: 8
   m_Name: Great_Armor
   m_TagString: Item
@@ -5135,3 +5136,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 3
   index: 7
+--- !u!114 &-8504124390484207412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5652636514400567916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebe8188d81b31724c8169bb943afa3fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemSprite: {fileID: -6505695957970812123, guid: f88431a9cccce91428f01eeb72b5e911, type: 3}
+  itemStats:
+    str: 0
+    criticalChance: 10
+    criticalDamage: 20
+  type: 3
+  itemIndex: 7
+  price: 10000

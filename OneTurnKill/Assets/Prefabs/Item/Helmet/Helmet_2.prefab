@@ -4987,6 +4987,7 @@ GameObject:
   - component: {fileID: 4092212625144225293}
   - component: {fileID: 4092212625144225290}
   - component: {fileID: 4092212625144225291}
+  - component: {fileID: 5977619474249434326}
   m_Layer: 8
   m_Name: Helmet_2
   m_TagString: Item
@@ -5135,3 +5136,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   index: 1
+--- !u!114 &5977619474249434326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4092212625144225335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebe8188d81b31724c8169bb943afa3fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemSprite: {fileID: 21300000, guid: 1fa9cf2957e2d1a40ade65ac24beca8a, type: 3}
+  itemStats:
+    str: 0
+    criticalChance: 5
+    criticalDamage: 5
+  type: 2
+  itemIndex: 1
+  price: 1000

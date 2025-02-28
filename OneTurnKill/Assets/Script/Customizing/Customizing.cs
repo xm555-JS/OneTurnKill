@@ -188,18 +188,18 @@ public class Customizing : MonoBehaviour
 
     #endregion
 
-    public Sprite ReturnHelmetSprite(int index)
-    {
-        return spriteHelmets[index];
-    }
+    //public Sprite ReturnHelmetSprite(int index)
+    //{
+    //    return spriteHelmets[index];
+    //}
 
-    public Sprite ReturnArmorSprite(int index)
-    {
-        return spriteArmors[index].armorBody;
-    }
+    //public Sprite ReturnArmorSprite(int index)
+    //{
+    //    return spriteArmors[index].armorBody;
+    //}
 
-    public Sprite ReturnWeaponSprite(int index)
-    {
-        return spriteWeapons[index];
-    }
+    //public Sprite ReturnWeaponSprite(int index)
+    //{
+    //    return spriteWeapons[index];
+    //}
 }

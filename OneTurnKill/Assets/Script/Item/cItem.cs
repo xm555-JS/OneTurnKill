@@ -20,7 +20,7 @@ public class cItem : MonoBehaviour
     float itemMoveSpeed = 20f;
     float yRockTime = 0.5f;
 
-    static Vector2 coinUIVec = new Vector2(8.4f, 4.4f);
+    static Vector2 coinUIVec = new Vector2(6.55f, 4.4f);
     static Vector2 equipUIVec = new Vector2(-6.5f, -3.9f);
 
     void Awake()

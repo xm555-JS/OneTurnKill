@@ -1956,7 +1956,7 @@ MonoBehaviour:
   - 30
   - 5
   - 5
-  - 2
+  - 500
 --- !u!50 &-7680322522519879508
 Rigidbody2D:
   serializedVersion: 4
