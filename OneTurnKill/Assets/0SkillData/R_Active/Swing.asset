@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d3acdb62b0dcef44adf85e8163464a6, type: 3}
+  m_Name: Swing
+  m_EditorClassIdentifier: 
+  skillEffect: {fileID: 5958181339013577753, guid: a560fdb0922a4954b993b8a5f966ab21, type: 3}
+  sklilAnim: {fileID: 0}
+  skillSound: {fileID: 0}
+  skillName: "\uC2A4\uD2B8\uB77C\uC774\uD06C"
+  skillDesc: "\uAC80\uC744 \uD718\uB450\uB978\uB2E4."
+  skillSprite: {fileID: 21300000, guid: 91bc653acdb171844ab2a7055176ac4f, type: 3}
+  skillType: 0

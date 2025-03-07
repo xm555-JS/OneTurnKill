@@ -37,7 +37,7 @@ public class cPlayerSkillButton : MonoBehaviour
     {
         playerAttack = GameManager.instance.player.GetComponent<cPlayerAttack>();
         if (!playerAttack)
-            Debug.LogError("cSkillUI - playerAttack is null.");
+            Debug.LogError("cPlayerSkillButton - playerAttack is null.");
     }
 
     void GetStageManager()

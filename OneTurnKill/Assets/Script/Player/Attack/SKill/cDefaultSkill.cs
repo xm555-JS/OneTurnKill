@@ -25,11 +25,4 @@ public class cDefaultSkill : cPlayerSkill, IPlayerAttack
     {
         //Debug.Log("Base 사운드 실행");
     }
-
-    //IEnumerator ToggleEffect(SkillData skillData)
-    //{
-    //    GameObject effectObj = GameObject.Instantiate(skillData.skillEffect);
-    //    yield return new WaitForSeconds(0.3f);
-    //    effectObj.SetActive(false);
-    //}
 }

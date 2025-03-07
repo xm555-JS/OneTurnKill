@@ -48,7 +48,7 @@ public class cSkillInst : MonoBehaviour
     IEnumerator ISkillInst()
     {
         yield return null;
-        Debug.Log("¿©±â´Â?");
+
         inst();
 
         yield return skillInstTime;
@@ -74,6 +74,7 @@ public class cSkillInst : MonoBehaviour
             case 0:
                 int rIndex = UnityEngine.Random.Range(0, rSkill.Length);
                 GameObject rSkillObj = Instantiate(rSkill[rIndex]);
+                rSkillObj.GetComponent<Image>().sprite = rSkillObj.GetComponent<cSkillUI>().skillData.skillSprite;
                 switch (rSkillObj.GetComponent<cSkillUI>().skillData.skillType)
                 {
                     case SkillType.ACTIVE:
@@ -89,11 +90,12 @@ public class cSkillInst : MonoBehaviour
                 skillUIList.Add(skillUIInst);
                 skillUIInst.transform.SetParent(uiOwner.transform, false);
                 Image skillImage = skillUIInst.GetComponent<Image>();
-                skillImage.sprite = rSkillObj.GetComponentsInChildren<Image>()[1].sprite;
+                skillImage.sprite = rSkillObj.GetComponent<Image>().sprite;
                 break;
             case 1:
                 int srIndex = UnityEngine.Random.Range(0, srSkill.Length);
                 GameObject srSkillObj = Instantiate(srSkill[srIndex]);
+                srSkillObj.GetComponent<Image>().sprite = srSkillObj.GetComponent<cSkillUI>().skillData.skillSprite;
                 switch (srSkillObj.GetComponent<cSkillUI>().skillData.skillType)
                 {
                     case SkillType.ACTIVE:
@@ -109,11 +111,12 @@ public class cSkillInst : MonoBehaviour
                 skillUIList.Add(srSkillUIInst);
                 srSkillUIInst.transform.SetParent(uiOwner.transform, false);
                 Image srSkillImage = srSkillUIInst.GetComponent<Image>();
-                srSkillImage.sprite = srSkillObj.GetComponentsInChildren<Image>()[1].sprite;
+                srSkillImage.sprite = srSkillObj.GetComponent<Image>().sprite;
                 break;
             case 2:
                 int ssrIndex = UnityEngine.Random.Range(0, ssrSkill.Length);
                 GameObject ssrSkillObj = Instantiate(ssrSkill[ssrIndex]);
+                ssrSkillObj.GetComponent<Image>().sprite = ssrSkillObj.GetComponent<cSkillUI>().skillData.skillSprite;
                 switch (ssrSkillObj.GetComponent<cSkillUI>().skillData.skillType)
                 {
                     case SkillType.ACTIVE:
@@ -129,7 +132,7 @@ public class cSkillInst : MonoBehaviour
                 skillUIList.Add(ssrSkillUIInst);
                 ssrSkillUIInst.transform.SetParent(uiOwner.transform, false);
                 Image ssrSkillImage = ssrSkillUIInst.GetComponent<Image>();
-                ssrSkillImage.sprite = ssrSkillObj.GetComponentsInChildren<Image>()[1].sprite;
+                ssrSkillImage.sprite = ssrSkillObj.GetComponent<Image>().sprite;
                 break;
         }
     }
