@@ -7,8 +7,8 @@ public class Resolution : MonoBehaviour
     void Start()
     {
         //// 나의 해상도를 확인한다.
-        //int myWidth = 1920;
-        //int myHeight = 1080;
+        //int myWidth = 2778;
+        //int myHeight = 1284;
 
         //int deviceWidth = Screen.width;
         //int deviceHeigth = Screen.height;
@@ -30,28 +30,28 @@ public class Resolution : MonoBehaviour
 
 
 
-        //int setWidth = 1920;
-        //int setHeight = 1080;
+        int setWidth = 2778;
+        int setHeight = 1284;
 
-        //int deviceWidth = Screen.width;
-        //int deviceHeight = Screen.height;
+        int deviceWidth = Screen.width;
+        int deviceHeight = Screen.height;
 
-        //float gameAspect = (float)setWidth / setHeight; // 게임의 비율
-        //float deviceAspect = (float)deviceWidth / deviceHeight; // 기기의 비율
+        float gameAspect = (float)setWidth / setHeight; // 게임의 비율
+        float deviceAspect = (float)deviceWidth / deviceHeight; // 기기의 비율
 
-        ////// 해상도 설정 (추가된 부분)
-        ////Screen.SetResolution(setWidth, (int)(setWidth / deviceAspect), true);
+        //// 해상도 설정 (추가된 부분)
+        //Screen.SetResolution(setWidth, (int)(setWidth / deviceAspect), true);
 
-        //float newWidth = gameAspect / deviceAspect;  // 너비 비율 조정
-        //float newHeight = deviceAspect / gameAspect; // 높이 비율 조정
+        float newWidth = gameAspect / deviceAspect;  // 너비 비율 조정
+        float newHeight = deviceAspect / gameAspect; // 높이 비율 조정
 
-        //if (gameAspect < deviceAspect)
-        //{
-        //    Camera.main.rect = new Rect((1f - newWidth) / 2f, 0f, newWidth, 1f);
-        //}
-        //else
-        //{
-        //    Camera.main.rect = new Rect(0f, (1f - newHeight) / 2f, 1f, newHeight);
-        //}
+        if (gameAspect < deviceAspect)
+        {
+            Camera.main.rect = new Rect((1f - newWidth) / 2f, 0f, newWidth, 1f);
+        }
+        else
+        {
+            Camera.main.rect = new Rect(0f, (1f - newHeight) / 2f, 1f, newHeight);
+        }
     }
 }
