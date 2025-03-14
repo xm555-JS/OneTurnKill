@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d3acdb62b0dcef44adf85e8163464a6, type: 3}
   m_Name: Meteo
   m_EditorClassIdentifier: 
-  skillEffect: {fileID: 0}
+  skillEffect: {fileID: 6434558143596314050, guid: 3e37973eece969b4098019e83cb8405e, type: 3}
   sklilAnim: {fileID: 0}
   skillSound: {fileID: 0}
   skillName: "\uBA54\uD14C\uC624"
   skillDesc: "\uC6B4\uC11D\uC744 \uB5A8\uC5B4\uB728\uB9B0\uB2E4."
   skillSprite: {fileID: 21300000, guid: 2f665c86073f00d448e6255b933838c1, type: 3}
   skillType: 0
+  level: 0
+  enforceAmount: 020000000300000004000000060000000a000000

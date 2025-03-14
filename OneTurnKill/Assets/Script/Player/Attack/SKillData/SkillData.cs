@@ -17,4 +17,8 @@ public class SkillData : ScriptableObject
     public string skillDesc;
     public Sprite skillSprite;
     public SkillType skillType;
+
+    [Header("For_Enforce")]
+    public int level = 0;
+    public int[] enforceAmount = new int[5] { 2, 3, 4, 6, 10 };
 }

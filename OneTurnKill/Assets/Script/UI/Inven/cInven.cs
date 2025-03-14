@@ -23,17 +23,15 @@ public class cInven : MonoBehaviour
     int curtInvenAmount;
     int resizeCount;
 
+    const int defaultSize = 28;
+    const int maxtSize = 42;
+
     void Awake()
     {
         player = GameManager.instance.player.GetComponent<cPlayer>();
         expansion = GetComponentInParent<cExpansion>();
     }
 
-    // 아이템을 인스턴스한다.
-    // 인스턴스 된 아이템은
-    // 1. cInven컴포넌트를 가지고 있는 객체를 부모로 한다.
-    // 2. 인스턴스 된 아이템 안에 있는 Image 컴포넌트에 접근하여 습득한 아이템의 이미지로 바꾼다.
-    // 3. 버튼 컴포넌트에 접근하여 해당 아이템의 능력치를 플레이어에게 줄 수 있도록 한다.
     public void InstItem(cItemData itemData)
     {
         if (itemData == null)
@@ -55,7 +53,7 @@ public class cInven : MonoBehaviour
     {
         curtInvenAmount++;
 
-        if (curtInvenAmount > 28)
+        if (curtInvenAmount > defaultSize)
         {
             CheckMaxInvenSize();
 
@@ -67,7 +65,7 @@ public class cInven : MonoBehaviour
 
     void CheckMaxInvenSize()
     {
-        if (curtInvenAmount > 42)
+        if (curtInvenAmount > maxtSize)
             exclamationMark.SetActive(true);
         else
             exclamationMark.SetActive(false);

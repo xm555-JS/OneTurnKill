@@ -12,6 +12,8 @@ public class cPlayerSkillButton : MonoBehaviour
     cPlayerAttack playerAttack;
     [SerializeField] string skillName;
 
+    public string SkillName { set => skillName = value; }
+
     void Awake()
     {
         skillButton = GetComponent<Button>();
@@ -48,5 +50,10 @@ public class cPlayerSkillButton : MonoBehaviour
     void SetAddListner()
     {
         skillButton.onClick.AddListener(() => playerAttack.Attack(skillName));
+    }
+
+    public void ChangeImage(Sprite image)
+    {
+        skillButton.GetComponent<Image>().sprite = image;
     }
 }

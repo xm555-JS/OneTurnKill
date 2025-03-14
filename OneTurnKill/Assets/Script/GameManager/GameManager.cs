@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
                 player.GetComponent<cPlayerAttack>().enabled = false;
                 player.GetComponent<cPlayerStats>().enabled = false;
             }
-            if (scene.name == "SampleScene")
+            else if (scene.name == "SampleScene")
             {
                 player.GetComponent<cPlayer>().enabled = true;
                 player.GetComponent<cPlayerAttack>().enabled = true;

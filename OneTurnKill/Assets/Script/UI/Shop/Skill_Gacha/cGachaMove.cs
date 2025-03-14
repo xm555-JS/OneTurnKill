@@ -25,10 +25,36 @@ public class cGachaMove : MonoBehaviour
             instanceCount = 0;
     }
 
-    void LateUpdate()
+    void Start()
     {
-        rect.anchoredPosition = Vector2.MoveTowards(rect.anchoredPosition,
-                                                    new Vector2(moveX + (400f * count), rect.anchoredPosition.y),
-                                                    Time.deltaTime * 2000f);
+        StartCoroutine(Move());
     }
+
+    IEnumerator Move()
+    {
+        while (Vector2.Distance(rect.anchoredPosition, new Vector2(moveX + (400f * count), rect.anchoredPosition.y)) > 0.1f)
+        {
+            rect.anchoredPosition = Vector2.MoveTowards(rect.anchoredPosition,
+                                             new Vector2(moveX + (400f * count), rect.anchoredPosition.y),
+                                             Time.deltaTime * 2000f);
+
+            yield return null;
+        }
+
+        rect.anchoredPosition = new Vector2(moveX + (400f * count), rect.anchoredPosition.y);
+    }
+
+    //void SetPosition(int count)
+    //{
+    //    rect.anchoredPosition = new Vector2(moveX + (400f * count), rect.anchoredPosition.y);
+    //}
+
+    //void Update()
+    //{
+    //    if (Input.GetMouseButtonDown(0))
+    //    {
+    //        StopAllCoroutines();
+    //        SetPosition(count);
+    //    }
+    //}
 }

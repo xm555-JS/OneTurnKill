@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d3acdb62b0dcef44adf85e8163464a6, type: 3}
   m_Name: Horizontal
   m_EditorClassIdentifier: 
-  skillEffect: {fileID: 0}
+  skillEffect: {fileID: 4117621209860614711, guid: 60431aed55744fc4fbb0bb2d76f50875, type: 3}
   sklilAnim: {fileID: 0}
   skillSound: {fileID: 0}
   skillName: "\uC218\uD3C9\uC120"
   skillDesc: "\uC218\uD3C9\uC73C\uB85C \uBCA4\uB2E4."
   skillSprite: {fileID: 21300000, guid: 8b2da4a88c0cacb48a700488027f56f4, type: 3}
   skillType: 0
+  level: 0
+  enforceAmount: 020000000300000004000000060000000a000000
