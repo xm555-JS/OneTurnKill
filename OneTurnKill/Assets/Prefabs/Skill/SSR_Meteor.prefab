@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7710958780587344470}
   - component: {fileID: 6997849955741429974}
   - component: {fileID: 6194292868270384062}
+  - component: {fileID: 7417386681082197288}
   m_Layer: 0
   m_Name: SSR_Meteor
   m_TagString: Untagged
@@ -4825,6 +4826,19 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &7417386681082197288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6434558143596314050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1e28b249c2af3a4894153451a46a4c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 2000
 --- !u!1001 &6262902888197813678
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4994,6 +5008,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.8200002, y: 3.8200011}
   m_EdgeRadius: 0
+--- !u!114 &5178108610970710413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5671342364551445066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1e28b249c2af3a4894153451a46a4c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 2400
 --- !u!4 &9005606574559282654 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3030952827234758768, guid: c695f09848c85fa449050563ff1954f9, type: 3}

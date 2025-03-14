@@ -104,17 +104,19 @@ public class cMonster : MonoBehaviour
         //if (hp <= 0)
         //    anim.SetTrigger("Dead");
 
-
-        /*test code*/
-        StartCoroutine(OnTakeDamage());
+        StartCoroutine(OnTakeDamage(collision));
     }
 
-    IEnumerator OnTakeDamage()
+    IEnumerator OnTakeDamage(Collider2D collision)
     {
         yield return takeDamageTime;
 
-        // test code 데미지 방식을 적용시킬 것.
-        hp -= 2000;
+        // 데미지 방식을 적용시킬 것.
+        cSKillDamage skillDamage = collision.GetComponent<cSKillDamage>();
+        if (skillDamage == null)
+            yield break;
+        hp -= GameManager.instance.playerCom.Strength * (skillDamage.Damage + (skillDamage.Damage * skillDamage.LevelDamage / 100));
+        Debug.Log(GameManager.instance.playerCom.Strength * (skillDamage.Damage + (skillDamage.Damage * skillDamage.LevelDamage / 100)));
 
         OnDamage?.Invoke(this, hp);
         Reaction();

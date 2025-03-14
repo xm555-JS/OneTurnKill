@@ -19,6 +19,9 @@ public class cDefaultSkill : cPlayerSkill, IPlayerAttack
     protected override void PlayEffect(SkillData skillData)
     {
         GameObject effectObj = GameObject.Instantiate(skillData.skillEffect);
+        if (effectObj.GetComponent<cSKillDamage>() == null)
+            return;
+        effectObj.GetComponent<cSKillDamage>().LevelDamage = skillData.levelDamage[skillData.level];
     }
 
     protected override void PlaySound(SkillData skillData)

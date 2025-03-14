@@ -20,5 +20,6 @@ public class SkillData : ScriptableObject
 
     [Header("For_Enforce")]
     public int level = 0;
+    public int[] levelDamage = new int[5] { 1, 10, 20, 40, 60 };
     public int[] enforceAmount = new int[5] { 2, 3, 4, 6, 10 };
 }

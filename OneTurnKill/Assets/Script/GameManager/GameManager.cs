@@ -7,6 +7,9 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public GameObject player;
+    public cPlayer playerCom;
+    public cPlayerStats playerStats;
+    public cPlayerAttack playerAttack;
 
     cCoinArea coinArea;
 
@@ -16,6 +19,10 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         instance = this;
+
+        playerCom = player.GetComponent<cPlayer>();
+        playerStats = player.GetComponent<cPlayerStats>();
+        playerAttack = player.GetComponent<cPlayerAttack>();
     }
 
     void Update()
@@ -28,15 +35,15 @@ public class GameManager : MonoBehaviour
         {
             if (scene.name == "CustomLevel")
             {
-                player.GetComponent<cPlayer>().enabled = false;
-                player.GetComponent<cPlayerAttack>().enabled = false;
-                player.GetComponent<cPlayerStats>().enabled = false;
+                playerCom.enabled = false;
+                playerAttack.enabled = false;
+                playerStats.enabled = false;
             }
             else if (scene.name == "SampleScene")
             {
-                player.GetComponent<cPlayer>().enabled = true;
-                player.GetComponent<cPlayerAttack>().enabled = true;
-                player.GetComponent<cPlayerStats>().enabled = true;
+                playerCom.enabled = true;
+                playerAttack.enabled = true;
+                playerStats.enabled = true;
 
                 coinArea = GameObject.Find("Coin_PickUp").GetComponent<cCoinArea>();
                 if (player != null && coinArea != null)

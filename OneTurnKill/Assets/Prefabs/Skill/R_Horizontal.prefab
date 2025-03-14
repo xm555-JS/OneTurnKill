@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3863546068075639883}
   - component: {fileID: -64257695641873719}
   - component: {fileID: 54105527914114850}
+  - component: {fileID: 3002888871535689333}
   m_Layer: 7
   m_Name: R_Horizontal
   m_TagString: Skill
@@ -4873,3 +4874,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
+--- !u!114 &3002888871535689333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4117621209860614711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1e28b249c2af3a4894153451a46a4c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 150
+  levelDamage: 0

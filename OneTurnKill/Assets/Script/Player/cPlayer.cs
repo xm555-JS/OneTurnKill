@@ -9,6 +9,18 @@ public class cPlayer : MonoBehaviour
     float armorMaterial;
     float weaponMaterial;
 
+    #region Stats
+
+    cPlayerStats playerStats;
+
+    public float Strength { get => playerStats.strength; }
+    public float CriticalChance { get => playerStats.criticalChance; }
+    public float CriticalDamage { get => playerStats.criticalDamage; }
+    public float GoldAcquire { get => playerStats.goldAcquire; }
+    public float ExpAcquire { get => playerStats.expAcquire; }
+
+    #endregion
+
     #region PropertyItem
 
     public float Coin { get => coin; }
@@ -66,6 +78,7 @@ public class cPlayer : MonoBehaviour
         weaponMaterial = 0f;
 
         custom = GetComponent<Customizing>();
+        playerStats = GetComponent<cPlayerStats>();
     }
 
 
