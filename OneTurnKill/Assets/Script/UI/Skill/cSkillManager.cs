@@ -17,9 +17,9 @@ public class cSkillManager : MonoBehaviour
 
     public void RegisterSkill(string name)
     {
-        if (!skillID.ContainsKey(name))
+        if (skillID.ContainsKey(name) == false)
             skillID.Add(name, 0);
-        else if (skillID.ContainsKey(name))
+        else
             skillID[name]++;
     }
 

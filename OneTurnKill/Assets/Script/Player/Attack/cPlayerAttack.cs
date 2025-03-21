@@ -36,6 +36,9 @@ public class cPlayerAttack : MonoBehaviour
     public void Attack(string skillName)
     {
         SkillData skillData = dataManager.GetSkillData(skillName);
+        if (skillData == null)
+            return;
+
         Setskill();
         skill.Execution(skillData);
         OnAttack?.Invoke();

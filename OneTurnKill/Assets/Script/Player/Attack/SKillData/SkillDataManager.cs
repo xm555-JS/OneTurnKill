@@ -16,10 +16,6 @@ public class SkillDataManager : MonoBehaviour
                 skill = data;
             }
         }
-
-        if (skill == null)
-            Debug.LogError("SkillDataManager - 스킬이 없습니다.");
-
         return skill;
     }
 }

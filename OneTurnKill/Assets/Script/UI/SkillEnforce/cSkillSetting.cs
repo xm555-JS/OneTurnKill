@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class cSkillSetting : MonoBehaviour
 {
     [Header("Default")]
-    [SerializeField] Sprite defaultSprite;
+    [SerializeField] Sprite defaultBtnSprite;
 
     [Header("Setting")]
     [SerializeField] Button btn1;
@@ -18,43 +18,103 @@ public class cSkillSetting : MonoBehaviour
     [SerializeField] Button playerBtn1;
     [SerializeField] Button playerBtn2;
     [SerializeField] Button playerBtn3;
+    Button[] playerBtnArray;
 
     Dictionary<Button, SkillData> buttonID = new Dictionary<Button, SkillData>();
+    Dictionary<Button, Button> buttonPair = new Dictionary<Button, Button>();
 
     void Awake()
     {
-        btnArray = new Button[]{ btn1, btn2, btn3 };
+        // initialize
+        btnArray = new Button[] { btn1, btn2, btn3 };
+        playerBtnArray = new Button[] { playerBtn1, playerBtn2, playerBtn3 };
+
+        for (int i = 0; i < btnArray.Length; i++)
+            buttonPair.Add(btnArray[i], playerBtnArray[i]);
     }
 
     public void Initialize(SkillData skillData)
     {
-        btn1.onClick.AddListener(() => SetSkillBtn(btn1, playerBtn1, skillData));
-        btn2.onClick.AddListener(() => SetSkillBtn(btn2, playerBtn2, skillData));
-        btn3.onClick.AddListener(() => SetSkillBtn(btn3, playerBtn3, skillData));
+        foreach (var btn in btnArray)
+            btn.onClick.RemoveAllListeners();
+
+        foreach (var btn in btnArray)
+            btn.onClick.AddListener(() => SetSkillBtn(btn, skillData));
     }
 
-    public void SetSkillBtn(Button btn, Button playerBtn, SkillData skillData)
+    public void SetSkillBtn(Button btn, SkillData skillData)
     {
+        DuplicateCheck(btn, skillData);
+
         btn.GetComponent<Image>().sprite = skillData.skillSprite;
-        playerBtn.GetComponent<cPlayerSkillButton>().SkillName = skillData.skillName;
-        playerBtn.GetComponent<cPlayerSkillButton>().ChangeImage(skillData.skillSprite);
+        buttonPair[btn].GetComponent<cPlayerSkillButton>().SkillName = skillData.skillName;
+        buttonPair[btn].GetComponent<cPlayerSkillButton>().ChangeImage(skillData.skillSprite);
+
+        // 정보 저장
+        if (buttonID.ContainsKey(btn))
+            buttonID[btn] = skillData;
+        else
+            buttonID.Add(btn, skillData);
     }
-    
+
     void DuplicateCheck(Button btn, SkillData skillData)
     {
-        foreach (var skillBtn in btnArray)
+        // 만약 지금 설정하려는 스킬이 다른 칸에 설정되어 있다면
+        // 스킬을 서로 바꾼다.
+        foreach (var otherBtn in btnArray)
         {
-            if (skillBtn == btn)
-                continue;
-
-            if (skillData.skillSprite == skillBtn.GetComponent<Image>().sprite)
+            if (buttonID.ContainsKey(otherBtn))
             {
-                //Sprite tempSprite = null;
-                //skillBtn.GetComponent<Image>().sprite = defaultSprite;
-                // 조때따 플레이어 스킬 버튼은 어케 바꾸지
+                // 만약에 btn에 설정하려는 스킬(skillData)이 otherBtn와 같다면
+                if (skillData == buttonID[otherBtn])
+                {
+                    // btn이 empty일 때
+                    // otherBtn을 empty로 만든다.
+                    if (buttonID.ContainsKey(btn) == false)
+                    {
+                        otherBtn.GetComponent<Image>().sprite = btn.GetComponent<Image>().sprite;
+                        buttonPair[otherBtn].GetComponent<cPlayerSkillButton>().SkillName = "";
+                        buttonPair[otherBtn].GetComponent<cPlayerSkillButton>().ChangeImage(defaultBtnSprite);
+                        break;
+                    }
+                    // btn이 설정되어있을 때
+                    // otherBtn을 btn에 있는 스킬로 만든다
+                    else
+                    {
+                        otherBtn.GetComponent<Image>().sprite = btn.GetComponent<Image>().sprite;
+                        SkillData preData = buttonID[btn];
+                        buttonPair[otherBtn].GetComponent<cPlayerSkillButton>().SkillName = preData.skillName;
+                        buttonPair[otherBtn].GetComponent<cPlayerSkillButton>().ChangeImage(preData.skillSprite);
+                        return;
+                        // 이거 원래 같은 스킬을 가지고있는 버튼 하나만 바꿔야하는데
+                        // 모든 다른 버튼을 바꿔버려서 고쳐야함.
+                    }
+                }
             }
         }
     }
-
-    // 이거 스킬창 버튼을 바꾸면 자동으로 플레이어 스킬도 바꾸게해야할거 같은데
 }
+
+
+//if (otherBtn == btn)    // 설정하려는 버튼은 제외
+//    continue;
+////if (buttonID.ContainsKey(otherBtn) == false)
+////    continue;
+
+//if (skillData == buttonID[otherBtn]) // 설정하려는 버튼은 제외하고 나머지 두 버튼 중 같은 스킬이있다면
+//{
+//    // btn의 셋팅을 skillBtn로 옮기자
+//    otherBtn.GetComponent<Image>().sprite = btn.GetComponent<Image>().sprite;
+
+//    if (buttonID.ContainsKey(otherBtn))
+//    {
+//        SkillData preData = buttonID[btn];
+//        buttonPair[btn].GetComponent<cPlayerSkillButton>().SkillName = preData.skillName;
+//        buttonPair[btn].GetComponent<cPlayerSkillButton>().ChangeImage(preData.skillSprite);
+//    }
+//    else
+//    {
+//        buttonPair[btn].GetComponent<cPlayerSkillButton>().SkillName = "";
+//        buttonPair[btn].GetComponent<cPlayerSkillButton>().ChangeImage(defaultBtnSprite);
+//    }
+//}
