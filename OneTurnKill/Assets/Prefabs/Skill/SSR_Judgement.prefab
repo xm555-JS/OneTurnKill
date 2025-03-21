@@ -14634,19 +14634,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5.62, y: 5.6200013}
   m_EdgeRadius: 0
---- !u!114 &1588412367031469578
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 226620635768737920}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1e28b249c2af3a4894153451a46a4c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 800
 --- !u!1001 &951203853928552642
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14804,19 +14791,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5.62, y: 5.6200013}
   m_EdgeRadius: 0
---- !u!114 &6465885787017967179
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 772920319749765764}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1e28b249c2af3a4894153451a46a4c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 800
 --- !u!1001 &2983829869692092325
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15136,7 +15110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1e28b249c2af3a4894153451a46a4c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 800
+  damage: 2400
 --- !u!1001 &4555487003802434559
 PrefabInstance:
   m_ObjectHideFlags: 0

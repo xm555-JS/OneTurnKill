@@ -12,8 +12,16 @@ public class cCoinArea : cItemArea
         cItemData data = collision.GetComponent<cItemData>();
         if (data != null)
         {
-            float coinValue = data.price;
+            float coinValue = CalculatePrice(data.price);
             OnCoinDrop?.Invoke(coinValue);
         }
+    }
+
+    int CalculatePrice(int price)
+    {
+        // 특성도 적용시켜야함
+
+        int resultPrice = price + (price * (GameManager.instance.playerCom.GoldAcquire / 100));
+        return resultPrice;
     }
 }

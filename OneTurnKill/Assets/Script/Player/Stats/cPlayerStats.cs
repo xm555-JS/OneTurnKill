@@ -8,21 +8,21 @@ public class cPlayerStats : MonoBehaviour
 {
     #region Stats
 
-    public float strength { get; private set; }
-    public float criticalChance { get; private set; }
-    public float criticalDamage { get; private set; }
-    public float goldAcquire { get; private set; }
-    public float expAcquire { get; private set; }
+    public int strength { get; private set; }
+    public int criticalChance { get; private set; }
+    public int criticalDamage { get; private set; }
+    public int goldAcquire { get; private set; }
+    public int expAcquire { get; private set; }
 
     int hpLevel, strLevel, defenLevel, criChanceLevel, criDamageLevel, goldAcqLevel, expAcqLevel;
 
-    public float strengthIncrease { get; private set; }
-    public float criChanceIncrease { get; private set; }
-    public float criDamageIncrease { get; private set; }
-    public float goldAcqIncrease { get; private set; }
-    public float expAcqIncrease { get; private set; }
+    public int strengthIncrease { get; private set; }
+    public int criChanceIncrease { get; private set; }
+    public int criDamageIncrease { get; private set; }
+    public int goldAcqIncrease { get; private set; }
+    public int expAcqIncrease { get; private set; }
 
-    static float increaseAmount = 10;
+    static int increaseAmount = 10;
 
     #endregion
 
@@ -38,11 +38,11 @@ public class cPlayerStats : MonoBehaviour
 
     #region Next_Stats
 
-    public float nextStr { get => strengthIncrease + increaseAmount; }
-    public float nextCriChance { get => criChanceIncrease + increaseAmount; }
-    public float nextCriDamage { get => criDamageIncrease + increaseAmount; }
-    public float nextGoldAcq { get => goldAcqIncrease + increaseAmount; }
-    public float nextExpAcq { get => expAcqIncrease + increaseAmount; }
+    public int nextStr { get => strengthIncrease + increaseAmount; }
+    public int nextCriChance { get => criChanceIncrease + increaseAmount; }
+    public int nextCriDamage { get => criDamageIncrease + increaseAmount; }
+    public int nextGoldAcq { get => goldAcqIncrease + increaseAmount; }
+    public int nextExpAcq { get => expAcqIncrease + increaseAmount; }
     #endregion
 
     #region Stat_Up
@@ -93,13 +93,13 @@ public class cPlayerStats : MonoBehaviour
 
     int charStrLevel, charCriChanceLevel, charCriDamageLevel, charGoldAcqLevel, charExpAcqLevel;
 
-    public float charStrIncrease { get; private set; }
-    public float charCriChanceIncrease { get; private set; }
-    public float charCriDamageIncrease { get; private set; }
-    public float charGoldAcqIncrease { get; private set; }
-    public float charExpAcqIncrease { get; private set; }
+    public int charStrIncrease { get; private set; }
+    public int charCriChanceIncrease { get; private set; }
+    public int charCriDamageIncrease { get; private set; }
+    public int charGoldAcqIncrease { get; private set; }
+    public int charExpAcqIncrease { get; private set; }
 
-    static float increaseCharAmoun = 2;
+    static int increaseCharAmoun = 2;
 
     #endregion
 
@@ -115,11 +115,11 @@ public class cPlayerStats : MonoBehaviour
 
     #region Next_Char_Stats
 
-    public float nextCharStr { get => charStrIncrease + increaseCharAmoun; }
-    public float nextCharCriChance { get => charCriChanceIncrease + increaseCharAmoun; }
-    public float nextCharCriDamage { get => charCriDamageIncrease + increaseCharAmoun; }
-    public float nextCharGoldAcq { get => charGoldAcqIncrease + increaseCharAmoun; }
-    public float nextCharExpAcq { get => charExpAcqIncrease + increaseCharAmoun; }
+    public int nextCharStr { get => charStrIncrease + increaseCharAmoun; }
+    public int nextCharCriChance { get => charCriChanceIncrease + increaseCharAmoun; }
+    public int nextCharCriDamage { get => charCriDamageIncrease + increaseCharAmoun; }
+    public int nextCharGoldAcq { get => charGoldAcqIncrease + increaseCharAmoun; }
+    public int nextCharExpAcq { get => charExpAcqIncrease + increaseCharAmoun; }
 
     #endregion
 
@@ -174,7 +174,7 @@ public class cPlayerStats : MonoBehaviour
 
     void InitializeStats()
     {
-        strength = 10f;
+        strength = 10;
         criticalChance = 10;
         criticalDamage = 10;
         goldAcquire = 0;

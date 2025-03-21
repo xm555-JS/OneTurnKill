@@ -111,12 +111,12 @@ public class cMonster : MonoBehaviour
     {
         yield return takeDamageTime;
 
-        // 데미지 방식을 적용시킬 것.
-        cSKillDamage skillDamage = collision.GetComponent<cSKillDamage>();
-        if (skillDamage == null)
+        int damage = CalculateDamage(collision);
+        if (damage == -1)
             yield break;
-        hp -= GameManager.instance.playerCom.Strength * (skillDamage.Damage + (skillDamage.Damage * skillDamage.LevelDamage / 100));
-        Debug.Log(GameManager.instance.playerCom.Strength * (skillDamage.Damage + (skillDamage.Damage * skillDamage.LevelDamage / 100)));
+
+        hp -= damage;
+        Debug.Log(damage);
 
         OnDamage?.Invoke(this, hp);
         Reaction();
@@ -182,5 +182,31 @@ public class cMonster : MonoBehaviour
 
         HpBar hpUI = hpBar.GetComponent<HpBar>();
         hpUI.Initialize(this);
+    }
+
+    int CalculateDamage(Collider2D collision)
+    {
+        // 특성도 적용시켜야함
+
+        cSKillDamage skillDamage = collision.GetComponent<cSKillDamage>();
+        if (skillDamage == null)
+            return -1;
+
+        int playerStr = GameManager.instance.playerCom.Strength;
+        if (IsCritical())
+            playerStr += GameManager.instance.playerCom.Strength * (GameManager.instance.playerCom.CriticalDamage / 100);
+
+        int resultDamage = playerStr * (skillDamage.Damage + (skillDamage.Damage * skillDamage.LevelDamage / 100));
+
+        return resultDamage;
+    }
+
+    bool IsCritical()
+    {
+        int value = UnityEngine.Random.Range(1, 100);
+        if (GameManager.instance.playerCom.CriticalChance >= value)
+            return true;
+
+        return false;
     }
 }

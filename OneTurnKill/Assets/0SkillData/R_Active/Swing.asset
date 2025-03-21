@@ -19,3 +19,6 @@ MonoBehaviour:
   skillDesc: "\uAC80\uC744 \uD718\uB450\uB978\uB2E4."
   skillSprite: {fileID: 21300000, guid: 91bc653acdb171844ab2a7055176ac4f, type: 3}
   skillType: 0
+  level: 0
+  levelDamage: 010000000a00000014000000280000003c000000
+  enforceAmount: 020000000300000004000000060000000a000000

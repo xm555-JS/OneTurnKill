@@ -20,5 +20,5 @@ public class cItemData : MonoBehaviour
     public stats itemStats;
     public ItemType type;
     public int itemIndex;
-    public float price;
+    public int price;
 }

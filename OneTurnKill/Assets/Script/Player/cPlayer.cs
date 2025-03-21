@@ -13,11 +13,11 @@ public class cPlayer : MonoBehaviour
 
     cPlayerStats playerStats;
 
-    public float Strength { get => playerStats.strength; }
-    public float CriticalChance { get => playerStats.criticalChance; }
-    public float CriticalDamage { get => playerStats.criticalDamage; }
-    public float GoldAcquire { get => playerStats.goldAcquire; }
-    public float ExpAcquire { get => playerStats.expAcquire; }
+    public int Strength { get => playerStats.strength; }
+    public int CriticalChance { get => playerStats.criticalChance; }
+    public int CriticalDamage { get => playerStats.criticalDamage; }
+    public int GoldAcquire { get => playerStats.goldAcquire; }
+    public int ExpAcquire { get => playerStats.expAcquire; }
 
     #endregion
 
@@ -30,7 +30,7 @@ public class cPlayer : MonoBehaviour
     #endregion
 
     #region AddSpend
-    public void AddCoin(float value) { coin += value; Debug.Log("µ∑ »πµÊ" + value); }
+    public void AddCoin(float value) { coin += value; }
     public void SpendCoin(float value) { coin -= value; }
     public void AddArmorMat(int value) { armorMaterial += value; }
     public void SpendArmorMat(int value) { armorMaterial -= value; }
@@ -80,47 +80,4 @@ public class cPlayer : MonoBehaviour
         custom = GetComponent<Customizing>();
         playerStats = GetComponent<cPlayerStats>();
     }
-
-
-    //public void WearHelmetTest(cItemData itemData)
-    //{
-    //    custom.WearHelmet(itemData.itemIndex);
-
-
-    //}
-
-    //// «ˆ¿Á «√∑π¿ÃæÓ∞° Ω¿µÊ«— ¿Â∫Ò List
-    //public void AddHelmetList(int index)
-    //{
-    //    helmetList.Add(index);
-    //    helmetSprites.Add(custom.ReturnHelmetSprite(index));
-    //}
-
-    //public void AddArmorList(int index)
-    //{
-    //    armorList.Add(index);
-    //    armorSprites.Add(custom.ReturnArmorSprite(index));
-    //}
-
-    //public void AddWeaponList(int index)
-    //{
-    //    weaponList.Add(index);
-    //    weaponSprites.Add(custom.ReturnWeaponSprite(index));
-    //}
-
-    //// Ω¿µÊ«— ¿Â∫Ò List Return
-    //public List<Sprite> ReturnHelmetList()
-    //{
-    //    return helmetSprites;
-    //}
-
-    //public List<Sprite> ReturnArmorList()
-    //{
-    //    return armorSprites;
-    //}
-
-    //public List<Sprite> ReturnWeaponList()
-    //{
-    //    return weaponSprites;
-    //}
 }
