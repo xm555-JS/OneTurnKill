@@ -19,6 +19,8 @@ public abstract class cPlayerStatsUI : MonoBehaviour
     // present
     protected cPlayerStatsPresent present;
 
+    bool isSpend;
+
     protected abstract void StatUp();
 
     protected void Awake()
@@ -32,15 +34,15 @@ public abstract class cPlayerStatsUI : MonoBehaviour
 
     protected virtual void Start()
     {
-        GameObject player = GameManager.instance.player;
-        cPlayerStats playerStats = player.GetComponentInChildren<cPlayerStats>();
-
+        cPlayerStats playerStats = GameManager.instance.playerStats;
         present = new cPlayerStatsPresent(this, playerStats);
+
+        goldText.text = price.ToString();
 
         statButton.onClick.AddListener(StatUp);
     }
 
-    public void UpdateStat(string Name, int level,float statValue, float nextStatValue)
+    public void UpdateStat(string Name, int level, float statValue, float nextStatValue)
     {
         switch (Name)
         {
@@ -64,7 +66,7 @@ public abstract class cPlayerStatsUI : MonoBehaviour
                 titleText.text = "∞Ê«Ëƒ° »πµÊ¡ı∞° Lv." + level;
                 break;
         }
-        
+
         StatText.text = statValue.ToString();
         nextStatText.text = nextStatValue.ToString();
 
@@ -73,7 +75,7 @@ public abstract class cPlayerStatsUI : MonoBehaviour
         goldText.text = price.ToString();
     }
 
-    public void UpdateCharStat(string Name,int level, float statValue, float nextStatValue)
+    public void UpdateCharStat(string Name, int level, float statValue, float nextStatValue)
     {
         switch (Name)
         {
@@ -104,5 +106,15 @@ public abstract class cPlayerStatsUI : MonoBehaviour
         GameManager.instance.playerCom.SpendCoin(price);
         price += priceIncreaseAmount;
         goldText.text = price.ToString();
+    }
+
+    public bool IsSpend()
+    {
+        if (GameManager.instance.playerCom.Coin < price)
+            isSpend = false;
+        else
+            isSpend = true;
+
+        return isSpend;
     }
 }

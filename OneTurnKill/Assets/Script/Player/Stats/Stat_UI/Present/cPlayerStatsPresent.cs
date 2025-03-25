@@ -17,26 +17,41 @@ public class cPlayerStatsPresent
 
     public void OnStrengthUp()
     {
+        if (ErrorPopUp() == false)
+            return;
+
         playerStats.StrengthUp();
         statsView.UpdateStat("Str", playerStats.getStrLevel, playerStats.strengthIncrease, playerStats.nextStr);
     }
     public void OnCriChanceUp()
     {
+        if (ErrorPopUp() == false)
+            return;
+
         playerStats.CriChanceUp();
-        statsView.UpdateStat("CriChance",playerStats.getCriChanceLevel, playerStats.criChanceIncrease, playerStats.nextCriChance);
+        statsView.UpdateStat("CriChance", playerStats.getCriChanceLevel, playerStats.criChanceIncrease, playerStats.nextCriChance);
     }
     public void OnCriDamageUp()
     {
+        if (ErrorPopUp() == false)
+            return;
+
         playerStats.CriDamageUp();
-        statsView.UpdateStat("CriDamage",playerStats.getCriDamageLevel, playerStats.criDamageIncrease, playerStats.nextCriDamage);
+        statsView.UpdateStat("CriDamage", playerStats.getCriDamageLevel, playerStats.criDamageIncrease, playerStats.nextCriDamage);
     }
     public void OnGoldAcquireUp()
     {
+        if (ErrorPopUp() == false)
+            return;
+
         playerStats.GoldAcquireUp();
         statsView.UpdateStat("GoldAcq", playerStats.getGoldAcqLevel, playerStats.goldAcqIncrease, playerStats.nextGoldAcq);
     }
     public void OnExpAcquireUp()
     {
+        if (ErrorPopUp() == false)
+            return;
+
         playerStats.ExpAcquireUp();
         statsView.UpdateStat("ExpAcq", playerStats.getExpAcqLevel, playerStats.expAcqIncrease, playerStats.nextExpAcq);
     }
@@ -47,31 +62,56 @@ public class cPlayerStatsPresent
 
     public void OnCharStrengthUp()
     {
+        if (ErrorPopUp() == false)
+            return;
+
         playerStats.Character_StrengthUp();
         statsView.UpdateCharStat("Str", playerStats.getCharStrLevel, playerStats.charStrIncrease, playerStats.nextCharStr);
     }
     public void OnCharCriChanceUp()
     {
+        if (ErrorPopUp() == false)
+            return;
+
         playerStats.Character_CriChanceUp();
         statsView.UpdateCharStat("CriChance", playerStats.getCharCriChanceLevel, playerStats.charCriChanceIncrease, playerStats.nextCharCriChance);
     }
     public void OnCharCriDamageUp()
     {
+        if (ErrorPopUp() == false)
+            return;
+
         playerStats.Character_CriDamageUp();
         statsView.UpdateCharStat("CriDamage", playerStats.getCharCriDamageLevel, playerStats.charCriDamageIncrease, playerStats.nextCharCriDamage);
     }
     public void OnCharGoldAcqUp()
     {
+        if (ErrorPopUp() == false)
+            return;
+
         playerStats.Character_GoldAcqUp();
         statsView.UpdateCharStat("GoldAcq", playerStats.getCharGoldAcqLevel, playerStats.charGoldAcqIncrease, playerStats.nextCharGoldAcq);
     }
     public void OnCharExpAcqUp()
     {
+        if (ErrorPopUp() == false)
+            return;
+
         playerStats.Character_ExpAcqUp();
         statsView.UpdateCharStat("ExpAcq", playerStats.getCharExpAcqLevel, playerStats.charExpAcqIncrease, playerStats.nextCharExpAcq);
     }
 
     #endregion
+
+    bool ErrorPopUp()
+    {
+        bool isSpend = statsView.IsSpend();
+
+        if (isSpend == false)
+            cPopupManager.instance.Push("ErrorPopup", "골드가 부족합니다.");
+
+        return isSpend;
+    }
 }
 
 //cPlayerHpUI hpView;
