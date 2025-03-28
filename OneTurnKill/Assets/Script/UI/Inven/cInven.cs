@@ -38,7 +38,6 @@ public class cInven : MonoBehaviour
         invenItem.transform.SetParent(owner.transform, false);
         invenItem.GetComponent<cItemUI>().itemboxInitialize(itemData);
         invenItem.GetComponentsInChildren<Image>()[1].sprite = itemData.itemSprite;
-        invenItem.GetComponent<Button>().onClick.AddListener(() => player.WearItem(itemData));
 
         //count
         CheckResize();

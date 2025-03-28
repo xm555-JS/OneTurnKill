@@ -12,7 +12,7 @@ public struct stats
     public int criticalDamage;
 }
 
-public enum ItemType { COIN, MATERIALS, HELMET, ARMOR, WEAPON }
+public enum ItemType { COIN, ARMORMATERIALS, WEAPONMATERIALS, HELMET, ARMOR, WEAPON }
 
 [CreateAssetMenu(fileName = "ItemData", menuName = "ScriptableObject/ItemData")]
 public class cItemData : ScriptableObject

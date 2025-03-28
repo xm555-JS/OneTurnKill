@@ -8,7 +8,7 @@ public class cItemUI : MonoBehaviour
     static cItemEnforceMoving itemEnforceMoving;
     static cItemEnforce itemEnforce;
     static cItemUI itemUI;
-    Button btn;
+    static Button btn;
 
     public void itemboxInitialize(cItemData itemData)
     {
@@ -20,7 +20,8 @@ public class cItemUI : MonoBehaviour
         itemUI = GetComponent<cItemUI>();
         btn = GetComponent<Button>();
 
+        cItemInstance itemInstance = new cItemInstance(itemData);
         btn.onClick.AddListener(() => itemEnforceMoving.MoveToShow());
-        btn.onClick.AddListener(() => itemEnforce.Initialize(itemData));
+        btn.onClick.AddListener(() => itemEnforce.Initialize(itemInstance));
     }
 }

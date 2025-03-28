@@ -4,25 +4,53 @@ using UnityEngine;
 
 public class cItemManager : MonoBehaviour
 {
+    public static cItemManager instance;
     public stats itemStats;
 
-    public void WeaponStatsInstance(cItemData itemData)
+    void Awake()
     {
-        itemStats = new stats
-        {
-            Att = itemData.itemStats.Att + Random.Range(-2, 6),
-            bossAtt = itemData.itemStats.bossAtt + Random.Range(-2, 6),
-            criticalChance = itemData.itemStats.criticalChance + Random.Range(-2, 6),
-            criticalDamage = itemData.itemStats.criticalDamage + Random.Range(-2, 6)
-        };
+        instance = this;
     }
 
-    public void ArmorStatsInstance(cItemData itemData)
+    public void EnforceItem(cItemInstance itemData)
     {
-        itemStats = new stats
+        if (itemData.type == ItemType.HELMET || itemData.type == ItemType.ARMOR)
         {
-            criticalChance = itemData.itemStats.criticalChance + Random.Range(-2, 6),
-            criticalDamage = itemData.itemStats.criticalDamage + Random.Range(-2, 6)
-        };
+            if (GameManager.instance.playerCom.ArmorMaterial < itemData.enforceAmount[itemData.level])
+            {
+                cPopupManager.instance.Push("ErrorPopup", "재료가 부족합니다.");
+                return;
+            }
+            else
+                UpgradeArmorStats(itemData);
+        }
+        else if (itemData.type == ItemType.WEAPON)
+        {
+            if (GameManager.instance.playerCom.ArmorMaterial < itemData.enforceAmount[itemData.level])
+            {
+                cPopupManager.instance.Push("ErrorPopup", "재료가 부족합니다.");
+                return;
+            }
+            else
+                UpgradeWeaponStats(itemData);
+        }
+    }
+
+    void UpgradeArmorStats(cItemInstance itemData)
+    {
+        GameManager.instance.playerCom.SpendArmorMat(itemData.enforceAmount[itemData.level]);
+        itemData.itemStats.criticalChance += itemData.enforceAmount[itemData.level];
+        itemData.itemStats.criticalDamage += itemData.enforceAmount[itemData.level];
+        itemData.level++;
+    }
+
+    void UpgradeWeaponStats(cItemInstance itemData)
+    {
+        GameManager.instance.playerCom.SpendWeaponMat(itemData.enforceAmount[itemData.level]);
+        itemData.itemStats.Att += itemData.enforceAmount[itemData.level];
+        itemData.itemStats.bossAtt += itemData.enforceAmount[itemData.level];
+        itemData.itemStats.criticalChance += itemData.enforceAmount[itemData.level];
+        itemData.itemStats.criticalDamage += itemData.enforceAmount[itemData.level];
+        itemData.level++;
     }
 }

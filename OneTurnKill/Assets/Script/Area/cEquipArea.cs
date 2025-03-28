@@ -25,6 +25,12 @@ public class cEquipArea : cItemArea
             case ItemType.WEAPON:
                 invenWeapon.InstItem(itemData);
                 break;
+            case ItemType.ARMORMATERIALS:
+                GameManager.instance.playerCom.AddArmorMat(1);
+                break;
+            case ItemType.WEAPONMATERIALS:
+                GameManager.instance.playerCom.AddWeaponMat(1);
+                break;
         }
     }
 }

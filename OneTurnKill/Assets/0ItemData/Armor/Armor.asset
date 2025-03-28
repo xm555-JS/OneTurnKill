@@ -19,7 +19,7 @@ MonoBehaviour:
     bossAtt: 0
     criticalChance: 5
     criticalDamage: 5
-  type: 3
+  type: 4
   itemIndex: 2
   price: 30
   level: 0

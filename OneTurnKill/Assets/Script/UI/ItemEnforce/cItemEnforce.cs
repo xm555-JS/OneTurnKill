@@ -11,6 +11,7 @@ public class cItemEnforce : MonoBehaviour
     [SerializeField] Text itemName;
     [SerializeField] Text itemEnforceMaterial;
     [SerializeField] Button enforceButton;
+    [SerializeField] Button equipButton;
 
     [Header("Item_Stats")]
     [SerializeField] Text statTxt1;
@@ -18,25 +19,47 @@ public class cItemEnforce : MonoBehaviour
     [SerializeField] Text statTxt3;
     [SerializeField] Text statTxt4;
 
-    public void Initialize(cItemData itemData)
+    public void Initialize(cItemInstance itemData)
     {
         InitializeEnforce(itemData);
         InitializeStatTxt(itemData);
     }
 
-    void InitializeEnforce(cItemData itemData)
+    void InitializeEnforce(cItemInstance itemData)
     {
         itemImage.sprite = itemData.itemSprite;
         itemName.text = itemData.itemName;
-        if (itemData.type == ItemType.HELMET && itemData.type == ItemType.ARMOR)
-            itemEnforceMaterial.text = GameManager.instance.playerCom.ArmorMaterial.ToString() + "/" + itemData.enforceAmount[itemData.level];
-        else if (itemData.type == ItemType.WEAPON)
-            itemEnforceMaterial.text = GameManager.instance.playerCom.WeaponMaterial.ToString() + "/" + itemData.enforceAmount[itemData.level];
-        //enforceButton.onClick.AddListener()
+        UpdateMatTxt(itemData);
+
+        enforceButton.onClick.RemoveAllListeners();
+
+        if (IsMaxLevel(itemData) == true)
+            return;
+
+        enforceButton.onClick.AddListener(() => cItemManager.instance.EnforceItem(itemData));
+        enforceButton.onClick.AddListener(() => InitializeStatTxt(itemData));
+        enforceButton.onClick.AddListener(() => UpdateMatTxt(itemData));
+
+        equipButton.onClick.AddListener(() => GameManager.instance.playerCom.WearItem(itemData));
     }
 
-    void InitializeStatTxt(cItemData itemData)
+    bool IsMaxLevel(cItemInstance itemData)
     {
+        if (itemData.level >= itemData.enforceAmount.Length)
+        {
+            enforceButton.interactable = false;
+            return true;
+        }
+        else
+            enforceButton.interactable = true;
+
+        return false;
+    }
+
+    void InitializeStatTxt(cItemInstance itemData)
+    {
+        itemName.text = itemData.itemName + " LV." + itemData.level.ToString();
+
         if (itemData.itemStats.Att != 0)
             statTxt1.text = "공격력 " + itemData.itemStats.Att.ToString();
         else
@@ -56,6 +79,20 @@ public class cItemEnforce : MonoBehaviour
             statTxt4.text = "치명타 피해 증가 " + itemData.itemStats.criticalDamage.ToString();
         else
             statTxt4.gameObject.SetActive(false);
+    }
 
+    void UpdateMatTxt(cItemInstance itemData)
+    {
+        // 최대 강화 일 때
+        if (IsMaxLevel(itemData) == true)
+        {
+            itemEnforceMaterial.text = "Max";
+            return;
+        }
+
+        if (itemData.type == ItemType.HELMET || itemData.type == ItemType.ARMOR)
+            itemEnforceMaterial.text = GameManager.instance.playerCom.ArmorMaterial.ToString() + "/" + itemData.enforceAmount[itemData.level];
+        else if (itemData.type == ItemType.WEAPON)
+            itemEnforceMaterial.text = GameManager.instance.playerCom.WeaponMaterial.ToString() + "/" + itemData.enforceAmount[itemData.level];
     }
 }
