@@ -4837,7 +4837,6 @@ GameObject:
   - component: {fileID: 2588051990155361956}
   - component: {fileID: 2588051990155361957}
   - component: {fileID: 2588051990155361958}
-  - component: {fileID: -5425893151731926278}
   m_Layer: 8
   m_Name: Armor
   m_TagString: Item
@@ -4973,28 +4972,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8ed8f2f2e3110c4281509aa23db327f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 3
-  index: 2
---- !u!114 &-5425893151731926278
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2588051990155362009}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebe8188d81b31724c8169bb943afa3fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemSprite: {fileID: 1589403714872849932, guid: ba3661b1aff2717449f5bb3cafd2a7ed, type: 3}
-  itemStats:
-    str: 0
-    criticalChance: 5
-    criticalDamage: 5
-  type: 3
-  itemIndex: 2
-  price: 3000
+  itemData: {fileID: 11400000, guid: 80652540899de2a499e1f379dfac25ce, type: 2}
 --- !u!1 &2588051990757108286
 GameObject:
   m_ObjectHideFlags: 0

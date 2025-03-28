@@ -9,7 +9,7 @@ public class cCoinArea : cItemArea
 
     protected override void GetItem(Collider2D collision)
     {
-        cItemData data = collision.GetComponent<cItemData>();
+        cItemData data = collision.GetComponent<cItem>().ItemData;
         if (data != null)
         {
             float coinValue = CalculatePrice(data.price);

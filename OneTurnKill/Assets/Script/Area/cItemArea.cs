@@ -4,14 +4,7 @@ using UnityEngine;
 
 public abstract class cItemArea : MonoBehaviour
 {
-    //protected cPlayer player;
-    
     protected abstract void GetItem(Collider2D collision);
-
-    //void Awake()
-    //{
-    //    player = GameManager.instance.player.GetComponent<cPlayer>();
-    //}
 
     void OnTriggerEnter2D(Collider2D collision)
     {

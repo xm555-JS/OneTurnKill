@@ -9,18 +9,18 @@ public class cSkillUI : MonoBehaviour
 
     Button skillButton;
 
-    static cSkillEnforceMoving skillEnforceMoving;
+    static cEnforceMoving skillEnforceMoving;
     static cSkillEnforce skillEnforce;
     static cSkillSetting skillSetting;
 
-    public SkillData SkillData { get => skillData; /*set => skillData = value;*/ }
+    public SkillData SkillData { get => skillData; }
 
     void Awake()
     {
         skillButton = GetComponent<Button>();
 
         if (skillEnforceMoving == null)
-            skillEnforceMoving = FindObjectOfType<cSkillEnforceMoving>(true);
+            skillEnforceMoving = FindObjectOfType<cEnforceMoving>(true);
         if (skillEnforce == null)
             skillEnforce = FindObjectOfType<cSkillEnforce>(true);
         if (skillSetting == null)

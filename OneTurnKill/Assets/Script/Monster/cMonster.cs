@@ -36,10 +36,8 @@ public class cMonster : MonoBehaviour
     GameObject hpBarPrefab;
     GameObject hpBar;
 
-    // test
     IObjectPool<GameObject> objectPool;
     public IObjectPool<GameObject> ObjectPool { get => objectPool; set => objectPool = value; }
-    // test
 
     //Drop_Item
     cDropItem dropItem;

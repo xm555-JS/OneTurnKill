@@ -4,11 +4,7 @@ using UnityEngine;
 
 public class cItem : MonoBehaviour
 {
-    public enum ITEMTYPE { Coin, Materials, Helmet, Armor, Weapon }
-
-    public ITEMTYPE type;
-
-    public int index;
+    [SerializeField] cItemData itemData;
 
     Rigidbody2D rigid;
 
@@ -22,6 +18,8 @@ public class cItem : MonoBehaviour
 
     static Vector2 coinUIVec = new Vector2(6.55f, 4.4f);
     static Vector2 equipUIVec = new Vector2(-5.4f, -4.1f);
+
+    public cItemData ItemData { get => itemData; }
 
     void Awake()
     {
@@ -77,24 +75,10 @@ public class cItem : MonoBehaviour
     {
         if (isPickUp)
         {
-            if (type == ITEMTYPE.Coin)
+            if (itemData.type == ItemType.COIN )
                 this.transform.position = Vector2.MoveTowards(this.transform.position, coinUIVec, Time.deltaTime * itemMoveSpeed);
             else
                 this.transform.position = Vector2.MoveTowards(this.transform.position, equipUIVec, Time.deltaTime * itemMoveSpeed);
-
-
-            //switch (type)
-            //{
-            //    case ITEMTYPE.Coin:
-            //        this.transform.position = Vector2.MoveTowards(this.transform.position, coinUIVec, Time.deltaTime * itemMoveSpeed);
-            //        break;
-            //    case ITEMTYPE.Materials:
-            //    case ITEMTYPE.Helmet:
-            //    case ITEMTYPE.Armor:
-            //    case ITEMTYPE.Weapon:
-            //        this.transform.position = Vector2.MoveTowards(this.transform.position, equipUIVec, Time.deltaTime * itemMoveSpeed);
-            //        break;
-            //}
         }
     }
 }

@@ -9,5 +9,4 @@ using UnityEngine;
 public class cSkillUIData : ScriptableObject
 {
     public Sprite skillSprite;
-    //public SkillType skillType;
 }
