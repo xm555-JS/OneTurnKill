@@ -32,6 +32,7 @@ public class cItemEnforce : MonoBehaviour
         UpdateMatTxt(itemData);
 
         enforceButton.onClick.RemoveAllListeners();
+        equipButton.onClick.RemoveAllListeners();
 
         if (IsMaxLevel(itemData) == true)
             return;

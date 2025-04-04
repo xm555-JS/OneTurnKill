@@ -175,59 +175,87 @@ public class cPlayerStats : MonoBehaviour
     cItemInstance weaponStats;
 
     // ¾ÆÀÌÅÛ ÀåÂø
-    void WearEquip(cItemInstance itemData)
+    public void WearEquip(cItemInstance itemData)
     {
-        // ÀåÂøÁßÀÎ ¾ÆÀÌÅÛ Á¦°Å
-        switch (itemData.type)
-        {
-            case ItemType.HELMET:
-                hemelStats = null;
-                break;
-
-            case ItemType.ARMOR:
-                armorStats = null;
-                break;
-
-            case ItemType.WEAPON:
-                weaponStats = null;
-                break;
-        }
-
-        // ÀåÂøÁßÀÎ ¾ÆÀÌÅÛ ½ºÅÈ Á¦°Å
+        RemoveEquip(itemData);
 
         // ¾ÆÀÌÅÛ ÀåÂø
         switch (itemData.type)
         {
             case ItemType.HELMET:
                 hemelStats = itemData;
+                UpdateEquipStats(hemelStats);
                 break;
 
             case ItemType.ARMOR:
                 armorStats = itemData;
+                UpdateEquipStats(armorStats);
                 break;
 
             case ItemType.WEAPON:
                 weaponStats = itemData;
+                UpdateEquipStats(weaponStats);
                 break;
         }
     }
 
     // ¾ÆÀÌÅÛ ÇØÁ¦
-    void RemoveEquip()
+    void RemoveEquip(cItemInstance itemData)
     {
+        // ÀåÂøÁßÀÎ ¾ÆÀÌÅÛ Á¦°Å
+        switch (itemData.type)
+        {
+            case ItemType.HELMET:
+                RemoveEquipStats(hemelStats);
+                hemelStats = null;
+                break;
 
+            case ItemType.ARMOR:
+                RemoveEquipStats(armorStats);
+                armorStats = null;
+                break;
+
+            case ItemType.WEAPON:
+                RemoveEquipStats(weaponStats);
+                weaponStats = null;
+                break;
+        }
     }
 
     // ½ºÅÈ +
-    void UpdateEquipStats()
+    void UpdateEquipStats(cItemInstance itemData)
     {
+        if (itemData == null)
+            return;
 
+        if (itemData.itemStats.att > 0)
+            strength += itemData.itemStats.att;
+        if (itemData.itemStats.bossAtt > 0)
+            bossStrength += itemData.itemStats.bossAtt;
+        if (itemData.itemStats.criticalChance > 0)
+            criticalChance += itemData.itemStats.criticalChance;
+        if (itemData.itemStats.criticalDamage > 0)
+            criticalDamage += itemData.itemStats.criticalDamage;
+
+        Debug.Log("Att : " + strength + "\n" + "BossAtt : " + bossStrength + "\n" + "Crichance : " + criticalChance + "\n" + "CriDamage : " + criticalDamage);
     }
 
     // ½ºÅÈ -
-    void RemoveEquipStats()
+    void RemoveEquipStats(cItemInstance itemData)
     {
+        if (itemData == null)
+            return;
 
+        if (itemData.itemStats.att > 0)
+            strength -= itemData.itemStats.att;
+        if (itemData.itemStats.bossAtt > 0)
+            bossStrength -= itemData.itemStats.bossAtt;
+        if (itemData.itemStats.criticalChance > 0)
+            criticalChance -= itemData.itemStats.criticalChance;
+        if (itemData.itemStats.criticalDamage > 0)
+            criticalDamage -= itemData.itemStats.criticalDamage;
+
+        Debug.Log("Att : " + strength + "\n" + "BossAtt : " + bossStrength + "\n" + "Crichance : " + criticalChance + "\n" + "CriDamage : " + criticalDamage);
     }
 
     #endregion

@@ -65,6 +65,8 @@ public class cPlayer : MonoBehaviour
                 custom.EquipWeapon(itemData.itemIndex);
                 break;
         }
+
+        playerStats.WearEquip(itemData);
     }
 
     #endregion
