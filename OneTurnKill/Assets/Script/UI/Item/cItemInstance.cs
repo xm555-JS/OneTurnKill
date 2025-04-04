@@ -37,7 +37,7 @@ public class cItemInstance
         {
             itemStats = new stats
             {
-                Att = itemData.itemStats.Att + Random.Range(-2, 6),
+                att = itemData.itemStats.att + Random.Range(-2, 6),
                 bossAtt = itemData.itemStats.bossAtt + Random.Range(-2, 6),
                 criticalChance = itemData.itemStats.criticalChance + Random.Range(-2, 6),
                 criticalDamage = itemData.itemStats.criticalDamage + Random.Range(-2, 6)

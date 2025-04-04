@@ -47,7 +47,7 @@ public class cItemManager : MonoBehaviour
     void UpgradeWeaponStats(cItemInstance itemData)
     {
         GameManager.instance.playerCom.SpendWeaponMat(itemData.enforceAmount[itemData.level]);
-        itemData.itemStats.Att += itemData.enforceAmount[itemData.level];
+        itemData.itemStats.att += itemData.enforceAmount[itemData.level];
         itemData.itemStats.bossAtt += itemData.enforceAmount[itemData.level];
         itemData.itemStats.criticalChance += itemData.enforceAmount[itemData.level];
         itemData.itemStats.criticalDamage += itemData.enforceAmount[itemData.level];

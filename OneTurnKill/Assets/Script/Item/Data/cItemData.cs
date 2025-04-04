@@ -6,7 +6,7 @@ using UnityEngine;
 [Serializable]
 public struct stats
 {
-    public int Att;
+    public int att;
     public int bossAtt;
     public int criticalChance;
     public int criticalDamage;

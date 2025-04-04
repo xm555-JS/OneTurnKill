@@ -60,8 +60,8 @@ public class cItemEnforce : MonoBehaviour
     {
         itemName.text = itemData.itemName + " LV." + itemData.level.ToString();
 
-        if (itemData.itemStats.Att != 0)
-            statTxt1.text = "공격력 " + itemData.itemStats.Att.ToString();
+        if (itemData.itemStats.att != 0)
+            statTxt1.text = "공격력 " + itemData.itemStats.att.ToString();
         else
             statTxt1.gameObject.SetActive(false);
 

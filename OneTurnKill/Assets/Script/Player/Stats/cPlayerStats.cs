@@ -9,6 +9,7 @@ public class cPlayerStats : MonoBehaviour
     #region Stats
 
     public int strength { get; private set; }
+    public int bossStrength { get; private set; }
     public int criticalChance { get; private set; }
     public int criticalDamage { get; private set; }
     public int goldAcquire { get; private set; }
@@ -129,7 +130,7 @@ public class cPlayerStats : MonoBehaviour
     {
         charStrLevel++;
         charStrIncrease += increaseCharAmoun;
-        strength += (strength / charStrIncrease) ;
+        strength += (strength / charStrIncrease);
         Debug.Log("Strength : " + strength);
     }
 
@@ -163,6 +164,70 @@ public class cPlayerStats : MonoBehaviour
         charExpAcqIncrease += increaseCharAmoun;
         expAcquire += (expAcquire / charExpAcqIncrease);
         Debug.Log("ExpAcquire : " + expAcquire);
+    }
+
+    #endregion
+
+    #region Equip_Item
+
+    cItemInstance hemelStats;
+    cItemInstance armorStats;
+    cItemInstance weaponStats;
+
+    // ¾ÆÀÌÅÛ ÀåÂø
+    void WearEquip(cItemInstance itemData)
+    {
+        // ÀåÂøÁßÀÎ ¾ÆÀÌÅÛ Á¦°Å
+        switch (itemData.type)
+        {
+            case ItemType.HELMET:
+                hemelStats = null;
+                break;
+
+            case ItemType.ARMOR:
+                armorStats = null;
+                break;
+
+            case ItemType.WEAPON:
+                weaponStats = null;
+                break;
+        }
+
+        // ÀåÂøÁßÀÎ ¾ÆÀÌÅÛ ½ºÅÈ Á¦°Å
+
+        // ¾ÆÀÌÅÛ ÀåÂø
+        switch (itemData.type)
+        {
+            case ItemType.HELMET:
+                hemelStats = itemData;
+                break;
+
+            case ItemType.ARMOR:
+                armorStats = itemData;
+                break;
+
+            case ItemType.WEAPON:
+                weaponStats = itemData;
+                break;
+        }
+    }
+
+    // ¾ÆÀÌÅÛ ÇØÁ¦
+    void RemoveEquip()
+    {
+
+    }
+
+    // ½ºÅÈ +
+    void UpdateEquipStats()
+    {
+
+    }
+
+    // ½ºÅÈ -
+    void RemoveEquipStats()
+    {
+
     }
 
     #endregion

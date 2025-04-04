@@ -14,6 +14,7 @@ public class cPlayer : MonoBehaviour
     cPlayerStats playerStats;
 
     public int Strength { get => playerStats.strength; }
+    public int BossStrength { get => playerStats.bossStrength; }
     public int CriticalChance { get => playerStats.criticalChance; }
     public int CriticalDamage { get => playerStats.criticalDamage; }
     public int GoldAcquire { get => playerStats.goldAcquire; }
@@ -56,22 +57,16 @@ public class cPlayer : MonoBehaviour
         {
             case ItemType.HELMET:
                 custom.WearHelmet(itemData.itemIndex);
-                // 여기에서 해당 아이템 정보를 기준으로 스탯업
-                // 스탯업은 cPlayerStats에서 함수를 만들어야함.
-                // 해당 함수는 각 스탯을 업 할 수 있도록하고
-                // 장착하고 있는 아이템의 스탯을 저장한 뒤
-                // 다른 아이템을 장착하면 해당 스탯을 뺀 뒤 다른 아이템의 스탯을 반영 할 수 있도록
                 break;
             case ItemType.ARMOR:
                 custom.WearArmor(itemData.itemIndex);
-                // Helmet이랑 Armor 스탯 적용하는 함수를 따로 만들어야하나? -> 따로 만들어야함
-                // 그렇다면 Helmet, Armor, Weapon 총 3개의 함수를 만들어야함
                 break;
             case ItemType.WEAPON:
                 custom.EquipWeapon(itemData.itemIndex);
                 break;
         }
     }
+
     #endregion
 
     #region Event
