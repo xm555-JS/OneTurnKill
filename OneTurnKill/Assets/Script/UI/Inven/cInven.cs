@@ -36,6 +36,7 @@ public class cInven : MonoBehaviour
         }
         GameObject invenItem = Instantiate(invenBox);
         invenItem.transform.SetParent(owner.transform, false);
+        itemData.owner = invenItem;
         invenItem.GetComponent<cItemUI>().itemboxInitialize(itemData);
         invenItem.GetComponentsInChildren<Image>()[1].sprite = itemData.itemSprite;
 

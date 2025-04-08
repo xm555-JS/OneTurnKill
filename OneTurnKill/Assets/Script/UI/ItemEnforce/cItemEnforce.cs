@@ -12,6 +12,7 @@ public class cItemEnforce : MonoBehaviour
     [SerializeField] Text itemEnforceMaterial;
     [SerializeField] Button enforceButton;
     [SerializeField] Button equipButton;
+    [SerializeField] Button sellButton;
 
     [Header("Item_Stats")]
     [SerializeField] Text statTxt1;
@@ -33,15 +34,17 @@ public class cItemEnforce : MonoBehaviour
 
         enforceButton.onClick.RemoveAllListeners();
         equipButton.onClick.RemoveAllListeners();
+        sellButton.onClick.RemoveAllListeners();
+
+        equipButton.onClick.AddListener(() => GameManager.instance.playerCom.WearItem(itemData));
+        sellButton.onClick.AddListener(() => SellEquip(itemData));
 
         if (IsMaxLevel(itemData) == true)
             return;
 
-        enforceButton.onClick.AddListener(() => cItemManager.instance.EnforceItem(itemData));
+        enforceButton.onClick.AddListener(() => Enforce(itemData));
         enforceButton.onClick.AddListener(() => InitializeStatTxt(itemData));
         enforceButton.onClick.AddListener(() => UpdateMatTxt(itemData));
-
-        equipButton.onClick.AddListener(() => GameManager.instance.playerCom.WearItem(itemData));
     }
 
     bool IsMaxLevel(cItemInstance itemData)
@@ -82,6 +85,12 @@ public class cItemEnforce : MonoBehaviour
             statTxt4.gameObject.SetActive(false);
     }
 
+    void Enforce(cItemInstance itemData)
+    {
+        cItemManager.instance.EnforceItem(itemData);
+        GameManager.instance.playerCom.UpdatePlayerStats(itemData);
+    }
+
     void UpdateMatTxt(cItemInstance itemData)
     {
         // 최대 강화 일 때
@@ -95,5 +104,15 @@ public class cItemEnforce : MonoBehaviour
             itemEnforceMaterial.text = GameManager.instance.playerCom.ArmorMaterial.ToString() + "/" + itemData.enforceAmount[itemData.level];
         else if (itemData.type == ItemType.WEAPON)
             itemEnforceMaterial.text = GameManager.instance.playerCom.WeaponMaterial.ToString() + "/" + itemData.enforceAmount[itemData.level];
+    }
+
+    void SellEquip(cItemInstance itemData)
+    {
+        // 해당 아이템 돈+
+        GameManager.instance.playerCom.AddCoin(itemData.price);
+        // 강화창 닫기
+        itemData.owner.GetComponent<cItemUI>().HideEnforceMoving();
+        // 해당 아이템 삭제
+        Destroy(itemData.owner);
     }
 }

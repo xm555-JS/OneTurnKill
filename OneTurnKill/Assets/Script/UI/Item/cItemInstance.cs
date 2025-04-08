@@ -13,12 +13,14 @@ public class cItemInstance
     public int price;
 
     [Header("For_Enforce")]
+    public GameObject owner;
     public int level;
     public int[] levelDamage = new int[5] { 1, 10, 20, 40, 60 };
     public int[] enforceAmount = new int[5] { 2, 3, 4, 6, 10 };
 
     public cItemInstance(cItemData itemData)
     {
+        owner = itemData.owner;
         itemSprite = itemData.itemSprite;
         itemName = itemData.itemName;
         type = itemData.type;

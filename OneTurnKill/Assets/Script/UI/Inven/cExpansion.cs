@@ -18,7 +18,7 @@ public class cExpansion : MonoBehaviour
     {
         if (!rectTransform)
             return;
-        if (count > 3)
+        if (count >= 3)
             return;
 
         rectTransform.sizeDelta = new Vector2(rectTransform.sizeDelta.x, baseHeight + (rowHeight * count));

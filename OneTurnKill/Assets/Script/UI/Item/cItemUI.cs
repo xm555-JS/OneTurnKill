@@ -24,4 +24,9 @@ public class cItemUI : MonoBehaviour
         btn.onClick.AddListener(() => itemEnforceMoving.MoveToShow());
         btn.onClick.AddListener(() => itemEnforce.Initialize(itemInstance));
     }
+
+    public void HideEnforceMoving()
+    {
+        itemEnforceMoving.MoveToHide();
+    }
 }
