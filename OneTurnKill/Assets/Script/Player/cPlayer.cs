@@ -20,11 +20,7 @@ public class cPlayer : MonoBehaviour
     public int GoldAcquire { get => playerStats.goldAcquire; }
     public int ExpAcquire { get => playerStats.expAcquire; }
 
-    // 문제 : 아이템 강화를 할 때 착용한 상태에서 강화를 했을 때 문제를 해결하기 위해서 만들었는데
-    // 이러면 착용하기 전에 강화를 할 때 문제가 생긴다
-    // 착용했을 때, 안했을 때 강화 버튼을 누르는 것을 구분하는 방법이 있고
-    // 조금 더 생각을 해서 cPlayerStats에서 강화할 떄 Stat이 update하는 방식을 다르게 해야할 것 같다.
-    public void UpdatePlayerStats(cItemInstance itemData) { playerStats.UpdateStats(itemData); }
+    public void UpdateEnforceStats(cItemInstance itemData) { playerStats.UpdateStats(itemData); }
 
     #endregion
 
@@ -75,7 +71,7 @@ public class cPlayer : MonoBehaviour
 
     void Awake()
     {
-        coin = 0f;
+        coin = 100000f;
         armorMaterial = 400f;
         weaponMaterial = 0f;
 

@@ -62,7 +62,8 @@ public class cPlayerStats : MonoBehaviour
         strLevel++;
         strengthIncrease += increaseAmount;
         strength += strengthIncrease;
-        pureAtt = strength;
+
+        pureAtt += strengthIncrease;
         Debug.Log("Strength : " + strength);
     }
 
@@ -71,7 +72,8 @@ public class cPlayerStats : MonoBehaviour
         criChanceLevel++;
         criChanceIncrease += increaseAmount;
         criticalChance += criChanceIncrease;
-        pureCriChance = criticalChance;
+
+        pureCriChance += criChanceIncrease;
         Debug.Log("CriticalChance : " + criticalChance);
     }
 
@@ -80,7 +82,8 @@ public class cPlayerStats : MonoBehaviour
         criDamageLevel++;
         criDamageIncrease += increaseAmount;
         criticalDamage += criDamageIncrease;
-        pureCriDamage = criticalDamage;
+
+        pureCriDamage += criDamageIncrease;
         Debug.Log("CriticalDamage : " + criticalDamage);
     }
 
@@ -142,8 +145,12 @@ public class cPlayerStats : MonoBehaviour
     {
         charStrLevel++;
         charStrIncrease += increaseCharAmoun;
-        strength += (strength / charStrIncrease);
-        pureAtt = strength;
+
+        float stat = 0;
+        stat = pureAtt * (charStrIncrease / 100f);
+        strength += (int)stat;
+        pureAtt += (int)stat;
+
         Debug.Log("Strength : " + strength);
     }
 
@@ -151,8 +158,12 @@ public class cPlayerStats : MonoBehaviour
     {
         charCriChanceLevel++;
         charCriChanceIncrease += increaseCharAmoun;
-        criticalChance += (criticalChance / charCriChanceIncrease);
-        pureCriChance = criticalChance;
+
+        float stat = 0;
+        stat += pureCriChance * (charCriChanceIncrease / 100f);
+        criticalChance += (int)stat;
+        pureCriChance += (int)stat;
+
         Debug.Log("CriticalChance : " + criticalChance);
     }
 
@@ -160,8 +171,12 @@ public class cPlayerStats : MonoBehaviour
     {
         charCriDamageLevel++;
         charCriDamageIncrease += increaseCharAmoun;
-        criticalDamage += (criticalDamage / charCriDamageIncrease);
-        pureCriDamage = criticalDamage;
+
+        float stat = 0;
+        stat += pureCriDamage * (charCriDamageIncrease / 100f);
+        criticalDamage += (int)stat;
+        pureCriDamage += (int)stat;
+
         Debug.Log("CriticalDamage : " + criticalDamage);
     }
 
@@ -276,11 +291,12 @@ public class cPlayerStats : MonoBehaviour
     // 아이템을 장착한 상태에서 강화를 눌렀을 때
     public void UpdateStats(cItemInstance itemData)
     {
-        // 퓨어스탯에서 itemdata stats을 더한다.
         strength = pureAtt + itemData.itemStats.att;
         bossStrength = pureBossAtt + itemData.itemStats.bossAtt;
         criticalChance = pureCriChance + itemData.itemStats.criticalChance;
         criticalDamage = pureCriDamage + itemData.itemStats.criticalDamage;
+
+        Debug.Log("Att : " + strength + "\n" + "BossAtt : " + bossStrength + "\n" + "Crichance : " + criticalChance + "\n" + "CriDamage : " + criticalDamage);
     }
 
     #endregion

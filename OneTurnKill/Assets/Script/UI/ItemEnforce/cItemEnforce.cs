@@ -20,10 +20,14 @@ public class cItemEnforce : MonoBehaviour
     [SerializeField] Text statTxt3;
     [SerializeField] Text statTxt4;
 
+    bool isWear;
+
+
     public void Initialize(cItemInstance itemData)
     {
         InitializeEnforce(itemData);
         InitializeStatTxt(itemData);
+        isWear = false;
     }
 
     void InitializeEnforce(cItemInstance itemData)
@@ -36,7 +40,7 @@ public class cItemEnforce : MonoBehaviour
         equipButton.onClick.RemoveAllListeners();
         sellButton.onClick.RemoveAllListeners();
 
-        equipButton.onClick.AddListener(() => GameManager.instance.playerCom.WearItem(itemData));
+        equipButton.onClick.AddListener(() => WearItem(itemData));
         sellButton.onClick.AddListener(() => SellEquip(itemData));
 
         if (IsMaxLevel(itemData) == true)
@@ -45,6 +49,12 @@ public class cItemEnforce : MonoBehaviour
         enforceButton.onClick.AddListener(() => Enforce(itemData));
         enforceButton.onClick.AddListener(() => InitializeStatTxt(itemData));
         enforceButton.onClick.AddListener(() => UpdateMatTxt(itemData));
+    }
+
+    void WearItem(cItemInstance itemData)
+    {
+        GameManager.instance.playerCom.WearItem(itemData);
+        isWear = true;
     }
 
     bool IsMaxLevel(cItemInstance itemData)
@@ -88,7 +98,9 @@ public class cItemEnforce : MonoBehaviour
     void Enforce(cItemInstance itemData)
     {
         cItemManager.instance.EnforceItem(itemData);
-        GameManager.instance.playerCom.UpdatePlayerStats(itemData);
+
+        if (isWear == true)
+            GameManager.instance.playerCom.UpdateEnforceStats(itemData);
     }
 
     void UpdateMatTxt(cItemInstance itemData)
