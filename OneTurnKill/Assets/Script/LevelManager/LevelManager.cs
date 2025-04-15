@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
-    public LevelManager instance;
+    static public LevelManager instance;
 
     void Awake()
     {
@@ -13,16 +13,13 @@ public class LevelManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            SceneManager.LoadScene("SampleScene");
-        }
-    }
-
     public void GoToGamePlay()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("1SampleScene");
+    }
+
+    public void GoToOrcBossLevel()
+    {
+        SceneManager.LoadScene("2OrcBossLevel");
     }
 }

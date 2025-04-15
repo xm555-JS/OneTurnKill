@@ -176,6 +176,8 @@ public class cMonster : MonoBehaviour
         hpBar = Instantiate(hpBarPrefab);
 
         Transform parent = GameObject.FindWithTag("MonsterHpBar").transform;
+        if (parent == null)
+            return;
         hpBar.transform.SetParent(parent);
 
         HpBar hpUI = hpBar.GetComponent<HpBar>();

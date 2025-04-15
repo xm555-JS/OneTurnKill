@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,8 @@ using UnityEngine;
 
 public class StageManager : MonoBehaviour
 {
+    public static StageManager instance;
+
     [Header("Spawner")]
     [SerializeField] GameObject spawner;
     cSpawner[] spawners;
@@ -14,6 +17,9 @@ public class StageManager : MonoBehaviour
     cPlayerAttack playerAttack;
     bool isPlayerAttack;
     bool isAttackReady;
+
+    public event Action OnOpenOrcBoss;
+    //public event Action OnOpenUndeadBoss;
 
     WaitForSeconds checkDeadTime = new WaitForSeconds(2f);
 
@@ -51,7 +57,16 @@ public class StageManager : MonoBehaviour
             stageNum++;
             spawners[0].PrefabIndex(stageNum / 10);
             Debug.Log("현재 스테이지는 " + stageNum);
+
+            CheckOpenBoss();
         }
+    }
+
+    void CheckOpenBoss()
+    {
+        if (stageNum == 25)
+            OnOpenOrcBoss?.Invoke();
+        //else if (stageNum == 160)
     }
 
     void CheckPlayerAttack()
@@ -84,6 +99,8 @@ public class StageManager : MonoBehaviour
 
     void StageInitialize()
     {
+        instance = this;
+
         stageNum = 20;
         isPlayerAttack = false;
 

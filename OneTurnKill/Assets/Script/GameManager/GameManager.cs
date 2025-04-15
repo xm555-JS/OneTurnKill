@@ -33,13 +33,13 @@ public class GameManager : MonoBehaviour
 
         if (curScene != preScene)
         {
-            if (scene.name == "CustomLevel")
+            if (scene.name == "0CustomLevel")
             {
                 playerCom.enabled = false;
                 playerAttack.enabled = false;
                 playerStats.enabled = false;
             }
-            else if (scene.name == "SampleScene")
+            else if (scene.name == "1SampleScene")
             {
                 playerCom.enabled = true;
                 playerAttack.enabled = true;
@@ -48,6 +48,10 @@ public class GameManager : MonoBehaviour
                 coinArea = GameObject.Find("Coin_PickUp").GetComponent<cCoinArea>();
                 if (player != null && coinArea != null)
                     player.GetComponent<cPlayer>().SubscribeCoinDrop(coinArea);
+            }
+            else if (scene.name == "2OrcBossLevel")
+            {
+                player.transform.position = new Vector3(-2f, player.transform.position.y, player.transform.position.z);
             }
 
             preScene = scene;

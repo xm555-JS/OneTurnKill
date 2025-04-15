@@ -20,6 +20,8 @@ public class HpBar : MonoBehaviour
     void Start()
     {
         cam = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
+        if (cam == null)
+            return;
     }
 
     void Update()
@@ -27,7 +29,6 @@ public class HpBar : MonoBehaviour
         if (!owner)
         {
             Destroy(this.gameObject);
-            //Debug.LogError("HPBar - owner is null");
             return;
         }
 

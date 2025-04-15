@@ -6,9 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/CustomLevel.unity
+    path: Assets/Scenes/0CustomLevel.unity
     guid: 366a39809d8b40b49b2b597098240644
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/Scenes/1SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/2OrcBossLevel.unity
+    guid: f4eaa2314fa5e4b4db3a6792809102e5
   m_configObjects: {}
