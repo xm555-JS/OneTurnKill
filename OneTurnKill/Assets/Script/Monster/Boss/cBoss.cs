@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class cBoss : cMonster
 {
+    public Transform spawnerTrans;
+    public GameObject bossBullet;
+
     cStateMachine stateMachine;
     float speed = 5f;
 
