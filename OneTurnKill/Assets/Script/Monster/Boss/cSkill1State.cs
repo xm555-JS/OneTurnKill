@@ -29,7 +29,10 @@ public class cSkill1State : IState
     {
         Debug.Log("Skill1 Exit");
         if (attackCoroutine != null)
+        {
             boss.StopCoroutine(attackCoroutine);
+            boss.StateMachine.TransitionTo(boss.StateMachine.skill2State);
+        }
     }
 
     GameObject InstanteBullet()
@@ -37,23 +40,22 @@ public class cSkill1State : IState
         GameObject bullet = GameObject.Instantiate(bossBullet);
         Vector3 bulletPos = spawnerTrans.position;
         bullet.transform.localScale = new Vector3(2f, 2f, 2f);
-        bullet.transform.position = new Vector3(bulletPos.x, bulletPos.y + 2f, bulletPos.z);
+        bullet.transform.position = new Vector3(bulletPos.x, bulletPos.y, bulletPos.z);
+
         Debug.Log("총알 생성");
         return bullet;
     }
 
     void RotateBullet(float angle, GameObject bullet)
     {
-        // 스포너를 회전시킨다.
-        spawnerTrans.rotation = Quaternion.Euler(0f, 0f, angle);
-        // 여기 파티클의 rotation이랑 파티클 객체의 rotation이 같아야한다.
-        // angle을 라디안으로 바꾼 식을 그대로 객체에 적용했지만 결과는 실패하였고
-        // rotation은 현재  Mathf.Rad2Deg로
-        float testAngle = Mathf.Deg2Rad * angle - 90f;
-        bullet.transform.rotation = Quaternion.Euler(0f, 0f, Mathf.Rad2Deg * testAngle);
-        ParticleSystem test = bullet.GetComponent<ParticleSystem>();
+        // 객체 회전
+        bullet.transform.rotation = Quaternion.Euler(0f, 0f, -angle);
+
+        // 이팩트 회전
+        ParticleSystem test = bullet.GetComponentInChildren<ParticleSystem>();
         var mainTest = test.main;
-        mainTest.startRotation = Mathf.Deg2Rad * angle - 90f;
+        mainTest.startRotation3D = true;
+        mainTest.startRotationZ = Mathf.Deg2Rad * angle;
         Debug.Log(angle + "만큼 회전");
     }
 
@@ -70,7 +72,7 @@ public class cSkill1State : IState
             RotateBullet(angle, bullet);
 
             fireCount++;
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(0.2f);
         }
 
         boss.StateMachine.TransitionTo(boss.StateMachine.skill2State);

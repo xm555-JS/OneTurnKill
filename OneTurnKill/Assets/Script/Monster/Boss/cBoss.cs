@@ -4,8 +4,14 @@ using UnityEngine;
 
 public class cBoss : cMonster
 {
+    [Header("Skill1")]
     public Transform spawnerTrans;
     public GameObject bossBullet;
+
+    [Header("Skill2")]
+    public GameObject[] attackArea;
+    public GameObject attHorizon;
+    public GameObject attVertical;
 
     cStateMachine stateMachine;
     float speed = 5f;

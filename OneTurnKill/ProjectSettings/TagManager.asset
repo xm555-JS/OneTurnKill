@@ -12,6 +12,7 @@ TagManager:
   - Item
   - PickUpArea
   - PickUpCol
+  - MonsterSkill
   layers:
   - Default
   - TransparentFX
