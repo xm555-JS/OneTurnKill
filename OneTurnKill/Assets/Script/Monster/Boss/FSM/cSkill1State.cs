@@ -14,25 +14,15 @@ public class cSkill1State : IState
 
     public void Enter()
     {
-        Debug.Log("Skill1 Enter");
         spawnerTrans = boss.spawnerTrans;
         bossBullet = boss.bossBullet;
         attackCoroutine = boss.StartCoroutine(StartFire());
     }
 
-    public void Update()
-    {
-        Debug.Log("Skill1 Update");
-    }
-
     public void Exit()
     {
-        Debug.Log("Skill1 Exit");
         if (attackCoroutine != null)
-        {
             boss.StopCoroutine(attackCoroutine);
-            boss.StateMachine.TransitionTo(boss.StateMachine.skill2State);
-        }
     }
 
     GameObject InstanteBullet()
@@ -42,7 +32,6 @@ public class cSkill1State : IState
         bullet.transform.localScale = new Vector3(2f, 2f, 2f);
         bullet.transform.position = new Vector3(bulletPos.x, bulletPos.y, bulletPos.z);
 
-        Debug.Log("총알 생성");
         return bullet;
     }
 
@@ -52,11 +41,10 @@ public class cSkill1State : IState
         bullet.transform.rotation = Quaternion.Euler(0f, 0f, -angle);
 
         // 이팩트 회전
-        ParticleSystem test = bullet.GetComponentInChildren<ParticleSystem>();
-        var mainTest = test.main;
-        mainTest.startRotation3D = true;
-        mainTest.startRotationZ = Mathf.Deg2Rad * angle;
-        Debug.Log(angle + "만큼 회전");
+        ParticleSystem bulletParticle = bullet.GetComponentInChildren<ParticleSystem>();
+        var particleMain = bulletParticle.main;
+        particleMain.startRotation3D = true;
+        particleMain.startRotationZ = Mathf.Deg2Rad * angle;
     }
 
     IEnumerator StartFire()

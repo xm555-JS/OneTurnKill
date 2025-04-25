@@ -10,8 +10,9 @@ public class cBoss : cMonster
 
     [Header("Skill2")]
     public GameObject[] attackArea;
-    public GameObject attHorizon;
-    public GameObject attVertical;
+
+    [Header("SKill3")]
+    public cBossTargetUI targetUI;
 
     cStateMachine stateMachine;
     float speed = 5f;
@@ -35,7 +36,7 @@ public class cBoss : cMonster
             if (stateMachine == null)
             {
                 stateMachine = new cStateMachine(this);
-                stateMachine.Initialize(stateMachine.skill1State);
+                stateMachine.Initialize(stateMachine.skill2State);
             }
         }
     }
