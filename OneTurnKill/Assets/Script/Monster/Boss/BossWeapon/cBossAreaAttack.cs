@@ -40,7 +40,7 @@ public class cBossAreaAttack : MonoBehaviour
             }
             else
             {
-                areaColor.a += Time.deltaTime;
+                areaColor.a += (Time.deltaTime * 0.5f);
                 GetComponent<SpriteRenderer>().color = areaColor;
             }
         }
@@ -71,9 +71,11 @@ public class cBossAreaAttack : MonoBehaviour
                 break;
         }
 
-        this.tag = "MonsterSkill";
+        this.tag = "AreaSkill";
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
+
+        this.tag = "AreaSkill_Idle";
 
         while (areaColor.a > 0f)
         {
@@ -84,6 +86,5 @@ public class cBossAreaAttack : MonoBehaviour
 
         areaColor.a = 0f;
         GetComponent<SpriteRenderer>().color = areaColor;
-        this.tag = "MonsterSkill_idle";
     }
 }

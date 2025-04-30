@@ -11,6 +11,5 @@ public class cGroggyState : IState
     public void Enter()
     {
         Debug.Log("Groggy Enter");
-        //boss.StateMachine.TransitionTo(boss.StateMachine.)
     }
 }

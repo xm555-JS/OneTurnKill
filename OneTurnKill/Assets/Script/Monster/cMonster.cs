@@ -12,19 +12,13 @@ public class cMonster : MonoBehaviour
     public event Action OnDead;
     public event EventHandler<float> OnDamage;
 
+    [SerializeField] bool isBoss;
     [SerializeField] protected float maxHP;
     [SerializeField] protected float defence;
     float hp;
 
     protected Rigidbody2D rigid;
     protected Animator anim;
-    //protected SpriteRenderer renderer;
-
-    // test
-    float originColrR;
-    float originColrG;
-    float originColrB;
-    // test
 
     protected GameObject player;
 
@@ -54,12 +48,6 @@ public class cMonster : MonoBehaviour
         hp = maxHP;
         anim = GetComponentInChildren<Animator>();
         rigid = GetComponent<Rigidbody2D>();
-        //renderer = GetComponent<SpriteRenderer>();
-
-        ////test
-        //originColrR = renderer.color.r;
-        //originColrG = renderer.color.g;
-        //originColrB = renderer.color.b;
 
         player = GameManager.instance.player;
 
@@ -76,12 +64,12 @@ public class cMonster : MonoBehaviour
             hpUI.Initialize();
         }
         isArrive = false;
-        //renderer.color = new Color(originColrR, originColrG, originColrB);
     }
 
     void Start()
     {
-        HpBarInitialize();
+        if (isBoss == false)
+            HpBarInitialize();
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -95,13 +83,6 @@ public class cMonster : MonoBehaviour
 
     void TakeDamage(Collider2D collision)
     {
-        //hp -= collision.gameObject.GetComponent<cDamage>();
-
-        //Reaction();
-
-        //if (hp <= 0)
-        //    anim.SetTrigger("Dead");
-
         StartCoroutine(OnTakeDamage(collision));
     }
 
@@ -117,7 +98,6 @@ public class cMonster : MonoBehaviour
         Debug.Log(damage);
 
         OnDamage?.Invoke(this, hp);
-        Reaction();
 
         if (hp <= 0)
         {
@@ -152,22 +132,6 @@ public class cMonster : MonoBehaviour
 
         objectPool.Release(this.gameObject);
         OnDead?.Invoke();
-    }
-
-    void Reaction()
-    {
-        // 몬스터의 renderer를 빨갛게
-        StartCoroutine(ChangeRenderer());
-    }
-
-    IEnumerator ChangeRenderer()
-    {
-        //renderer.color = Color.red;
-
-        yield return new WaitForSeconds(0.1f);
-
-        //renderer.color = new Color(originColrR, originColrG, originColrB);
-        ///* renderer.color = Color.white; /*나중에 sprite 생기면 이걸로 변경*/
     }
 
     void HpBarInitialize()

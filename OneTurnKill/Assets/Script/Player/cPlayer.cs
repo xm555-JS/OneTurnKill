@@ -69,6 +69,28 @@ public class cPlayer : MonoBehaviour
     public void SubscribeCoinDrop(cCoinArea coinArea) { coinArea.OnCoinDrop += AddCoin; }
     #endregion
 
+    #region Hit
+
+    bool isHit;
+    public bool IsHit { get => isHit; }
+    public void ResetHit() { isHit = false; }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("MonsterSkill"))
+        {
+            isHit = true;
+        }
+    }
+
+    void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.CompareTag("AreaSkill"))
+            isHit = true;
+    }
+
+    #endregion
+
     void Awake()
     {
         coin = 100000f;

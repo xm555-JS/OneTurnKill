@@ -54,6 +54,9 @@ public class cSkill1State : IState
 
         while (fireCount <= 36)
         {
+            if (boss.StateMachine == null)
+                break;
+
             GameObject bullet = InstanteBullet();
 
             angle = fireCount * 10f;

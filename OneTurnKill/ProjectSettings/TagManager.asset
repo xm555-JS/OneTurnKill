@@ -14,6 +14,8 @@ TagManager:
   - PickUpCol
   - MonsterSkill
   - MonsterSkill_idle
+  - AreaSkill
+  - AreaSkill_Idle
   layers:
   - Default
   - TransparentFX

@@ -7,33 +7,40 @@ using UnityEngine.UI;
 public class HpBar : MonoBehaviour
 {
     [SerializeField] Slider slider;
-
-    cMonster owner;
+    [SerializeField] cMonster owner;
+    [SerializeField] bool isBoss;
+    
     float maxHP;
     float currentHP;
     float targetHP;
     float changeHpRate;
 
     Camera cam;
-    Vector2 hpBarPosY = new Vector2(0,60);
+    Vector2 hpBarPosY = new Vector2(0, 60);
 
     void Start()
     {
-        cam = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
-        if (cam == null)
-            return;
+        if (isBoss == false)
+        {
+            cam = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
+            if (cam == null)
+                return;
+        }
     }
 
     void Update()
     {
-        if (!owner)
+        if (isBoss == false)
         {
-            Destroy(this.gameObject);
-            return;
-        }
+            if (!owner)
+            {
+                Destroy(this.gameObject);
+                return;
+            }
 
-        Vector2 pos = cam.WorldToScreenPoint(owner.transform.position);
-        this.transform.position = pos + hpBarPosY;
+            Vector2 pos = cam.WorldToScreenPoint(owner.transform.position);
+            this.transform.position = pos + hpBarPosY;
+        }
     }
 
     void OnDisable()

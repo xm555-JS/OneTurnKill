@@ -16,13 +16,11 @@ public class cSkill2State : IState
 
     public void Enter()
     {
-        Debug.Log("2 시작");
         this.attackArea = boss.attackArea;
 
         foreach (var area in attackArea)
-        {
             areaList.Add(area);
-        }
+
         skill2Coroution = boss.StartCoroutine(Attack());
     }
 
@@ -36,7 +34,9 @@ public class cSkill2State : IState
     {
         while (areaList.Count > 0)
         {
-            Debug.Log("Attack 시작");
+            if (boss.StateMachine == null)
+                break;
+
             int indexNum = Random.Range(0, areaList.Count);
             areaList[indexNum].GetComponent<cBossAreaAttack>().AttackStart();
             areaList.RemoveAt(indexNum);
@@ -44,13 +44,8 @@ public class cSkill2State : IState
             yield return new WaitForSeconds(0.5f);
         }
 
+        yield return new WaitForSeconds(3f);
+
         boss.StateMachine.TransitionTo(boss.StateMachine.skill3State);
     }
-
-    // 22 - 오늘 1보스 스킬
-    // 23 - 내일 코드 리펙토링 && 2보스 스킬
-    // 24 - 2보스 스킬 리펙토링 && 보스 UI
-    // 25 - 스토리
-    // 30 - 데이터 저장
-    // 5/1 - 음악
 }

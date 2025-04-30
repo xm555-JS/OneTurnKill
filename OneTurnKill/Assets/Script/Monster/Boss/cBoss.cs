@@ -14,10 +14,31 @@ public class cBoss : cMonster
     [Header("SKill3")]
     public cBossTargetUI targetUI;
 
-    cStateMachine stateMachine;
+    [Header("Info")]
+    public GameObject HpObj;
+    Vector3 startVec = new Vector3(10f, 0f, 1f);
     float speed = 5f;
 
+    cStateMachine stateMachine;
     public cStateMachine StateMachine { get => stateMachine; }
+
+    public void ToIdle()
+    {
+        this.StopAllCoroutines();
+        stateMachine.Initialize(stateMachine.groggyState);
+        //HpObj.SetActive(false);
+    }
+
+    public void ResetInfo()
+    {
+        stateMachine = null;
+        isArrive = false;
+    }
+
+    public void ResetPosition()
+    {
+        this.transform.position = startVec;
+    }
 
     void FixedUpdate()
     {
@@ -36,7 +57,7 @@ public class cBoss : cMonster
             if (stateMachine == null)
             {
                 stateMachine = new cStateMachine(this);
-                stateMachine.Initialize(stateMachine.skill2State);
+                stateMachine.Initialize(stateMachine.skill1State);
             }
         }
     }

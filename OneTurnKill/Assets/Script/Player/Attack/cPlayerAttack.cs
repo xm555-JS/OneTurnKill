@@ -19,8 +19,8 @@ public class cPlayerAttack : MonoBehaviour
 
     void OnEnable()
     {
-        Scene gamePlayScene = SceneManager.GetSceneByName("SampleScene");
-        if (gamePlayScene.name == "SampleScene")
+        Scene gamePlayScene = SceneManager.GetSceneByName("1SampleScene");
+        if (gamePlayScene.name == "1SampleScene")
             dataManager = GameObject.FindWithTag("SkillData").GetComponent<SkillDataManager>();
     }
 
