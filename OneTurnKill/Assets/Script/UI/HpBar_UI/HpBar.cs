@@ -15,6 +15,8 @@ public class HpBar : MonoBehaviour
     float targetHP;
     float changeHpRate;
 
+    float speed = 500f;
+
     Camera cam;
     Vector2 hpBarPosY = new Vector2(0, 60);
 
@@ -76,7 +78,7 @@ public class HpBar : MonoBehaviour
     {
         while (Mathf.Abs(currentHP - targetHP) > 0.01f)
         {
-            currentHP = Mathf.MoveTowards(currentHP, targetHP, Time.deltaTime * 100f);
+            currentHP = Mathf.MoveTowards(currentHP, targetHP, Time.deltaTime * speed);
             changeHpRate = currentHP / maxHP;
             slider.value = changeHpRate;
 

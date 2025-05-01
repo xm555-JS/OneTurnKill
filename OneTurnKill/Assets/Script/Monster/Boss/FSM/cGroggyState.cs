@@ -5,11 +5,13 @@ using UnityEngine;
 public class cGroggyState : IState
 {
     cBoss boss;
+    GameObject bossHpObj;
 
     public cGroggyState(cBoss boss) { this.boss = boss; }
 
     public void Enter()
     {
-        Debug.Log("Groggy Enter");
+        bossHpObj = boss.bossHpObj;
+        bossHpObj.SetActive(true);
     }
 }

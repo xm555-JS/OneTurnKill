@@ -6,16 +6,13 @@ public class cSkill3State : IState
 {
     cBoss boss;
     GameObject bossBullet;
-    GameObject HpObj;
+
 
     public cSkill3State(cBoss boss) { this.boss = boss; }
     
     public void Enter()
     {
         bossBullet = boss.bossBullet;
-        HpObj = boss.HpObj;
-
-        HpObj.SetActive(true);
         boss.StartCoroutine(ReadyAttack());
     }
 
@@ -42,6 +39,7 @@ public class cSkill3State : IState
         particleMain.startRotation3D = true;
         particleMain.startRotationZ = -(Mathf.Deg2Rad * angle);
 
-        boss.StateMachine.TransitionTo(boss.StateMachine.groggyState);
+        if (boss.isDead == false)
+            boss.StateMachine.TransitionTo(boss.StateMachine.groggyState);
     }
 }

@@ -54,7 +54,7 @@ public class cSkill1State : IState
 
         while (fireCount <= 36)
         {
-            if (boss.StateMachine == null)
+            if (boss.StateMachine == null || boss.isDead)
                 break;
 
             GameObject bullet = InstanteBullet();
@@ -66,6 +66,7 @@ public class cSkill1State : IState
             yield return new WaitForSeconds(0.2f);
         }
 
-        boss.StateMachine.TransitionTo(boss.StateMachine.skill2State);
+        if (boss.isDead == false)
+            boss.StateMachine.TransitionTo(boss.StateMachine.skill2State);
     }
 }

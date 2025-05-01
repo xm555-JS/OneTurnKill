@@ -27,6 +27,7 @@ public class cMonster : MonoBehaviour
     WaitForSeconds takeDamageTime = new WaitForSeconds(0.5f);
 
     // hp
+    public GameObject bossHpObj;
     GameObject hpBarPrefab;
     GameObject hpBar;
 
@@ -68,8 +69,7 @@ public class cMonster : MonoBehaviour
 
     void Start()
     {
-        if (isBoss == false)
-            HpBarInitialize();
+        HpBarInitialize();
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -110,7 +110,8 @@ public class cMonster : MonoBehaviour
             Time.timeScale = 1f;
 
             yield return new WaitForSeconds(1f);
-            objectPool.Release(this.gameObject);
+            if (objectPool != null)
+                objectPool.Release(this.gameObject);
             OnDead?.Invoke();
 
             // drop item
@@ -136,16 +137,24 @@ public class cMonster : MonoBehaviour
 
     void HpBarInitialize()
     {
-        hpBarPrefab = Resources.Load<GameObject>("UI/HPBar");
-        hpBar = Instantiate(hpBarPrefab);
+        if (isBoss == false)
+        {
+            hpBarPrefab = Resources.Load<GameObject>("UI/HPBar");
+            hpBar = Instantiate(hpBarPrefab);
 
-        Transform parent = GameObject.FindWithTag("MonsterHpBar").transform;
-        if (parent == null)
-            return;
-        hpBar.transform.SetParent(parent);
+            Transform parent = GameObject.FindWithTag("MonsterHpBar").transform;
+            if (parent == null)
+                return;
+            hpBar.transform.SetParent(parent);
 
-        HpBar hpUI = hpBar.GetComponent<HpBar>();
-        hpUI.Initialize(this);
+            HpBar hpUI = hpBar.GetComponent<HpBar>();
+            hpUI.Initialize(this);
+        }
+        else
+        {
+            HpBar hpUI = bossHpObj.GetComponent<HpBar>();
+            hpUI.Initialize(this);
+        }
     }
 
     int CalculateDamage(Collider2D collision)

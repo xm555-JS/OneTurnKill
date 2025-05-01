@@ -34,7 +34,7 @@ public class cSkill2State : IState
     {
         while (areaList.Count > 0)
         {
-            if (boss.StateMachine == null)
+            if (boss.StateMachine == null || boss.isDead)
                 break;
 
             int indexNum = Random.Range(0, areaList.Count);
@@ -46,6 +46,7 @@ public class cSkill2State : IState
 
         yield return new WaitForSeconds(3f);
 
-        boss.StateMachine.TransitionTo(boss.StateMachine.skill3State);
+        if (boss.isDead == false)
+            boss.StateMachine.TransitionTo(boss.StateMachine.skill3State);
     }
 }

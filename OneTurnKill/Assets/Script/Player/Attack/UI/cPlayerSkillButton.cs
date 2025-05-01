@@ -29,10 +29,10 @@ public class cPlayerSkillButton : MonoBehaviour
 
     void Update()
     {
-        if (stageManager.IsAttackReady)
-            skillButton.interactable = true;
-        else
-            skillButton.interactable = false;
+        //if (stageManager.IsAttackReady)
+        //    skillButton.interactable = true;
+        //else
+        //    skillButton.interactable = false;
     }
 
     void GetPlayerAttack()
@@ -44,7 +44,7 @@ public class cPlayerSkillButton : MonoBehaviour
 
     void GetStageManager()
     {
-        stageManager = GameObject.Find("StageManager").GetComponent<StageManager>();
+        //stageManager = GameObject.Find("StageManager").GetComponent<StageManager>();
     }
 
     void SetAddListner()

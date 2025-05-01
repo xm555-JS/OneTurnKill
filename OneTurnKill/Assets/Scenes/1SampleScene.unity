@@ -31233,6 +31233,7 @@ GameObject:
   m_Component:
   - component: {fileID: 771807509}
   - component: {fileID: 771807508}
+  - component: {fileID: 771807510}
   m_Layer: 0
   m_Name: SkillManager
   m_TagString: Untagged
@@ -31267,6 +31268,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &771807510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 771807507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb67dede8a8894a44829f839cd0d74a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  owner: {fileID: 771807507}
 --- !u!1 &774578095
 GameObject:
   m_ObjectHideFlags: 0
@@ -52589,6 +52603,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1984390693}
   - component: {fileID: 1984390692}
+  - component: {fileID: 1984390694}
   m_Layer: 0
   m_Name: SkillDataManager
   m_TagString: SkillData
@@ -52634,6 +52649,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1984390694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1984390691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb67dede8a8894a44829f839cd0d74a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  owner: {fileID: 1984390691}
 --- !u!1 &1987777328
 GameObject:
   m_ObjectHideFlags: 0

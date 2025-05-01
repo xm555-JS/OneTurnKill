@@ -15,18 +15,33 @@ public class cBoss : cMonster
     public cBossTargetUI targetUI;
 
     [Header("Info")]
-    public GameObject HpObj;
     Vector3 startVec = new Vector3(10f, 0f, 1f);
     float speed = 5f;
+    public bool isDead;
 
     cStateMachine stateMachine;
     public cStateMachine StateMachine { get => stateMachine; }
+
+    void OnEnable()
+    {
+        this.OnDead += CheckMonsterDead;
+    }
+
+    void OnDisable()
+    {
+        this.OnDead -= CheckMonsterDead;
+    }
+
+    void CheckMonsterDead()
+    {
+        isDead = true;
+    }
 
     public void ToIdle()
     {
         this.StopAllCoroutines();
         stateMachine.Initialize(stateMachine.groggyState);
-        //HpObj.SetActive(false);
+        //bossHpObj.SetActive(false);
     }
 
     public void ResetInfo()

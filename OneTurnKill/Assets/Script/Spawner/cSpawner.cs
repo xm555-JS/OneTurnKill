@@ -60,12 +60,6 @@ public class cSpawner : MonoBehaviour
 
     public void StartSpawn(int stageNum)
     {
-        // 몬스터 스폰
-        //GameObject monsterObj = Instantiate(monsterPrefabs[stageNum], this.transform.position, this.transform.rotation, this.transform);
-
-        // 몬스터 이벤트 구독
-        //cMonster monster = monsterObj.GetComponent<cMonster>();
-
         //test
         if (monsterIndex != preMonsterIndex)
         {
@@ -99,13 +93,6 @@ public class cSpawner : MonoBehaviour
             Debug.LogError("monster is null");
             return;
         }
-
-        //Destroy(monster.gameObject);
-
-        //foreach (var mon in monsterList)
-        //    mon.OnDead -= CheckMonsterDead;
-
-        // test
         objPool.Release(monster.gameObject);
 
         // 몬스터 count 초기화
