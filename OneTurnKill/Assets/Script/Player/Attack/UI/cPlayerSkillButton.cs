@@ -8,6 +8,7 @@ public class cPlayerSkillButton : MonoBehaviour
     Button skillButton;
 
     StageManager stageManager;
+    BossStageManager bossStageManager;
 
     cPlayerAttack playerAttack;
     [SerializeField] string skillName;
@@ -29,10 +30,20 @@ public class cPlayerSkillButton : MonoBehaviour
 
     void Update()
     {
-        //if (stageManager.IsAttackReady)
-        //    skillButton.interactable = true;
-        //else
-        //    skillButton.interactable = false;
+        if (stageManager != null)
+        {
+            if (stageManager.IsAttackReady)
+                skillButton.interactable = true;
+            else
+                skillButton.interactable = false;
+        }
+        else if (bossStageManager != null)
+        {
+            if (bossStageManager.IsAttackReady)
+                skillButton.interactable = true;
+            else
+                skillButton.interactable = false;
+        }
     }
 
     void GetPlayerAttack()
@@ -44,7 +55,11 @@ public class cPlayerSkillButton : MonoBehaviour
 
     void GetStageManager()
     {
-        //stageManager = GameObject.Find("StageManager").GetComponent<StageManager>();
+        string SceneName = LevelManager.instance.ReturnCurLevel();
+        if (SceneName == "1SampleScene")
+            stageManager = GameObject.Find("StageManager").GetComponent<StageManager>();
+        if (SceneName == "2OrcBossLevel")
+            bossStageManager = GameObject.Find("BossStageManager").GetComponent<BossStageManager>();
     }
 
     void SetAddListner()

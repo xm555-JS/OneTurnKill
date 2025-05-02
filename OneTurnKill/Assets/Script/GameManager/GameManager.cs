@@ -48,6 +48,8 @@ public class GameManager : MonoBehaviour
                 coinArea = GameObject.Find("Coin_PickUp").GetComponent<cCoinArea>();
                 if (player != null && coinArea != null)
                     player.GetComponent<cPlayer>().SubscribeCoinDrop(coinArea);
+
+                GameManager.instance.player.transform.position = Vector3.zero;
             }
             else if (scene.name == "2OrcBossLevel")
             {

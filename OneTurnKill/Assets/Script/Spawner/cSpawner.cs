@@ -19,8 +19,14 @@ public class cSpawner : MonoBehaviour
     ObjectPool objPool;
 
     public int MonsterCount { get => monsterCount; }
+    //public void SetMonsterCount(int value) { monsterCount = value; }
     public bool IsArrive { get => isArrive; }
     public void PrefabIndex(int prefabIndex) { monsterIndex = prefabIndex; }
+
+    void Awake()
+    {
+        monsterCount = 0;
+    }
 
     void Start()
     {

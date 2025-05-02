@@ -15,7 +15,7 @@ public class HpBar : MonoBehaviour
     float targetHP;
     float changeHpRate;
 
-    float speed = 500f;
+    float speed = 5000f;
 
     Camera cam;
     Vector2 hpBarPosY = new Vector2(0, 60);

@@ -22,4 +22,10 @@ public class LevelManager : MonoBehaviour
     {
         SceneManager.LoadScene("2OrcBossLevel");
     }
+
+    public string ReturnCurLevel()
+    {
+        Scene curScene = SceneManager.GetActiveScene();
+        return curScene.name;
+    }
 }

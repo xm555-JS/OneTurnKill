@@ -6,6 +6,7 @@ public class cPopupManager : MonoBehaviour
 {
     public static cPopupManager instance;
     [SerializeField] GameObject Owner;
+    [SerializeField] GameObject RewardPopup;
     List<GameObject> popupList = new List<GameObject>();
 
     void Awake()
@@ -40,5 +41,21 @@ public class cPopupManager : MonoBehaviour
                 popupCom.noButton.onClick.AddListener(() => Destroy(popupCom.gameObject));
             }
         }
+    }
+
+    public void RewardPush(int coinValue, int armorValue, int weaponValue, int bossValue, UnityEngine.Events.UnityAction action = null)
+    {
+        GameObject popUp = Instantiate(RewardPopup);
+        popUp.transform.SetParent(Owner.transform, false);
+        cRewardPopUp rewardPopUp = popUp.GetComponent<cRewardPopUp>();
+
+        rewardPopUp.coinRewardTxt.text = coinValue.ToString();
+        rewardPopUp.armorRewardTxt.text = armorValue.ToString();
+        rewardPopUp.weaponRewawrdTxt.text = weaponValue.ToString();
+        rewardPopUp.bossRewardTxt.text = bossValue.ToString();
+
+        if (action != null)
+            rewardPopUp.mainButton.onClick.AddListener(action);
+        rewardPopUp.mainButton.onClick.AddListener(() => Destroy(rewardPopUp.gameObject));
     }
 }

@@ -114,13 +114,20 @@ public class cMonster : MonoBehaviour
                 objectPool.Release(this.gameObject);
             OnDead?.Invoke();
 
-            // drop item
-            GameObject item = dropItemObj[(int)dropItem.Drop_Item(dropItemProbs)];
-
-            if (item != null)
+            if (isBoss == false)
             {
-                GameObject instItem = Instantiate(item);
-                instItem.transform.position = this.transform.position;
+                // drop item
+                GameObject item = dropItemObj[(int)dropItem.Drop_Item(dropItemProbs)];
+
+                if (item != null)
+                {
+                    GameObject instItem = Instantiate(item);
+                    instItem.transform.position = this.transform.position;
+                }
+            }
+            else if (isBoss)
+            {
+                cPopupManager.instance.RewardPush(5000, 5,5,5, () => LevelManager.instance.GoToGamePlay());
             }
         }
     }
