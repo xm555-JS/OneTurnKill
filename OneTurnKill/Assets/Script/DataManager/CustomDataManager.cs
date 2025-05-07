@@ -8,6 +8,10 @@ public class CustomData
     public int hairIndex;
     public int clothIndex;
     public int pantIndex;
+}
+
+public class EquipData
+{
     public int armorIndex;
     public int helmetIndex;
     public int backIndex;
@@ -17,15 +21,13 @@ public class CustomData
 public class CustomDataManager : MonoBehaviour
 {
     static public CustomDataManager instance;
+    string path => Application.persistentDataPath + "/custom.json";
+    string equipPath => Application.persistentDataPath + "/equip.json";
 
     void Awake()
     {
         instance = this;
     }
-
-    string path => Application.persistentDataPath + "/custom.json";
-    string equipPath => Application.persistentDataPath + "/equip.json";
-
 
     public void SaveCustomData(CustomData data)
     {
@@ -42,18 +44,18 @@ public class CustomDataManager : MonoBehaviour
         return JsonUtility.FromJson<CustomData>(json);
     }
 
-    public void SaveEquipData(CustomData data)
+    public void SaveEquipData(EquipData data)
     {
         string json = JsonUtility.ToJson(data, true);
         File.WriteAllText(equipPath, json);
     }
 
-    public CustomData LoadEquipData()
+    public EquipData LoadEquipData()
     {
         if (!File.Exists(equipPath))
             return null;
 
         string json = File.ReadAllText(equipPath);
-        return JsonUtility.FromJson<CustomData>(json);
+        return JsonUtility.FromJson<EquipData>(json);
     }
 }

@@ -84,9 +84,8 @@ public class Customizing : MonoBehaviour
 
     void Start()
     {
-        //LoadCustomData();
-        //LoadWearItem();
         LoadCustomData();
+        LoadEquipData();
     }
 
     #region Hair_UI_Button
@@ -165,11 +164,12 @@ public class Customizing : MonoBehaviour
 
     public void WearArmor(int index)
     {
-        armorSpriteRenderer.sprite = spriteArmors[index].armorBody;
-        armorArmLeftSpriteRenderer.sprite = spriteArmors[index].armorArmLeft;
-        armorArmRightSpriteRenderer.sprite = spriteArmors[index].armorArmRight;
+        armorIndex = index;
+        armorSpriteRenderer.sprite = spriteArmors[armorIndex].armorBody;
+        armorArmLeftSpriteRenderer.sprite = spriteArmors[armorIndex].armorArmLeft;
+        armorArmRightSpriteRenderer.sprite = spriteArmors[armorIndex].armorArmRight;
 
-        PlayerPrefs.SetInt("ArmorIndex", index);
+        SaveEquipData();
     }
 
     #endregion
@@ -178,9 +178,10 @@ public class Customizing : MonoBehaviour
 
     public void WearHelmet(int index)
     {
-        helmetSpriteRenderer.sprite = spriteHelmets[index];
+        helmetIndex = index;
+        helmetSpriteRenderer.sprite = spriteHelmets[helmetIndex];
 
-        PlayerPrefs.SetInt("HelmetIndex", index);
+        SaveEquipData();
     }
 
     #endregion
@@ -189,36 +190,15 @@ public class Customizing : MonoBehaviour
 
     public void EquipWeapon(int index)
     {
-        weaponSpriteRenderer.sprite = spriteWeapons[index];
+        weaponIndex = index;
+        weaponSpriteRenderer.sprite = spriteWeapons[weaponIndex];
 
-        PlayerPrefs.SetInt("WeaponIndex", index);
+        SaveEquipData();
     }
 
     #endregion
 
     #region Data
-
-    void LoadWearItem()
-    {
-        // Load Helmet;
-        int helmetIndex = PlayerPrefs.GetInt("HelmetIndex", -1);
-        if (System.Convert.ToBoolean(helmetIndex) == false)
-            helmetSpriteRenderer.sprite = spriteHelmets[helmetIndex];
-
-        // Load Armor
-        int armorIndex = PlayerPrefs.GetInt("ArmorIndex", -1);
-        if (System.Convert.ToBoolean(armorIndex) == false)
-        {
-            armorSpriteRenderer.sprite = spriteArmors[armorIndex].armorBody;
-            armorArmLeftSpriteRenderer.sprite = spriteArmors[armorIndex].armorArmLeft;
-            armorArmRightSpriteRenderer.sprite = spriteArmors[armorIndex].armorArmRight;
-        }
-
-        // Load Weapon
-        int weaponIndex = PlayerPrefs.GetInt("WeaponIndex", -1);
-        if (System.Convert.ToBoolean(weaponIndex) == false)
-            weaponSpriteRenderer.sprite = spriteWeapons[weaponIndex];
-    }
 
     public void SaveCustomData()
     {
@@ -253,43 +233,40 @@ public class Customizing : MonoBehaviour
 
     public void SaveEquipData()
     {
-        CustomData data = new CustomData
+        EquipData data = new EquipData
         {
             helmetIndex = helmetIndex,
             armorIndex = armorIndex,
             weaponIndex = weaponIndex,
         };
-
         CustomDataManager.instance.SaveEquipData(data);
     }
 
     void LoadEquipData()
     {
-        // 여기 해야함
+        EquipData data = CustomDataManager.instance.LoadEquipData();
+        if (data == null)
+            return;
 
-        // Load Helmet;
-        int helmetIndex = PlayerPrefs.GetInt("HelmetIndex", -1);
-        if (System.Convert.ToBoolean(helmetIndex) == false)
-            helmetSpriteRenderer.sprite = spriteHelmets[helmetIndex];
+        helmetIndex = data.helmetIndex;
+        armorIndex = data.armorIndex;
+        weaponIndex = data.weaponIndex;
+
+        // Load Helmet
+        helmetSpriteRenderer.sprite = spriteHelmets[helmetIndex];
 
         // Load Armor
-        int armorIndex = PlayerPrefs.GetInt("ArmorIndex", -1);
-        if (System.Convert.ToBoolean(armorIndex) == false)
-        {
-            armorSpriteRenderer.sprite = spriteArmors[armorIndex].armorBody;
-            armorArmLeftSpriteRenderer.sprite = spriteArmors[armorIndex].armorArmLeft;
-            armorArmRightSpriteRenderer.sprite = spriteArmors[armorIndex].armorArmRight;
-        }
+        armorSpriteRenderer.sprite = spriteArmors[armorIndex].armorBody;
+        armorArmLeftSpriteRenderer.sprite = spriteArmors[armorIndex].armorArmLeft;
+        armorArmRightSpriteRenderer.sprite = spriteArmors[armorIndex].armorArmRight;
 
         // Load Weapon
-        int weaponIndex = PlayerPrefs.GetInt("WeaponIndex", -1);
-        if (System.Convert.ToBoolean(weaponIndex) == false)
-            weaponSpriteRenderer.sprite = spriteWeapons[weaponIndex];
+        weaponSpriteRenderer.sprite = spriteWeapons[weaponIndex];
     }
 
-        #endregion
+    #endregion
 
-        void InitializeRenderer()
+    void InitializeRenderer()
     {
         hairSpriteRender = GameObject.Find("7_Hair").GetComponent<SpriteRenderer>();
 

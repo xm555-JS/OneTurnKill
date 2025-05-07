@@ -979,10 +979,10 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 56053b80de0861a45aecf996ce7dbbf7, type: 3}
   - {fileID: 21300000, guid: 2a873079d19332b43ab7bc48f47622c9, type: 3}
   spriteWeapons:
+  - {fileID: 21300000, guid: 8c1d6a0caf1fa704cbb0372d36812121, type: 3}
   - {fileID: 21300000, guid: 7ee66eeef74ab5f439c4abda3b3d7139, type: 3}
   - {fileID: 21300000, guid: 64af8620c0ab1594b8c68d34d84cf1ac, type: 3}
   - {fileID: 21300000, guid: 54db13b5f1e75c84681dba278a102929, type: 3}
-  - {fileID: 21300000, guid: 8c1d6a0caf1fa704cbb0372d36812121, type: 3}
   - {fileID: 21300000, guid: e575d6a39618ff84491856af1d250aa8, type: 3}
   - {fileID: 21300000, guid: 48bd9e29a4ae611479624fa6b975cd28, type: 3}
   - {fileID: 21300000, guid: 3ff4b9db48717e24896c4730ddc4bc23, type: 3}
