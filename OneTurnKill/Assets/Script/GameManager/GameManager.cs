@@ -25,6 +25,19 @@ public class GameManager : MonoBehaviour
         playerAttack = player.GetComponent<cPlayerAttack>();
     }
 
+    void Start()
+    {
+        if (LevelManager.instance.ReturnCurLevel() == "0CustomLevel")
+        {
+            //bool isComplete = System.Convert.ToBoolean(PlayerPrefs.GetInt("CompleteCustom"));
+            //if (isComplete == true)
+            //    LevelManager.instance.GoToGamePlay();
+            CustomData data = CustomDataManager.instance.LoadCustomData();
+            if (data != null)
+                LevelManager.instance.GoToGamePlay();
+        }
+    }
+
     void Update()
     {
         Scene scene = SceneManager.GetActiveScene();

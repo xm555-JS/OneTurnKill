@@ -63,6 +63,8 @@ public class cPlayer : MonoBehaviour
         playerStats.UpdateWearEquipStats(itemData);
     }
 
+    public void SaveCustomData() { custom.SaveCustomData(); }
+
     #endregion
 
     #region Event

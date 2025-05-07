@@ -20,7 +20,7 @@ MonoBehaviour:
     criticalChance: 5
     criticalDamage: 5
   type: 4
-  itemIndex: 2
+  itemIndex: 3
   price: 3000
   owner: {fileID: 0}
   level: 0

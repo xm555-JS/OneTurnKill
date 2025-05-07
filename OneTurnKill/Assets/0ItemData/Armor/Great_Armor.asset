@@ -15,13 +15,14 @@ MonoBehaviour:
   itemSprite: {fileID: -6505695957970812123, guid: f88431a9cccce91428f01eeb72b5e911, type: 3}
   itemName: "\uCCA0 \uAC11\uC637"
   itemStats:
-    Att: 0
+    att: 0
     bossAtt: 0
     criticalChance: 15
     criticalDamage: 15
   type: 4
-  itemIndex: 7
+  itemIndex: 8
   price: 10000
+  owner: {fileID: 0}
   level: 0
   levelDamage: 010000000a00000014000000280000003c000000
   enforceAmount: 020000000300000004000000060000000a000000
