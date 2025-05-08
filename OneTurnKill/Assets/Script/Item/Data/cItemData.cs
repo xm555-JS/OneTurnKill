@@ -24,8 +24,11 @@ public class cItemData : ScriptableObject
     public ItemType type;
     public int itemIndex;
     public int price;
+    public string path;
+    public bool isInstance;
 
     [Header("For_Enforce")]
+    public int ID;
     public GameObject owner;
     public int level;
     public int[] levelDamage = new int[5] { 1, 10, 20, 40, 60 };

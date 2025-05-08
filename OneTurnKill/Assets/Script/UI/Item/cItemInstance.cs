@@ -11,8 +11,10 @@ public class cItemInstance
     public ItemType type;
     public int itemIndex;
     public int price;
+    public bool isInstance;
 
     [Header("For_Enforce")]
+    public int ID;
     public GameObject owner;
     public int level;
     public int[] levelDamage = new int[5] { 1, 10, 20, 40, 60 };
@@ -21,11 +23,24 @@ public class cItemInstance
     public cItemInstance(cItemData itemData)
     {
         owner = itemData.owner;
+        level = itemData.level;
+        ID = itemData.ID;
         itemSprite = itemData.itemSprite;
         itemName = itemData.itemName;
         type = itemData.type;
         itemIndex = itemData.itemIndex;
         price = itemData.price;
+        isInstance = itemData.isInstance;
+
+        if (isInstance)
+        {
+            itemStats.att = itemData.itemStats.att;
+            itemStats.bossAtt = itemData.itemStats.bossAtt;
+            itemStats.criticalChance = itemData.itemStats.criticalChance;
+            itemStats.criticalDamage = itemData.itemStats.criticalDamage;
+            return;
+        }
+            
 
         if (type == ItemType.ARMOR || type == ItemType.HELMET)
         {

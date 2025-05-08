@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 public class cItemManager : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class cItemManager : MonoBehaviour
         instance = this;
     }
 
+    #region Enforce_Item
     public void EnforceItem(cItemInstance itemData)
     {
         if (itemData.type == ItemType.HELMET || itemData.type == ItemType.ARMOR)
@@ -35,13 +37,18 @@ public class cItemManager : MonoBehaviour
                 UpgradeWeaponStats(itemData);
         }
     }
+    #endregion
 
+    #region Upgrade_Item_Stats
     void UpgradeArmorStats(cItemInstance itemData)
     {
         GameManager.instance.playerCom.SpendArmorMat(itemData.enforceAmount[itemData.level]);
         itemData.itemStats.criticalChance += itemData.enforceAmount[itemData.level];
         itemData.itemStats.criticalDamage += itemData.enforceAmount[itemData.level];
         itemData.level++;
+
+        // update data
+        ItemDataManager.instance.RewriteItemData(itemData);
     }
 
     void UpgradeWeaponStats(cItemInstance itemData)
@@ -53,4 +60,5 @@ public class cItemManager : MonoBehaviour
         itemData.itemStats.criticalDamage += itemData.enforceAmount[itemData.level];
         itemData.level++;
     }
+    #endregion
 }
