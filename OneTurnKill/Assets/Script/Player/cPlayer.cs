@@ -22,6 +22,13 @@ public class cPlayer : MonoBehaviour
 
     public void UpdateEnforceStats(cItemInstance itemData) { playerStats.UpdateStats(itemData); }
 
+    // Char_Stats
+    public float CharStrRate { get => playerStats.charStrRate; }
+    public float CharCriChanceRate { get => playerStats.charCriChanceRate; }
+    public float CharCriDamageRate { get => playerStats.charCriDamageRate; }
+    public float CharGoldAcqRate { get => playerStats.charGoldAcqRate; }
+    public float CharExpAcqRate { get => playerStats.charExpAcqRate; }
+
     #endregion
 
     #region PropertyItem

@@ -75,7 +75,7 @@ public abstract class cPlayerStatsUI : MonoBehaviour
         goldText.text = price.ToString();
     }
 
-    public void UpdateCharStat(string Name, int level, float statValue, float nextStatValue)
+    public void UpdateCharStat(string Name, int level, float rateValue, float nextRateValue)
     {
         switch (Name)
         {
@@ -100,8 +100,8 @@ public abstract class cPlayerStatsUI : MonoBehaviour
                 break;
         }
 
-        StatText.text = statValue.ToString() + "%";
-        nextStatText.text = nextStatValue.ToString() + "%";
+        StatText.text = rateValue.ToString() + "%";
+        nextStatText.text = nextRateValue.ToString() + "%";
 
         GameManager.instance.playerCom.SpendCoin(price);
         price += priceIncreaseAmount;

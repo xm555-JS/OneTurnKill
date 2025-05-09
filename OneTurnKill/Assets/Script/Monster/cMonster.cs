@@ -166,25 +166,30 @@ public class cMonster : MonoBehaviour
 
     int CalculateDamage(Collider2D collision)
     {
-        // 특성도 적용시켜야함
-
         cSKillDamage skillDamage = collision.GetComponent<cSKillDamage>();
         if (skillDamage == null)
             return -1;
 
-        int playerStr = GameManager.instance.playerCom.Strength;
+        cPlayer player = GameManager.instance.playerCom;
+        float playerStr = player.Strength;
+        float strRate = player.CharStrRate;
+        float criDamageRate = player.CharCriDamageRate;
         if (IsCritical())
-            playerStr += GameManager.instance.playerCom.Strength * (GameManager.instance.playerCom.CriticalDamage / 100);
+            playerStr += (float)player.Strength * ((player.CriticalDamage * criDamageRate) / 100);
 
-        int resultDamage = playerStr * (skillDamage.Damage + (skillDamage.Damage * skillDamage.LevelDamage / 100));
+        float baseDamage = skillDamage.Damage;
+        float skillLevelDamage = skillDamage.Damage * (skillDamage.LevelDamage / 100f);
+        float resultDamage = (playerStr * strRate) * (baseDamage + skillLevelDamage);
 
-        return resultDamage;
+        return (int)resultDamage;
     }
 
     bool IsCritical()
     {
         int value = UnityEngine.Random.Range(1, 100);
-        if (GameManager.instance.playerCom.CriticalChance >= value)
+        cPlayer player = GameManager.instance.playerCom;
+        float criPercent = player.CriticalChance * player.CharCriChanceRate;
+        if (criPercent >= value)
             return true;
 
         return false;

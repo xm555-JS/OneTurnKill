@@ -66,7 +66,7 @@ public class cPlayerStatsPresent
             return;
 
         playerStats.Character_StrengthUp();
-        statsView.UpdateCharStat("Str", playerStats.getCharStrLevel, playerStats.charStrIncrease, playerStats.nextCharStr);
+        statsView.UpdateCharStat("Str", playerStats.getCharStrLevel, playerStats.charStrRate, playerStats.nextCharStr);
     }
     public void OnCharCriChanceUp()
     {
@@ -74,7 +74,7 @@ public class cPlayerStatsPresent
             return;
 
         playerStats.Character_CriChanceUp();
-        statsView.UpdateCharStat("CriChance", playerStats.getCharCriChanceLevel, playerStats.charCriChanceIncrease, playerStats.nextCharCriChance);
+        statsView.UpdateCharStat("CriChance", playerStats.getCharCriChanceLevel, playerStats.charCriChanceRate, playerStats.nextCharCriChance);
     }
     public void OnCharCriDamageUp()
     {
@@ -82,7 +82,7 @@ public class cPlayerStatsPresent
             return;
 
         playerStats.Character_CriDamageUp();
-        statsView.UpdateCharStat("CriDamage", playerStats.getCharCriDamageLevel, playerStats.charCriDamageIncrease, playerStats.nextCharCriDamage);
+        statsView.UpdateCharStat("CriDamage", playerStats.getCharCriDamageLevel, playerStats.charCriDamageRate, playerStats.nextCharCriDamage);
     }
     public void OnCharGoldAcqUp()
     {
@@ -90,7 +90,7 @@ public class cPlayerStatsPresent
             return;
 
         playerStats.Character_GoldAcqUp();
-        statsView.UpdateCharStat("GoldAcq", playerStats.getCharGoldAcqLevel, playerStats.charGoldAcqIncrease, playerStats.nextCharGoldAcq);
+        statsView.UpdateCharStat("GoldAcq", playerStats.getCharGoldAcqLevel, playerStats.charGoldAcqRate, playerStats.nextCharGoldAcq);
     }
     public void OnCharExpAcqUp()
     {
@@ -98,7 +98,7 @@ public class cPlayerStatsPresent
             return;
 
         playerStats.Character_ExpAcqUp();
-        statsView.UpdateCharStat("ExpAcq", playerStats.getCharExpAcqLevel, playerStats.charExpAcqIncrease, playerStats.nextCharExpAcq);
+        statsView.UpdateCharStat("ExpAcq", playerStats.getCharExpAcqLevel, playerStats.charExpAcqRate, playerStats.nextCharExpAcq);
     }
 
     #endregion
