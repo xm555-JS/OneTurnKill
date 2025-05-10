@@ -9,6 +9,11 @@ public class cPlayerGoldAcquireUI : cPlayerStatsUI
     {
         present.OnGoldAcquireUp();
     }
+
+    protected override void InitializeStat()
+    {
+        present.OnInitGoldAcq();
+    }
 }
 
 //// View

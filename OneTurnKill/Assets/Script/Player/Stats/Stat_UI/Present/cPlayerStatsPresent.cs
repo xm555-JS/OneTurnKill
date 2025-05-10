@@ -103,6 +103,61 @@ public class cPlayerStatsPresent
 
     #endregion
 
+    #region Initialize
+
+    public void OnInitStr()
+    {
+        statsView.InitStat("Str", playerStats.getStrLevel, playerStats.strengthIncrease, playerStats.nextStr);
+    }
+
+    public void OnInitCriChance()
+    {
+        statsView.InitStat("CriChance", playerStats.getCriChanceLevel, playerStats.criChanceIncrease, playerStats.nextCriChance);
+    }
+
+    public void OnInitCriDamage()
+    {
+        statsView.InitStat("CriDamage", playerStats.getCriDamageLevel, playerStats.criDamageIncrease, playerStats.nextCriDamage);
+    }
+
+    public void OnInitGoldAcq()
+    {
+        statsView.InitStat("GoldAcq", playerStats.getGoldAcqLevel, playerStats.goldAcqIncrease, playerStats.nextGoldAcq);
+    }
+
+    public void OnInitExpAcq()
+    {
+        statsView.InitStat("ExpAcq", playerStats.getExpAcqLevel, playerStats.expAcqIncrease, playerStats.nextExpAcq);
+    }
+
+    // Charactor
+    public void OnInitCharStr()
+    {
+        statsView.InitCharStat("Str", playerStats.getCharStrLevel, playerStats.charStrRate, playerStats.nextCharStr);
+    }
+
+    public void OnInitCharCriChance()
+    {
+        statsView.InitCharStat("CriChance", playerStats.getCharCriChanceLevel, playerStats.charCriChanceRate, playerStats.nextCharCriChance);
+    }
+
+    public void OnInitCharCriDamage()
+    {
+        statsView.InitCharStat("CriDamage", playerStats.getCharCriDamageLevel, playerStats.charCriDamageRate, playerStats.nextCharCriDamage);
+    }
+
+    public void OnInitCharGoldAcq()
+    {
+        statsView.InitCharStat("GoldAcq", playerStats.getCharGoldAcqLevel, playerStats.charGoldAcqIncrease, playerStats.nextCharGoldAcq);
+    }
+
+    public void OnInitCharExpAcq()
+    {
+        statsView.InitCharStat("ExpAcq", playerStats.getCharExpAcqLevel, playerStats.charExpAcqRate, playerStats.nextCharExpAcq);
+    }
+
+    #endregion
+
     bool ErrorPopUp()
     {
         bool isSpend = statsView.IsSpend();

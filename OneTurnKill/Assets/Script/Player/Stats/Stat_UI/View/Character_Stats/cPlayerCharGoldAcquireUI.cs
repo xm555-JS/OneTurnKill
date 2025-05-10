@@ -8,4 +8,9 @@ public class cPlayerCharGoldAcquireUI : cPlayerStatsUI
     {
         present.OnCharGoldAcqUp();
     }
+
+    protected override void InitializeStat()
+    {
+        present.OnInitCharGoldAcq();
+    }
 }

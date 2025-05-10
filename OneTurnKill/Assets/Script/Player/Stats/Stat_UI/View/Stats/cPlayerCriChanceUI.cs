@@ -9,6 +9,11 @@ public class cPlayerCriChanceUI : cPlayerStatsUI
     {
         present.OnCriChanceUp();
     }
+
+    protected override void InitializeStat()
+    {
+        present.OnInitCriChance();
+    }
 }
 
 //// View

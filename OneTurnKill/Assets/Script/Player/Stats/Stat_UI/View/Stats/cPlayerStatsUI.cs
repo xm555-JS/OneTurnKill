@@ -22,6 +22,7 @@ public abstract class cPlayerStatsUI : MonoBehaviour
     bool isSpend;
 
     protected abstract void StatUp();
+    protected abstract void InitializeStat();
 
     protected void Awake()
     {
@@ -39,6 +40,7 @@ public abstract class cPlayerStatsUI : MonoBehaviour
 
         goldText.text = price.ToString();
 
+        InitializeStat();
         statButton.onClick.AddListener(StatUp);
     }
 
@@ -72,6 +74,7 @@ public abstract class cPlayerStatsUI : MonoBehaviour
 
         GameManager.instance.playerCom.SpendCoin(price);
         price += priceIncreaseAmount;
+        PlayerPrefs.SetInt(Name, price);
         goldText.text = price.ToString();
     }
 
@@ -105,6 +108,7 @@ public abstract class cPlayerStatsUI : MonoBehaviour
 
         GameManager.instance.playerCom.SpendCoin(price);
         price += priceIncreaseAmount;
+        PlayerPrefs.SetInt(Name, price);
         goldText.text = price.ToString();
     }
 
@@ -117,4 +121,72 @@ public abstract class cPlayerStatsUI : MonoBehaviour
 
         return isSpend;
     }
+
+    #region Initialize
+
+    public void InitStat(string Name, int level, float statValue, float nextStatValue)
+    {
+        switch (Name)
+        {
+            case "Str":
+                titleText.text = "°ø°Ý·Â Lv." + level;
+                break;
+
+            case "CriChance":
+                titleText.text = "Ä¡¸íÅ¸ È®·ü Lv." + level;
+                break;
+
+            case "CriDamage":
+                titleText.text = "Ä¡¸íÅ¸ ÇÇÇØ·® Lv." + level;
+                break;
+
+            case "GoldAcq":
+                titleText.text = "°ñµå È¹µæÁõ°¡ Lv." + level;
+                break;
+
+            case "ExpAcq":
+                titleText.text = "°æÇèÄ¡ È¹µæÁõ°¡ Lv." + level;
+                break;
+        }
+
+        StatText.text = statValue.ToString();
+        nextStatText.text = nextStatValue.ToString();
+
+        price = PlayerPrefs.GetInt(Name, price);
+        goldText.text = price.ToString();
+    }
+
+    public void InitCharStat(string Name, int level, float rateValue, float nextRateValue)
+    {
+        switch (Name)
+        {
+            case "Str":
+                titleText.text = "°ø°Ý·Â Lv." + level;
+                break;
+
+            case "CriChance":
+                titleText.text = "Ä¡¸íÅ¸ È®·ü Lv." + level;
+                break;
+
+            case "CriDamage":
+                titleText.text = "Ä¡¸íÅ¸ ÇÇÇØ·® Lv." + level;
+                break;
+
+            case "GoldAcq":
+                titleText.text = "°ñµå È¹µæÁõ°¡ Lv." + level;
+                break;
+
+            case "ExpAcq":
+                titleText.text = "°æÇèÄ¡ È¹µæÁõ°¡ Lv." + level;
+                break;
+        }
+
+        StatText.text = rateValue.ToString() + "%";
+        nextStatText.text = nextRateValue.ToString() + "%";
+
+        price = PlayerPrefs.GetInt(Name, price);
+        goldText.text = price.ToString();
+    }
+
+    #endregion
 }

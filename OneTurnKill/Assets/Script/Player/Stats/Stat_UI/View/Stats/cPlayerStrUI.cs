@@ -9,6 +9,11 @@ public class cPlayerStrUI : cPlayerStatsUI
     {
         present.OnStrengthUp();
     }
+
+    protected override void InitializeStat()
+    {
+        present.OnInitStr();
+    }
 }
 
 //// View

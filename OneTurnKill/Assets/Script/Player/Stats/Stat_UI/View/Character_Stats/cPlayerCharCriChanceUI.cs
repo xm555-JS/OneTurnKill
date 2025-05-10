@@ -8,4 +8,9 @@ public class cPlayerCharCriChanceUI : cPlayerStatsUI
     {
         present.OnCharCriChanceUp();
     }
+
+    protected override void InitializeStat()
+    {
+        present.OnInitCharCriChance();
+    }
 }

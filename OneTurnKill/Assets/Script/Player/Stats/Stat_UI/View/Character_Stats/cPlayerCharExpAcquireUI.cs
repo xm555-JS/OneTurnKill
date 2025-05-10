@@ -8,4 +8,9 @@ public class cPlayerCharExpAcquireUI : cPlayerStatsUI
     {
         present.OnCharExpAcqUp();
     }
+
+    protected override void InitializeStat()
+    {
+        present.OnInitCharExpAcq();
+    }
 }

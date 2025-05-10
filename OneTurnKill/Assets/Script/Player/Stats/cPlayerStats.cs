@@ -111,7 +111,7 @@ public class cPlayerStats : MonoBehaviour
             stat = criticalDamage,
             pureStat = pureCriDamage
         };
-        StatsDataManager.instance.SaveStatsData(stats, "criticalChance");
+        StatsDataManager.instance.SaveStatsData(stats, "criticalDamage");
     }
 
     public void GoldAcquireUp()
@@ -196,6 +196,14 @@ public class cPlayerStats : MonoBehaviour
         charStrIncrease += increaseCharAmoun;
 
         charStrRate += charStrIncrease;
+
+        CharactorStats charStr = new CharactorStats
+        {
+            charStatLevel = charStrLevel,
+            charStatIncrease = charStrIncrease,
+            charStatRate = charStrRate,
+        };
+        StatsDataManager.instance.SaveCharStatsData(charStr, "strength");
     }
 
     public void Character_CriChanceUp()
@@ -204,6 +212,14 @@ public class cPlayerStats : MonoBehaviour
         charCriChanceIncrease += increaseCharAmoun;
 
         charCriChanceRate += charCriChanceIncrease;
+
+        CharactorStats charCriChance = new CharactorStats
+        {
+            charStatLevel = charCriChanceLevel,
+            charStatIncrease = charCriChanceIncrease,
+            charStatRate = charCriChanceRate,
+        };
+        StatsDataManager.instance.SaveCharStatsData(charCriChance, "criticalChance");
     }
 
     public void Character_CriDamageUp()
@@ -212,6 +228,14 @@ public class cPlayerStats : MonoBehaviour
         charCriDamageIncrease += increaseCharAmoun;
 
         charCriDamageRate += charCriDamageIncrease;
+
+        CharactorStats charCriDamage = new CharactorStats
+        {
+            charStatLevel = charCriDamageLevel,
+            charStatIncrease = charCriDamageIncrease,
+            charStatRate = charCriDamageRate,
+        };
+        StatsDataManager.instance.SaveCharStatsData(charCriDamage, "criticalDamage");
     }
 
     public void Character_GoldAcqUp()
@@ -220,6 +244,14 @@ public class cPlayerStats : MonoBehaviour
         charGoldAcqIncrease += increaseCharAmoun;
 
         charGoldAcqRate += charGoldAcqIncrease;
+
+        CharactorStats charGoldAcq = new CharactorStats
+        {
+            charStatLevel = charGoldAcqLevel,
+            charStatIncrease = charGoldAcqIncrease,
+            charStatRate = charGoldAcqRate,
+        };
+        StatsDataManager.instance.SaveCharStatsData(charGoldAcq, "goldAcquire");
     }
 
     public void Character_ExpAcqUp()
@@ -228,6 +260,14 @@ public class cPlayerStats : MonoBehaviour
         charExpAcqIncrease += increaseCharAmoun;
 
         charExpAcqRate += charExpAcqIncrease;
+
+        CharactorStats charExpAcq = new CharactorStats
+        {
+            charStatLevel = charExpAcqLevel,
+            charStatIncrease = charExpAcqIncrease,
+            charStatRate = charExpAcqRate,
+        };
+        StatsDataManager.instance.SaveCharStatsData(charExpAcq, "expAcquire");
     }
 
     #endregion
@@ -338,6 +378,7 @@ public class cPlayerStats : MonoBehaviour
     void Start()
     {
         InitializeStats();
+        InitializeCharStats();
     }
 
     void InitializeStats()
@@ -355,20 +396,6 @@ public class cPlayerStats : MonoBehaviour
             strength = 10;
             pureAtt = strength;
         }
-
-        //Stats bossStats = StatsDataManager.instance.LoadStatsData("strength");
-        //if (stats != null)
-        //{
-        //    strLevel = stats.statLevel;
-        //    strengthIncrease = stats.statIncrease;
-        //    strength = stats.stat;
-        //    pureAtt = stats.pureStat;
-        //}
-        //else
-        //{
-        bossStrength = 10;
-        pureBossAtt = bossStrength;
-        //}
 
         Stats criChanceStats = StatsDataManager.instance.LoadStatsData("criticalChance");
         if (criChanceStats != null)
@@ -417,16 +444,70 @@ public class cPlayerStats : MonoBehaviour
         }
         else
             expAcquire = 0;
+
+        //Stats bossStats = StatsDataManager.instance.LoadStatsData("bossStrength");
+        //if (bossStats != null)
+        //{
+        //    bossStrength = bossStats.stat;
+        //    pureBossAtt = bossStats.pureStat;
+        //}
+        //else
+        //{
+            bossStrength = 10;
+            pureBossAtt = bossStrength;
+        //}
     }
 
     void InitializeCharStats()
     {
-        // 만약에 저장된 데이터가 없다면
-        charStrRate = 1f;
-        charCriChanceRate = 1f;
-        charCriDamageRate = 1f;
-        charGoldAcqRate = 1f;
-        charExpAcqRate = 1f;
-        // 만약에 저장된 데이터가 있다면 해당 저장된 데이터를 기준으로 적용
+        CharactorStats strStats = StatsDataManager.instance.LoadCharStatsData("strength");
+        if (strStats != null)
+        {
+            charStrLevel = strStats.charStatLevel;
+            charStrIncrease = strStats.charStatIncrease;
+            charStrRate = strStats.charStatRate;
+        }
+        else
+            charStrRate = 1f;
+
+        CharactorStats criChanceStats = StatsDataManager.instance.LoadCharStatsData("criticalChance");
+        if (criChanceStats != null)
+        {
+            charCriChanceLevel = criChanceStats.charStatLevel;
+            charCriChanceIncrease = criChanceStats.charStatIncrease;
+            charCriChanceRate = criChanceStats.charStatRate;
+        }
+        else
+            charCriChanceRate = 1f;
+
+        CharactorStats criDamageStats = StatsDataManager.instance.LoadCharStatsData("criticalDamage");
+        if (criDamageStats != null)
+        {
+            charCriDamageLevel = criDamageStats.charStatLevel;
+            charCriDamageIncrease = criDamageStats.charStatIncrease;
+            charCriDamageRate = criDamageStats.charStatRate;
+        }
+        else
+            charCriDamageRate = 1f;
+
+        CharactorStats goldAcqStats = StatsDataManager.instance.LoadCharStatsData("goldAcquire");
+        if (goldAcqStats != null)
+        {
+            charGoldAcqLevel = goldAcqStats.charStatLevel;
+            charGoldAcqIncrease = goldAcqStats.charStatIncrease;
+            charGoldAcqRate = goldAcqStats.charStatRate;
+        }
+        else
+            charGoldAcqRate = 1f;
+
+        CharactorStats expAcqStats = StatsDataManager.instance.LoadCharStatsData("expAcquire");
+        if (expAcqStats != null)
+        {
+            charExpAcqLevel = expAcqStats.charStatLevel;
+            charExpAcqIncrease = expAcqStats.charStatIncrease;
+            charExpAcqRate = expAcqStats.charStatRate;
+        }
+        else
+            charExpAcqRate = 1f;
     }
 }

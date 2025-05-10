@@ -14,8 +14,8 @@ public class Stats
 public class CharactorStats
 {
     public int charStatLevel;
-    public int charStatIncrease;
-    public int charStatRate;
+    public float charStatIncrease;
+    public float charStatRate;
 }
 
 public class StatsDataManager : MonoBehaviour

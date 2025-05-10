@@ -9,6 +9,11 @@ public class cPlayerExpAcquireUI : cPlayerStatsUI
     {
         present.OnExpAcquireUp();
     }
+
+    protected override void InitializeStat()
+    {
+        present.OnInitExpAcq();
+    }
 }
 
 //// View

@@ -8,4 +8,9 @@ public class cPlayerCharStrUI : cPlayerStatsUI
     {
         present.OnCharStrengthUp();
     }
+
+    protected override void InitializeStat()
+    {
+        present.OnInitCharStr();
+    }
 }
