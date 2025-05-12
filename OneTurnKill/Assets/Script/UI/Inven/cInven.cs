@@ -49,7 +49,8 @@ public class cInven : MonoBehaviour
         invenItem.GetComponent<cItemUI>().itemboxInitialize(itemData);
         invenItem.GetComponentsInChildren<Image>()[1].sprite = itemData.itemSprite;
 
-        SaveItem(itemData);
+        if (owner.name == "Helmet_Inven" || owner.name == "Armor_Inven" || owner.name == "Weapon_Inven")
+            SaveItem(itemData);
 
         //count
         CheckResize();

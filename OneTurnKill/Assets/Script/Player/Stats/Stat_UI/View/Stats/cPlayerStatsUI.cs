@@ -108,7 +108,7 @@ public abstract class cPlayerStatsUI : MonoBehaviour
 
         GameManager.instance.playerCom.SpendCoin(price);
         price += priceIncreaseAmount;
-        PlayerPrefs.SetInt(Name, price);
+        PlayerPrefs.SetInt(Name + "Char", price);
         goldText.text = price.ToString();
     }
 
@@ -184,7 +184,7 @@ public abstract class cPlayerStatsUI : MonoBehaviour
         StatText.text = rateValue.ToString() + "%";
         nextStatText.text = nextRateValue.ToString() + "%";
 
-        price = PlayerPrefs.GetInt(Name, price);
+        price = PlayerPrefs.GetInt(Name + "Char", price);
         goldText.text = price.ToString();
     }
 

@@ -48,7 +48,7 @@ public class cSkillSetting : MonoBehaviour
 
         // 버튼 셋팅
         btn.GetComponent<Image>().sprite = skillData.skillSprite;
-        buttonPair[btn].GetComponent<cPlayerSkillButton>().SkillName = skillData.skillName;
+        buttonPair[btn].GetComponent<cPlayerSkillButton>().SkillName(skillData.skillName);
         buttonPair[btn].GetComponent<cPlayerSkillButton>().ChangeImage(skillData.skillSprite);
 
         ButtonIDRegister(btn, skillData);
@@ -84,7 +84,7 @@ public class cSkillSetting : MonoBehaviour
         if (skillData == null)
         {
             otherbtn.GetComponent<Image>().sprite = btn.GetComponent<Image>().sprite;
-            buttonPair[otherbtn].GetComponent<cPlayerSkillButton>().SkillName = "";
+            buttonPair[otherbtn].GetComponent<cPlayerSkillButton>().SkillName("");
             buttonPair[otherbtn].GetComponent<cPlayerSkillButton>().ChangeImage(defaultBtnSprite);
 
             ButtonIDRemove(otherbtn);
@@ -92,7 +92,7 @@ public class cSkillSetting : MonoBehaviour
         else
         {
             otherbtn.GetComponent<Image>().sprite = btn.GetComponent<Image>().sprite;
-            buttonPair[otherbtn].GetComponent<cPlayerSkillButton>().SkillName = skillData.skillName;
+            buttonPair[otherbtn].GetComponent<cPlayerSkillButton>().SkillName(skillData.skillName);
             buttonPair[otherbtn].GetComponent<cPlayerSkillButton>().ChangeImage(skillData.skillSprite);
 
             ButtonIDChange(otherbtn, skillData);

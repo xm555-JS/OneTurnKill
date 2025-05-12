@@ -35,9 +35,18 @@ public class cSkillInst : MonoBehaviour
 
     float[] skillProbs = { 60f, 30f, 10f };
 
+    bool isLoad = false;
+
+    void Awake()
+    {
+        LoadSkillData();
+    }
+
     void OnEnable()
     {
-        StartCoroutine(ISkillInst());
+        if (isLoad)
+            StartCoroutine(ISkillInst());
+        isLoad = true;
     }
 
     void LateUpdate()
@@ -72,22 +81,22 @@ public class cSkillInst : MonoBehaviour
         switch (skill)
         {
             case 0:
-                InstanteSkill(rSkill);
+                InstanteSkill(rSkill, "r");
                 break;
             case 1:
-                InstanteSkill(srSkill);
+                InstanteSkill(srSkill, "sr");
                 break;
             case 2:
-                InstanteSkill(ssrSkill);
+                InstanteSkill(ssrSkill, "ssr");
                 break;
         }
     }
 
-    void InstanteSkill(GameObject[] skill)
+    void InstanteSkill(GameObject[] skill, string grade)
     {
         // classification - Active Skill or Passive Skill
-        int Index = UnityEngine.Random.Range(0, skill.Length);
-        GameObject SkillObj = Instantiate(skill[Index]);
+        int index = UnityEngine.Random.Range(0, skill.Length);
+        GameObject SkillObj = Instantiate(skill[index]);
         SkillObj.GetComponent<Image>().sprite = SkillObj.GetComponent<cSkillUI>().SkillData.skillSprite;
         switch (SkillObj.GetComponent<cSkillUI>().SkillData.skillType)
         {
@@ -99,8 +108,11 @@ public class cSkillInst : MonoBehaviour
                 break;
         }
 
+        // Save Skill Data
+        SaveSkillData(grade, index);
+
         // Shop SKill UI Instantiate
-        GameObject skillUIInst = Instantiate(skillUI[0]);
+        GameObject skillUIInst = Instantiate(skillUI[0]);       // skillUI[0] - Need To Fix - why - 등급에 따라 색깔을 다르게 해야함
         skillUIList.Add(skillUIInst);
         skillUIInst.transform.SetParent(uiOwner.transform, false);
         Image skillImage = skillUIInst.GetComponent<Image>();
@@ -112,6 +124,66 @@ public class cSkillInst : MonoBehaviour
         if (isDup)
             Destroy(SkillObj);
     }
+
+    #region SaveAndLoad
+
+    void SaveSkillData(string grade, int index)
+    {
+        SkillSaveData data = new SkillSaveData
+        {
+            skillGrade = grade,
+            skillIndex = index
+        };
+
+        SkillJsonManager.instance.SaveData(data);
+    }
+
+    void LoadSkillData()
+    {
+        List<SkillSaveData> dataList = SkillJsonManager.instance.LoadData();
+        if (dataList == null)
+            return;
+
+        foreach (var data in dataList)
+        {
+            GameObject[] skill = null;
+            switch (data.skillGrade)
+            {
+                case "r":
+                    skill = rSkill;
+                    break;
+                case "sr":
+                    skill = srSkill;
+                    break;
+                case "ssr":
+                    skill = ssrSkill;
+                    break;
+            }
+
+            int index = data.skillIndex;
+
+            GameObject SkillObj = Instantiate(skill[index]);
+            SkillData skillData = SkillObj.GetComponent<cSkillUI>().SkillData;
+            SkillObj.GetComponent<Image>().sprite = skillData.skillSprite;
+            switch (skillData.skillType)
+            {
+                case SkillType.ACTIVE:
+                    SkillObj.transform.SetParent(activeOwner.transform, false);
+                    break;
+                case SkillType.PASSIVE:
+                    SkillObj.transform.SetParent(passiveOwner.transform, false);
+                    break;
+            }
+
+            // Skill Register
+            bool isDup = cSkillManager.instance.CheckDuplicate(skillData.skillName);    // CheckDuplicate
+            cSkillManager.instance.RegisterSkill(SkillObj.GetComponent<cSkillUI>().SkillData.skillName);
+            if (isDup)
+                Destroy(SkillObj);
+        }
+    }
+
+    #endregion
 
     void Close()
     {

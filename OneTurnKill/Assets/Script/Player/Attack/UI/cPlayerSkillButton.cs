@@ -13,12 +13,18 @@ public class cPlayerSkillButton : MonoBehaviour
     cPlayerAttack playerAttack;
     [SerializeField] string skillName;
 
-    public string SkillName { set => skillName = value; }
+    public void SkillName(string name)
+    {
+        PlayerPrefs.SetInt("Save" + gameObject.name, 1);
+        PlayerPrefs.SetString(gameObject.name, name);
+        skillName = name;
+    }
 
     void Awake()
     {
         skillButton = GetComponent<Button>();
         skillButton.interactable = false;
+        LoadData();
     }
 
     void Start()
@@ -69,6 +75,30 @@ public class cPlayerSkillButton : MonoBehaviour
 
     public void ChangeImage(Sprite image)
     {
+        PlayerPrefs.SetString(gameObject.name + "Sprite", image.name);
         skillButton.GetComponent<Image>().sprite = image;
+    }
+
+    void LoadData()
+    {
+        bool isSave = System.Convert.ToBoolean(PlayerPrefs.GetInt("Save" + gameObject.name));
+        if (isSave)
+        {
+            skillName = PlayerPrefs.GetString(gameObject.name);
+
+            Sprite[] sprites = Resources.LoadAll<Sprite>("UI/Skill_Icon");
+            FindButtonImage(sprites);
+
+        }
+    }
+
+    void FindButtonImage(Sprite[] sprites)
+    {
+        string spriteName = PlayerPrefs.GetString(gameObject.name + "Sprite");
+        foreach (var sprite in sprites)
+        {
+            if (sprite.name == spriteName)
+                skillButton.GetComponent<Image>().sprite = sprite;
+        }
     }
 }

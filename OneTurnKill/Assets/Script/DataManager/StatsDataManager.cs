@@ -37,7 +37,7 @@ public class StatsDataManager : MonoBehaviour
     public void SaveCharStatsData(CharactorStats data, string name)
     {
         string json = JsonUtility.ToJson(data);
-        File.WriteAllText(path + name + ".json", json);
+        File.WriteAllText(path + "char" + name + ".json", json);
     }
 
     public Stats LoadStatsData(string name)
@@ -51,10 +51,10 @@ public class StatsDataManager : MonoBehaviour
 
     public CharactorStats LoadCharStatsData(string name)
     {
-        if (!File.Exists(path + name + ".json"))
+        if (!File.Exists(path + "char" + name + ".json"))
             return null;
 
-        string json = File.ReadAllText(path + name + ".json");
+        string json = File.ReadAllText(path + "char" + name + ".json");
         return JsonUtility.FromJson<CharactorStats>(json);
     }
 }
