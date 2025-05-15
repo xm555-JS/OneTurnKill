@@ -8,13 +8,20 @@ public class cCoin : MonoBehaviour
     cPlayer player;
     Text CoinTxt;
 
-    void Awake()
+    void Start()
     {
         player = GameManager.instance.player.GetComponent<cPlayer>();
         CoinTxt = GetComponent<Text>();
+
+        SetCoinTxt();
     }
 
     void LateUpdate()
+    {
+        SetCoinTxt();
+    }
+
+    void SetCoinTxt()
     {
         float coin = player.Coin;
         CoinTxt.text = coin.ToString();

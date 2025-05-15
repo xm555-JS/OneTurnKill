@@ -6,6 +6,7 @@ using UnityEngine;
 public class cPlayer : MonoBehaviour
 {
     float coin;
+    float bossCoin;
     float armorMaterial;
     float weaponMaterial;
 
@@ -34,18 +35,22 @@ public class cPlayer : MonoBehaviour
     #region PropertyItem
 
     public float Coin { get => coin; }
+    public float BossCoin { get => bossCoin; }
     public float ArmorMaterial { get => armorMaterial; }
     public float WeaponMaterial { get => weaponMaterial; }
 
     #endregion
 
     #region AddSpend
-    public void AddCoin(float value) { coin += value; }
-    public void SpendCoin(float value) { coin -= value; }
-    public void AddArmorMat(int value) { armorMaterial += value; }
-    public void SpendArmorMat(int value) { armorMaterial -= value; }
-    public void AddWeaponMat(int value) { weaponMaterial += value; }
-    public void SpendWeaponMat(int value) { weaponMaterial -= value; }
+
+    public void AddCoin(float value) { coin += value; SaveCoin(); }
+    public void SpendCoin(float value) { coin -= value; SaveCoin(); }
+    public void AddBossCoin(float value) { bossCoin += value; SaveBossCoin(); }
+    public void SpendBossCoin(float value) { bossCoin -= value; SaveBossCoin(); }
+    public void AddArmorMat(int value) { armorMaterial += value; SaveArmorMat();  }
+    public void SpendArmorMat(int value) { armorMaterial -= value; SaveArmorMat(); }
+    public void AddWeaponMat(int value) { weaponMaterial += value; SaveWeaponMat(); }
+    public void SpendWeaponMat(int value) { weaponMaterial -= value; SaveWeaponMat(); }
     #endregion
 
     #region Customizing
@@ -100,11 +105,27 @@ public class cPlayer : MonoBehaviour
 
     #endregion
 
+    #region SaveAndLoad
+
+    public void SaveCoin() { PlayerPrefs.SetFloat("coin", coin); }
+    public void SaveBossCoin() { PlayerPrefs.SetFloat("bossCoin", bossCoin); }
+    public void SaveArmorMat() { PlayerPrefs.SetFloat("armorMaterial", armorMaterial); }
+    public void SaveWeaponMat() { PlayerPrefs.SetFloat("weaponMaterial", weaponMaterial); }
+
+    float LoadCoin() { return PlayerPrefs.GetFloat("coin", coin); }
+    float LoadBossCoin() { return PlayerPrefs.GetFloat("bossCoin", bossCoin); }
+    float LoadArmorMat() { return PlayerPrefs.GetFloat("armorMaterial", armorMaterial); }
+    float LoadWeaponMat() { return PlayerPrefs.GetFloat("weaponMaterial", weaponMaterial); }
+
+
+    #endregion
+
     void Awake()
     {
-        coin = 100000f;
-        armorMaterial = 400f;
-        weaponMaterial = 0f;
+        coin = LoadCoin();
+        bossCoin = LoadBossCoin();
+        armorMaterial = LoadArmorMat(); ;
+        weaponMaterial = LoadWeaponMat();
 
         custom = GetComponent<Customizing>();
         playerStats = GetComponent<cPlayerStats>();

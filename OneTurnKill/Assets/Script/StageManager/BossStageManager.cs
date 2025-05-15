@@ -7,17 +7,15 @@ public class BossStageManager : MonoBehaviour
     [SerializeField] cSceneBlind blind;
     [SerializeField] cBoss boss;
 
+    static public BossStageManager instance;
+
     bool isAttackReady;
     public bool IsAttackReady { get => isAttackReady; }
+    public void ReadyAttack() { isAttackReady = true; }
 
-    void OnEnable()
+    void Awake()
     {
-        boss.StateMachine.groggyState.OnGroggy += CheckBossGroggy;
-    }
-
-    void OnDisable()
-    {
-        boss.StateMachine.groggyState.OnGroggy -= CheckBossGroggy;
+        instance = this;
     }
 
     void Update()
@@ -29,11 +27,11 @@ public class BossStageManager : MonoBehaviour
 
             blind.BlindScene();
             boss.ToIdle();
-            StartCoroutine(Test());
+            StartCoroutine(ResetBossInfo());
         }
     }
 
-    IEnumerator Test()
+    IEnumerator ResetBossInfo()
     {
         yield return new WaitForSeconds(1f);
         boss.ResetPosition();
@@ -41,6 +39,4 @@ public class BossStageManager : MonoBehaviour
         yield return new WaitForSeconds(2f);
         boss.ResetInfo();
     }
-
-    void CheckBossGroggy() { isAttackReady = true; }
 }

@@ -410,4 +410,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20ec8515804cc0646b1774a3bd29d356, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  matType: 0
   price: -10000
+  mat: 0

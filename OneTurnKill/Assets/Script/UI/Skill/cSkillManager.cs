@@ -12,7 +12,12 @@ public class cSkillManager : MonoBehaviour
     void Awake()
     {
         if (instance == null)
+        {
             instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+            Destroy(gameObject);
     }
 
     public void RegisterSkill(string name)

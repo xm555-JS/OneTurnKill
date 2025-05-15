@@ -23,6 +23,7 @@ public class cMonster : MonoBehaviour
     protected GameObject player;
 
     protected bool isArrive;
+    protected bool isHit;
 
     WaitForSeconds takeDamageTime = new WaitForSeconds(0.5f);
 
@@ -64,7 +65,9 @@ public class cMonster : MonoBehaviour
             HpBar hpUI = hpBar.GetComponent<HpBar>();
             hpUI.Initialize();
         }
+
         isArrive = false;
+        isHit = false;
     }
 
     void Start()
@@ -88,6 +91,9 @@ public class cMonster : MonoBehaviour
 
     IEnumerator OnTakeDamage(Collider2D collision)
     {
+        isArrive = false;
+        isHit = true;
+
         yield return takeDamageTime;
 
         int damage = CalculateDamage(collision);
@@ -127,7 +133,7 @@ public class cMonster : MonoBehaviour
             }
             else if (isBoss)
             {
-                cPopupManager.instance.RewardPush(5000, 5,5,5, () => LevelManager.instance.GoToGamePlay());
+                cPopupManager.instance.RewardPush(5000, 20, 10, 10, () => LevelManager.instance.GoToGamePlay());
             }
         }
     }

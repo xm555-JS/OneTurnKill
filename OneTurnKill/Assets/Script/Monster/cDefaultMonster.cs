@@ -8,6 +8,9 @@ public class cDefaultMonster : cMonster
 
     void FixedUpdate()
     {
+        if (isHit)
+            return;
+
         if (!isArrive)
         {
             // anim
@@ -18,6 +21,9 @@ public class cDefaultMonster : cMonster
             rigid.MovePosition(rigid.position + moveVec.normalized * speed * Time.deltaTime);
         }
         else
+        {
             anim.SetBool("Run", false);
+        }
+            
     }
 }

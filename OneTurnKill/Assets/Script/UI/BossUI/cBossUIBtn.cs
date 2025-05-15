@@ -18,16 +18,22 @@ public class cBossUIBtn : MonoBehaviour
 
     void Start()
     {
-        // 여기서 UI의 enable이 false이기 때문에 게임이 시작되고 해당 ui를 켜지 않는 이상 구독이 되지않기 때문에 OpenBossEntry이 실행되지 않았다.
+        bool isOpen = System.Convert.ToBoolean(PlayerPrefs.GetInt("UnRock", 0));
+        if (isOpen)
+        {
+            OpenBossEntry();
+            return;
+        }
+
         StageManager.instance.OnOpenOrcBoss += OpenBossEntry;
         if (StageManager.instance == null)
             Debug.Log("instance is null");
     }
 
-    //void OnDisable()
-    //{
-    //    StageManager.instance.OnOpenOrcBoss -= OpenBossEntry;
-    //}
+    void OnDestroy()
+    {
+        StageManager.instance.OnOpenOrcBoss -= OpenBossEntry;
+    }
 
     public void NextBoss()
     {
@@ -54,7 +60,6 @@ public class cBossUIBtn : MonoBehaviour
 
     void Awake()
     {
-        // unity action으로 Boss Level로 이동하게 끔
         bossBtn.onClick.AddListener(() => cPopupManager.instance.Push("MainPopup", "보스에 입장하시겠습니까?", () => LevelManager.instance.GoToOrcBossLevel()));
     }
 
@@ -66,8 +71,9 @@ public class cBossUIBtn : MonoBehaviour
 
     void OpenBossEntry()
     {
-        Debug.Log("보스 해방!");
+        PlayerPrefs.SetInt("UnRock", 1);
         bossBtn.interactable = true;
         rockImg.enabled = false;
+        Debug.Log("보스 해방!");
     }
 }

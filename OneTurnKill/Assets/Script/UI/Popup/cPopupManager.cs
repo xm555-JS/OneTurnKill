@@ -43,16 +43,21 @@ public class cPopupManager : MonoBehaviour
         }
     }
 
-    public void RewardPush(int coinValue, int armorValue, int weaponValue, int bossValue, UnityEngine.Events.UnityAction action = null)
+    public void RewardPush(int coinValue, int bossCoinValue, int armorValue, int weaponValue, UnityEngine.Events.UnityAction action = null)
     {
         GameObject popUp = Instantiate(RewardPopup);
         popUp.transform.SetParent(Owner.transform, false);
         cRewardPopUp rewardPopUp = popUp.GetComponent<cRewardPopUp>();
 
         rewardPopUp.coinRewardTxt.text = coinValue.ToString();
+        rewardPopUp.bossRewardTxt.text = bossCoinValue.ToString();
         rewardPopUp.armorRewardTxt.text = armorValue.ToString();
         rewardPopUp.weaponRewawrdTxt.text = weaponValue.ToString();
-        rewardPopUp.bossRewardTxt.text = bossValue.ToString();
+
+        GameManager.instance.playerCom.AddCoin(coinValue);
+        GameManager.instance.playerCom.AddBossCoin(bossCoinValue);
+        GameManager.instance.playerCom.AddArmorMat(armorValue);
+        GameManager.instance.playerCom.AddWeaponMat(weaponValue);
 
         if (action != null)
             rewardPopUp.mainButton.onClick.AddListener(action);

@@ -5,13 +5,25 @@ using UnityEngine.UI;
 
 public class cPlayerSkillButton : MonoBehaviour
 {
-    Button skillButton;
+    public Button skillButton;
 
-    StageManager stageManager;
-    BossStageManager bossStageManager;
-
-    cPlayerAttack playerAttack;
     [SerializeField] string skillName;
+    
+    cPlayerAttack playerAttack;
+
+    static bool isReadyAuto;
+
+    static StageManager stageManager;
+    static BossStageManager bossStageManager;
+
+    public string GetSkillName { get => skillName;}
+    public bool GetIsReadyAuto() { return isReadyAuto; }
+
+    public void ChangeImage(Sprite image)
+    {
+        PlayerPrefs.SetString(gameObject.name + "Sprite", image.name);
+        skillButton.GetComponent<Image>().sprite = image;
+    }
 
     public void SkillName(string name)
     {
@@ -36,25 +48,28 @@ public class cPlayerSkillButton : MonoBehaviour
 
     void Update()
     {
-        if (stageManager != null)
+        bool isReady = false;
+        if (stageManager != null && stageManager.IsAttackReady)
+            isReady = true;
+        if (bossStageManager != null && bossStageManager.IsAttackReady)
+            isReady = true;
+
+        if (isReady)
         {
-            if (stageManager.IsAttackReady)
-                skillButton.interactable = true;
-            else
-                skillButton.interactable = false;
+            skillButton.interactable = true;
+            isReadyAuto = true;
         }
-        else if (bossStageManager != null)
+        else
         {
-            if (bossStageManager.IsAttackReady)
-                skillButton.interactable = true;
-            else
-                skillButton.interactable = false;
+            skillButton.interactable = false;
+            isReadyAuto = false;
         }
+            
     }
 
     void GetPlayerAttack()
     {
-        playerAttack = GameManager.instance.player.GetComponent<cPlayerAttack>();
+        playerAttack = GameManager.instance.playerAttack;
         if (!playerAttack)
             Debug.LogError("cPlayerSkillButton - playerAttack is null.");
     }
@@ -62,21 +77,20 @@ public class cPlayerSkillButton : MonoBehaviour
     void GetStageManager()
     {
         string SceneName = LevelManager.instance.ReturnCurLevel();
-        if (SceneName == "1SampleScene")
+        if (SceneName == "1SampleScene" && stageManager == null)
             stageManager = GameObject.Find("StageManager").GetComponent<StageManager>();
-        if (SceneName == "2OrcBossLevel")
+        if (SceneName == "2OrcBossLevel" && stageManager == null)
             bossStageManager = GameObject.Find("BossStageManager").GetComponent<BossStageManager>();
     }
 
-    void SetAddListner()
+    public void SetAddListner()
     {
-        skillButton.onClick.AddListener(() => playerAttack.Attack(skillName));
+        skillButton.onClick.AddListener(() => Attack());
     }
 
-    public void ChangeImage(Sprite image)
+    void Attack()
     {
-        PlayerPrefs.SetString(gameObject.name + "Sprite", image.name);
-        skillButton.GetComponent<Image>().sprite = image;
+        playerAttack.Attack(skillName);
     }
 
     void LoadData()

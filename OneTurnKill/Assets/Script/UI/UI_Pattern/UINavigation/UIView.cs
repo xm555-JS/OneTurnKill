@@ -10,6 +10,10 @@ public class UIView : MonoBehaviour
     {
         rect = this.GetComponent<RectTransform>();
         rect.position = new Vector3(Screen.width * 0.5f, Screen.height * 0.5f, 0f);
+    }
+
+    void Start()
+    {
         this.gameObject.SetActive(false);
     }
 

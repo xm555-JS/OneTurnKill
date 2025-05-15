@@ -21,11 +21,16 @@ public class cSpawner : MonoBehaviour
     public int MonsterCount { get => monsterCount; }
     //public void SetMonsterCount(int value) { monsterCount = value; }
     public bool IsArrive { get => isArrive; }
-    public void PrefabIndex(int prefabIndex) { monsterIndex = prefabIndex; }
+    public void PrefabIndex(int prefabIndex)
+    {
+        monsterIndex = prefabIndex;
+        PlayerPrefs.SetInt("monsterIndex", monsterIndex);
+    }
 
     void Awake()
     {
         monsterCount = 0;
+        monsterIndex = PlayerPrefs.GetInt("monsterIndex", monsterIndex);
     }
 
     void Start()
@@ -46,27 +51,25 @@ public class cSpawner : MonoBehaviour
         ISArriveMonster();
     }
 
-    bool ISArriveMonster()
+    void ISArriveMonster()
     {
         int numOfMonster = 6;
         if (monsterList.Count >= numOfMonster)
         {
-            bool isMonsterArrive = false;
             foreach (var monster in monsterList)
             {
-                isMonsterArrive = monster.IsArrive;
-
-                if (!isMonsterArrive)
-                    return isArrive = false;
+                if (!monster.IsArrive)
+                {
+                    isArrive = false;
+                    return;
+                }
             }
-            return isArrive = true;
+            isArrive = true;
         }
-        return false;
     }
 
     public void StartSpawn(int stageNum)
     {
-        //test
         if (monsterIndex != preMonsterIndex)
         {
             objPool.ChangeObjectPool(monsterPrefabs[monsterIndex]);
@@ -84,10 +87,9 @@ public class cSpawner : MonoBehaviour
         else
             monster.transform.localScale = new Vector3(2f, 2f, 2f);
 
-        // test
         monster.OnDead += CheckMonsterDead;
         monsterList.Add(monster);
-
+        Debug.Log(monsterCount);
         monsterCount++;
     }
 
@@ -103,13 +105,18 @@ public class cSpawner : MonoBehaviour
 
         // 몬스터 count 초기화
         monsterCount = 0;
+        monsterList.Clear();
     }
 
     void CheckMonsterDead()
     {
         monsterCount--;
+        Debug.Log(monsterCount);
 
         foreach (var mon in monsterList)
             mon.OnDead -= CheckMonsterDead;
+
+        if (monsterCount <= 0)
+            monsterList.Clear();
     }
 }

@@ -37,9 +37,10 @@ public class cSkillInst : MonoBehaviour
 
     bool isLoad = false;
 
-    void Awake()
+    void Start()
     {
         LoadSkillData();
+        this.gameObject.SetActive(false);
     }
 
     void OnEnable()

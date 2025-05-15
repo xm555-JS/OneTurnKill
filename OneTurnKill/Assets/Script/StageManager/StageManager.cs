@@ -29,6 +29,7 @@ public class StageManager : MonoBehaviour
     void Awake()
     {
         StageInitialize();
+        //StartCoroutine(SpawnCor());
     }
 
     void OnEnable()
@@ -39,12 +40,13 @@ public class StageManager : MonoBehaviour
     void OnDisable()
     {
         playerAttack.OnAttack -= CheckPlayerAttack;
+        //StopCoroutine(SpawnCor());
     }
 
     void Update()
     {
         Spawn();
-        isAttackReady = spawners[0].IsArrive;   // 모든 몬스터가 목적기에 도착했는지 확인
+        isAttackReady = spawners[0].IsArrive;
     }
 
     void Spawn()
@@ -54,17 +56,39 @@ public class StageManager : MonoBehaviour
             foreach (var spawn in spawners)
                 spawn.StartSpawn(stageNum);
 
-            stageNum++;
+            PlayerPrefs.SetInt("stageNum", stageNum);
             spawners[0].PrefabIndex(stageNum / 10);
-            Debug.Log("현재 스테이지는 " + stageNum);
+            stageNum++;
+            Debug.Log("그 다음 스테이지는 " + stageNum);
 
             CheckOpenBoss();
         }
     }
 
+    //IEnumerator SpawnCor()
+    //{
+    //    while (true)
+    //    {
+    //        yield return new WaitUntil(() => spawners[0].MonsterCount <= 0 && isPlayerAttack == false);
+
+    //        foreach (var spawn in spawners)
+    //            spawn.StartSpawn(stageNum);
+
+    //        PlayerPrefs.SetInt("stageNum", stageNum);
+    //        spawners[0].PrefabIndex(stageNum / 10);
+    //        stageNum++;
+    //        Debug.Log("그 다음 스테이지는 " + stageNum);
+
+    //        CheckOpenBoss();
+
+    //        yield return new WaitForSeconds(0.3f);
+    //    }
+    //}
+
     void CheckOpenBoss()
     {
-        if (stageNum == 25)
+        // Need To Boss Stage
+        if (stageNum == 80)
             OnOpenOrcBoss?.Invoke();
         //else if (stageNum == 160)
     }
@@ -85,7 +109,7 @@ public class StageManager : MonoBehaviour
             // 공격했을 때 몬스터가 남아있다면 해당 스테이지 다시 시작
             foreach (var spawn in spawners)
                 spawn.ClearMonster();
-            
+
             stageNum--;
             Debug.Log("현재 스테이지는 " + stageNum);
             isPlayerAttack = false;
@@ -101,7 +125,7 @@ public class StageManager : MonoBehaviour
     {
         instance = this;
 
-        stageNum = 20;
+        stageNum = PlayerPrefs.GetInt("stageNum", stageNum);
         isPlayerAttack = false;
 
         spawners = spawner.GetComponentsInChildren<cSpawner>();
