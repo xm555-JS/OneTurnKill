@@ -159,6 +159,7 @@ public class cMonster : MonoBehaviour
             if (parent == null)
                 return;
             hpBar.transform.SetParent(parent);
+            hpBar.transform.localScale = new Vector3(2f, 2f, 2f);
 
             HpBar hpUI = hpBar.GetComponent<HpBar>();
             hpUI.Initialize(this);
