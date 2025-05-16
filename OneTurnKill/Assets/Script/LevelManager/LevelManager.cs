@@ -13,6 +13,11 @@ public class LevelManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    public void GoToCustomLevel()
+    {
+        SceneManager.LoadScene("0CustomLevel");
+    }
+
     public void GoToGamePlay()
     {
         SceneManager.LoadScene("1SampleScene");
