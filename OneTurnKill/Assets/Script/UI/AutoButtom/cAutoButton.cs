@@ -25,8 +25,6 @@ public class cAutoButton : MonoBehaviour
             isAuto = true;
             StopCoroutine(AutoSKill());
         }
-            
-
         ChangeBtnAlpha();
         PlayerPrefs.SetInt("isAuto", System.Convert.ToInt32(isAuto));
     }
@@ -48,6 +46,9 @@ public class cAutoButton : MonoBehaviour
     {
         while (true)
         {
+            yield return null;
+            Debug.Log(isAuto);
+            Debug.Log(skillBtns[0].GetIsReadyAuto());
             yield return new WaitUntil(() => isAuto && skillBtns[0].GetIsReadyAuto() == true);
 
             ChooseSkillBtn();
@@ -56,19 +57,13 @@ public class cAutoButton : MonoBehaviour
         }
     }
 
-    //void Update()
-    //{
-    //    if (isAuto && skillBtns[0].GetIsReadyAuto() == true)
-    //        ChooseSkillBtn();
-    //}
-
     void ChooseSkillBtn()
     {
         int length = ReturnBtnLength();
         if (length == 0)
             return;
 
-        int index = Random.Range(0, length + 1);
+        int index = Random.Range(0, length);
         if (skillBtns[index].skillButton.interactable == true)
             skillBtns[index].skillButton.onClick.Invoke();
     }
@@ -76,7 +71,10 @@ public class cAutoButton : MonoBehaviour
     void ChangeBtnAlpha()
     {
         if (isAuto)
+        {
             img.color = selectColor;
+            StartCoroutine(AutoSKill());
+        }
         else
             img.color = nonSelectColor;
     }

@@ -17,7 +17,7 @@ public class cPlayerSkillButton : MonoBehaviour
     static BossStageManager bossStageManager;
 
     public string GetSkillName { get => skillName;}
-    public bool GetIsReadyAuto() { return isReadyAuto; }
+    public bool GetIsReadyAuto() { PlayerPrefs.SetInt("isReadyAuto", System.Convert.ToInt32(isReadyAuto)); return isReadyAuto; }
 
     public void ChangeImage(Sprite image)
     {
@@ -104,6 +104,8 @@ public class cPlayerSkillButton : MonoBehaviour
             FindButtonImage(sprites);
 
         }
+
+        isReadyAuto = System.Convert.ToBoolean(PlayerPrefs.GetInt("isReadyAuto", 0));
     }
 
     void FindButtonImage(Sprite[] sprites)
