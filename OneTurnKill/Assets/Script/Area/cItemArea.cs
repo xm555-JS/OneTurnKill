@@ -8,6 +8,7 @@ public abstract class cItemArea : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
+        // Need To Fix
         if (collision.CompareTag("Item"))
         {
             StartCoroutine(ColliderItem(collision));

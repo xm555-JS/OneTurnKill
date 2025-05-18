@@ -11,6 +11,7 @@ public class cItemInstance
     public ItemType type;
     public int itemIndex;
     public int price;
+    public string path;
     public bool isInstance;
 
     [Header("For_Enforce")]
@@ -30,8 +31,9 @@ public class cItemInstance
         type = itemData.type;
         itemIndex = itemData.itemIndex;
         price = itemData.price;
+        path = itemData.path;
         isInstance = itemData.isInstance;
-
+        
         if (isInstance)
         {
             itemStats.att = itemData.itemStats.att;
@@ -60,5 +62,23 @@ public class cItemInstance
                 criticalDamage = itemData.itemStats.criticalDamage + Random.Range(-2, 6)
             };
         }
+
+        // save data
+        ItemData dataItemData = new ItemData
+        {
+            ID = this.ID,
+            itemName = this.itemName,
+            type = this.type,
+            itemIndex = this.itemIndex,
+            price = this.price,
+            level = this.level,
+            path = this.path,
+
+            att = this.itemStats.att,
+            bossAtt = this.itemStats.bossAtt,
+            criticalChance = this.itemStats.criticalChance,
+            criticalDamage = this.itemStats.criticalDamage
+        };
+        ItemDataManager.instance.SaveItemData(dataItemData);
     }
 }

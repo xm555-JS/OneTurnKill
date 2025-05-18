@@ -20,6 +20,7 @@ public class cItemUI : MonoBehaviour
         itemUI = GetComponent<cItemUI>();
         btn = GetComponent<Button>();
 
+
         cItemInstance itemInstance = new cItemInstance(itemData);
         btn.onClick.AddListener(() => itemEnforceMoving.MoveToShow());
         btn.onClick.AddListener(() => itemEnforce.Initialize(itemInstance));
