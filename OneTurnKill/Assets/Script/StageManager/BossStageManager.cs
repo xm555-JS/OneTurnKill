@@ -28,6 +28,7 @@ public class BossStageManager : MonoBehaviour
             blind.BlindScene();
             boss.ToIdle();
             StartCoroutine(ResetBossInfo());
+            StartCoroutine(ResetPlayerInfo());
         }
     }
 
@@ -38,5 +39,13 @@ public class BossStageManager : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
         boss.ResetInfo();
+    }
+
+    IEnumerator ResetPlayerInfo()
+    {
+        yield return new WaitForSeconds(1f);
+
+        GameManager.instance.player.transform.position = new Vector3(-2f, 0f, 0f);
+        GameManager.instance.playerMoving.ResetIsCatch();
     }
 }

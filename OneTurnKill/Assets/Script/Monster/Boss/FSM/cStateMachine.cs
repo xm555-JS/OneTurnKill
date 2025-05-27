@@ -10,6 +10,7 @@ public class cStateMachine
     public cSkill2State skill2State;
     public cSkill3State skill3State;
     public cGroggyState groggyState;
+    public cNormalState normalState;
 
     public cStateMachine(cBoss boss)
     {
@@ -17,6 +18,7 @@ public class cStateMachine
         this.skill2State = new cSkill2State(boss);
         this.skill3State = new cSkill3State(boss);
         this.groggyState = new cGroggyState(boss);
+        this.normalState = new cNormalState(boss);
     }
 
     public void Initialize(IState startingState)

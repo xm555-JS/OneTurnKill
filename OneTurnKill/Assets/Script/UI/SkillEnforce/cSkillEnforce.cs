@@ -21,6 +21,7 @@ public class cSkillEnforce : MonoBehaviour
         skillAmount.text = cSkillManager.instance.ReturnSkillAmount(skillData.skillName) + "/" + skillData.enforceAmount[skillData.level];
         enforceBtn.onClick.AddListener(() => cSkillManager.instance.Enforce(skillData));
         enforceBtn.onClick.AddListener(() => UpdataeUI(skillData));
+        enforceBtn.onClick.AddListener(() => AudioManager.instance.PlayerSfx(AudioManager.Sfx.ENFORCE));
     }
 
     public void UpdataeUI(SkillData skillData)

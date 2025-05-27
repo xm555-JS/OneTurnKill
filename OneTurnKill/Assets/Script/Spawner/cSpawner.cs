@@ -15,11 +15,12 @@ public class cSpawner : MonoBehaviour
     static bool isArrive;
     static int monsterIndex = 0;
     static int preMonsterIndex = 0;
-    // test
+    static bool isEnd;
+
     ObjectPool objPool;
 
+    public bool IsEnd { get => isEnd; }
     public int MonsterCount { get => monsterCount; }
-    //public void SetMonsterCount(int value) { monsterCount = value; }
     public bool IsArrive { get => isArrive; }
     public void PrefabIndex(int prefabIndex)
     {
@@ -68,10 +69,18 @@ public class cSpawner : MonoBehaviour
         }
     }
 
-    public void StartSpawn(int stageNum)
+    public void StartSpawn()
     {
         if (monsterIndex != preMonsterIndex)
         {
+            if (monsterIndex >= monsterPrefabs.Length)
+            {
+                isEnd = true;
+                return;
+            }
+            if (monsterPrefabs[monsterIndex] == null)
+                return;
+
             objPool.ChangeObjectPool(monsterPrefabs[monsterIndex]);
             preMonsterIndex = monsterIndex;
         }
@@ -104,6 +113,7 @@ public class cSpawner : MonoBehaviour
         objPool.Release(monster.gameObject);
 
         // 몬스터 count 초기화
+        monster.OnDead -= CheckMonsterDead;
         monsterCount = 0;
         monsterList.Clear();
     }

@@ -2999,8 +2999,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81acea5c82929614bbca11ddaa374a02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 150
+  isBoss: 0
+  maxHP: 7000
   defence: 150
+  bossHpObj: {fileID: 0}
   dropItemObj:
   - {fileID: 0}
   - {fileID: 5638075745407087572, guid: 35d9cae894843c84b94e712373f0af4c, type: 3}

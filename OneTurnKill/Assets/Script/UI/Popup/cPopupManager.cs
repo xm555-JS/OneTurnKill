@@ -19,7 +19,7 @@ public class cPopupManager : MonoBehaviour
     }
 
 
-    public void Push(string popupName, string mainText, UnityEngine.Events.UnityAction Action = null)
+    public void Push(string popupName, string mainText, UnityEngine.Events.UnityAction Action = null, UnityEngine.Events.UnityAction Action2 = null)
     {
         foreach (var popup in popupList)
         {
@@ -37,6 +37,10 @@ public class cPopupManager : MonoBehaviour
                 popupCom.mainText.text = mainText;
                 if (Action != null)
                     popupCom.yesButton.onClick.AddListener(Action);
+                else if (Action2 != null)
+                    popupCom.yesButton.onClick.AddListener(Action2);
+
+                //popupCom.yesButton.onClick.AddListener(Action);
                 popupCom.yesButton.onClick.AddListener(() => Destroy(popupCom.gameObject));
                 popupCom.noButton.onClick.AddListener(() => Destroy(popupCom.gameObject));
             }

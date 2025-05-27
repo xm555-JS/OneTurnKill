@@ -136,6 +136,14 @@ public class cMonster : MonoBehaviour
                 cPopupManager.instance.RewardPush(5000, 20, 10, 10, () => LevelManager.instance.GoToGamePlay());
             }
         }
+        else
+        {
+            yield return new WaitForSeconds(1f);
+
+            if (isBoss)
+                cPopupManager.instance.Push("ErrorPopup", "보스 토벌에 실패하였습니다.\n" + "게임 레벨로 돌아갑니다", () => LevelManager.instance.GoToGamePlay());
+        }
+
     }
 
     IEnumerator Dead()

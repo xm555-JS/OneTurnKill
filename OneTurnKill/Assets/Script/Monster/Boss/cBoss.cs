@@ -40,8 +40,7 @@ public class cBoss : cMonster
     public void ToIdle()
     {
         this.StopAllCoroutines();
-        stateMachine.Initialize(stateMachine.groggyState);
-        //bossHpObj.SetActive(false);
+        stateMachine.Initialize(stateMachine.normalState);
     }
 
     public void ResetInfo()
@@ -57,14 +56,16 @@ public class cBoss : cMonster
 
     void FixedUpdate()
     {
+        if (isHit)
+            return;
+
         if (!isArrive)
         {
             // anim
             anim.SetBool("Run", true);
 
             // move
-            Vector2 moveVec = player.transform.position - this.transform.position;
-            rigid.MovePosition(rigid.position + moveVec.normalized * speed * Time.deltaTime);
+            rigid.MovePosition(rigid.position + Vector2.left.normalized * speed * Time.deltaTime);
         }
         else
         {

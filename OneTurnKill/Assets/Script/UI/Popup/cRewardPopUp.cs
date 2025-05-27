@@ -19,5 +19,7 @@ public class cRewardPopUp : MonoBehaviour
         armorRewardTxt = this.GetComponentsInChildren<Text>()[2];
         weaponRewawrdTxt = this.GetComponentsInChildren<Text>()[3];
         bossRewardTxt = this.GetComponentsInChildren<Text>()[4];
+
+        AudioManager.instance.PlayerSfx(AudioManager.Sfx.ACQUIRE);
     }
 }

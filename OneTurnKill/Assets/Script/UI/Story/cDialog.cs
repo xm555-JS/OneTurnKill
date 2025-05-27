@@ -12,12 +12,15 @@ public class cDialog : MonoBehaviour
     bool isHide;
     bool isFinish;
 
+    string preDialog;
+
     public bool IsFinish { get => isFinish; }
 
     void Awake()
     {
         nameTxt = GetComponentsInChildren<Text>()[0];
         dialogTxt = GetComponentsInChildren<Text>()[1];
+        this.gameObject.SetActive(false);
     }
 
     void Update()
@@ -35,15 +38,18 @@ public class cDialog : MonoBehaviour
 
     public void SetDialog(string name, string dialog)
     {
-        isFinish = false;
-
-        if (name != "")
+        if (dialog == preDialog)
             return;
+        preDialog = dialog;
+
+        Debug.Log("¥Î»≠¡ﬂ");
 
         nameTxt.text = name;
         dialogTxt.text = dialog;
 
         this.gameObject.SetActive(true);
+        isFinish = false;
+
         StartCoroutine(HideTime());
     }
 

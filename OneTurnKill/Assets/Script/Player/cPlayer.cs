@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(cPlayerStats), typeof(cPlayerAttack))]
+[RequireComponent(typeof(cPlayerStats), typeof(cPlayerAttack), typeof(cPlayerMouseMoving))]
 public class cPlayer : MonoBehaviour
 {
     float coin;
@@ -116,6 +116,12 @@ public class cPlayer : MonoBehaviour
     float LoadBossCoin() { return PlayerPrefs.GetFloat("bossCoin", bossCoin); }
     float LoadArmorMat() { return PlayerPrefs.GetFloat("armorMaterial", armorMaterial); }
     float LoadWeaponMat() { return PlayerPrefs.GetFloat("weaponMaterial", weaponMaterial); }
+
+
+    #endregion
+
+    #region CatchMoving
+
 
 
     #endregion

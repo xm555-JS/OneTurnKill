@@ -15,6 +15,7 @@ public class LevelManager : MonoBehaviour
 
     public void GoToCustomLevel()
     {
+        PlayerPrefs.SetInt("StoryEnd", 1);
         SceneManager.LoadScene("0CustomLevel");
     }
 

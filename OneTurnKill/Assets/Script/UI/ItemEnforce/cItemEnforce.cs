@@ -41,7 +41,10 @@ public class cItemEnforce : MonoBehaviour
         sellButton.onClick.RemoveAllListeners();
 
         equipButton.onClick.AddListener(() => WearItem(itemData));
+        equipButton.onClick.AddListener(() => AudioManager.instance.PlayerSfx(AudioManager.Sfx.WEAR));
+
         sellButton.onClick.AddListener(() => SellEquip(itemData));
+        sellButton.onClick.AddListener(() => AudioManager.instance.PlayerSfx(AudioManager.Sfx.CLOSE));
 
         if (IsMaxLevel(itemData) == true)
             return;
@@ -49,6 +52,7 @@ public class cItemEnforce : MonoBehaviour
         enforceButton.onClick.AddListener(() => Enforce(itemData));
         enforceButton.onClick.AddListener(() => InitializeStatTxt(itemData));
         enforceButton.onClick.AddListener(() => UpdateMatTxt(itemData));
+        enforceButton.onClick.AddListener(() => AudioManager.instance.PlayerSfx(AudioManager.Sfx.ENFORCE));
     }
 
     void WearItem(cItemInstance itemData)

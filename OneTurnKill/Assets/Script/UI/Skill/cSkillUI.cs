@@ -29,5 +29,6 @@ public class cSkillUI : MonoBehaviour
         skillButton.onClick.AddListener(() => skillEnforceMoving.MoveToShow());
         skillButton.onClick.AddListener(() => skillEnforce.Initialize(skillData));
         skillButton.onClick.AddListener(() => skillSetting.Initialize(skillData));
+        skillButton.onClick.AddListener(() => AudioManager.instance.PlayerSfx(AudioManager.Sfx.CLICK));
     }
 }

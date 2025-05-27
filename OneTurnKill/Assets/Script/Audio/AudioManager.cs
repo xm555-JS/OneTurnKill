@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class AudioManager : MonoBehaviour
     public float bgmVolume;
     AudioSource bgmPlayer;
 
-    public enum Bgm { START, LOBBY, STAGE, BOSS };
+    public enum Bgm { STORY, CUSTOM, GAME, BOSS };
 
     [Header("#SFX")]
     public AudioClip[] sfxClips;
@@ -20,7 +21,16 @@ public class AudioManager : MonoBehaviour
     AudioSource[] sfxPlayers;
     int channellIndex;
 
-    public enum Sfx { BUY, CLICK, CONFIRM, DENIED, EQUIP, OPENWINDOW, ATTACK, DEAD, STEP, HEAL, FIRE, FIREBALL, ICE, POISION, HIT };
+    public enum Sfx { CLICK, CLOSE, PURCHASE, ENFORCE, WEAR, ACQUIRE, HIT, TRUCK, ACCIDENT };
+
+    [Header("#Skill")]
+    public AudioClip[] skillClips;
+    public float skillVolume;
+    public int skillChannels;
+    AudioSource[] skillPlayers;
+    int skillChannellIndex;
+
+    public enum Skill { HORIZONTAL, IMPACT, POWERSHOT, SWING, COMET, FINISH, SHOCK, STAR, JUDGEMENT, METEOR };
 
     void Awake()
     {
@@ -47,6 +57,17 @@ public class AudioManager : MonoBehaviour
             sfxPlayers[i] = sfxObject.AddComponent<AudioSource>();
             sfxPlayers[i].playOnAwake = false;
             sfxPlayers[i].volume = sfxVolume;
+        }
+
+        // 스킬 효과음 플레이어 초기화
+        GameObject skillObject = new GameObject("skillPlayer");
+        skillObject.transform.parent = transform;
+        skillPlayers = new AudioSource[channels];
+        for (int i = 0; i < skillPlayers.Length; i++)
+        {
+            skillPlayers[i] = sfxObject.AddComponent<AudioSource>();
+            skillPlayers[i].playOnAwake = false;
+            skillPlayers[i].volume = skillVolume;
         }
     }
 
@@ -89,6 +110,83 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    public void PlayerSKill(Skill skill, float pitch = 1f)
+    {
+        StartCoroutine(PlaySkillSound(skill, pitch));
+    }
+
+    public void RepeatPlayerSkill(Skill skill, int count, float delayTime, float pitch = 1f)
+    {
+        StartCoroutine(RepeatSound(skill, count, delayTime, pitch));
+    }
+
+    IEnumerator RepeatSound(Skill skill, int count, float delayTime, float pitch = 1f)
+    {
+        for (int i = 0; i < count; i++)
+        {
+            yield return new WaitForSeconds(delayTime);
+
+            StartCoroutine(PlaySkillSound(skill, pitch));
+        }
+    }
+
+    IEnumerator PlaySkillSound(Skill skill, float pitch = 1f)
+    {
+        yield return new WaitForSeconds(0.3f);
+
+        for (int i = 0; i < skillPlayers.Length; i++)
+        {
+            int loopIndex = (i + skillChannellIndex) % skillPlayers.Length;
+
+            if (skillPlayers[loopIndex].isPlaying)
+                continue;
+
+            skillChannellIndex = loopIndex;
+            skillPlayers[loopIndex].clip = skillClips[(int)skill];
+            skillPlayers[loopIndex].pitch = pitch;
+            skillPlayers[loopIndex].Play();
+            break;
+        }
+    }
+
+    public void StopAllSfxSound()
+    {
+        for (int i = 0; i < sfxPlayers.Length; i++)
+        {
+            int loopIndex = (i + channellIndex) % sfxPlayers.Length;
+
+            if (sfxPlayers[loopIndex].isPlaying)
+            {
+                sfxPlayers[loopIndex].Stop();
+                continue;
+            }
+        }
+    }
+
+    public void FindBgm()
+    {
+        Scene curScene = SceneManager.GetActiveScene();
+        StartCoroutine(StartBgm(curScene.name));
+    }
+
+    IEnumerator StartBgm(string sceneName)
+    {
+        yield return new WaitForSeconds(1f);
+        Debug.Log(sceneName);
+        switch (sceneName)
+        {
+            case "0CustomLevel":
+                PlayBgm(Bgm.CUSTOM);
+                break;
+            case "1SampleScene":
+                PlayBgm(Bgm.GAME);
+                break;
+            case "2OrcBossLevel":
+                PlayBgm(Bgm.BOSS);
+                break;
+        }
+    }
+
     public void SetBgmVolume(float volume)
     {
         bgmPlayer.volume = volume;
@@ -101,4 +199,13 @@ public class AudioManager : MonoBehaviour
             sfxPlayers[i].volume = volume;
         }
     }
+
+    public void SetSkillVolume(float volume)
+    {
+        for (int i = 0; i < skillPlayers.Length; i++)
+        {
+            skillPlayers[i].volume = volume;
+        }
+    }
+
 }

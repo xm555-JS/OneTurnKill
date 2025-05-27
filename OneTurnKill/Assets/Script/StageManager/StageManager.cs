@@ -29,7 +29,6 @@ public class StageManager : MonoBehaviour
     void Awake()
     {
         StageInitialize();
-        //StartCoroutine(SpawnCor());
     }
 
     void OnEnable()
@@ -40,7 +39,6 @@ public class StageManager : MonoBehaviour
     void OnDisable()
     {
         playerAttack.OnAttack -= CheckPlayerAttack;
-        //StopCoroutine(SpawnCor());
     }
 
     void Update()
@@ -53,37 +51,20 @@ public class StageManager : MonoBehaviour
     {
         if (spawners[0].MonsterCount <= 0 && isPlayerAttack == false)
         {
+            Debug.Log("스테이지 : " + stageNum);
             foreach (var spawn in spawners)
-                spawn.StartSpawn(stageNum);
+                spawn.StartSpawn();
+
+            if (spawners[0].IsEnd)
+                return;
 
             PlayerPrefs.SetInt("stageNum", stageNum);
             spawners[0].PrefabIndex(stageNum / 10);
             stageNum++;
-            Debug.Log("그 다음 스테이지는 " + stageNum);
 
             CheckOpenBoss();
         }
     }
-
-    //IEnumerator SpawnCor()
-    //{
-    //    while (true)
-    //    {
-    //        yield return new WaitUntil(() => spawners[0].MonsterCount <= 0 && isPlayerAttack == false);
-
-    //        foreach (var spawn in spawners)
-    //            spawn.StartSpawn(stageNum);
-
-    //        PlayerPrefs.SetInt("stageNum", stageNum);
-    //        spawners[0].PrefabIndex(stageNum / 10);
-    //        stageNum++;
-    //        Debug.Log("그 다음 스테이지는 " + stageNum);
-
-    //        CheckOpenBoss();
-
-    //        yield return new WaitForSeconds(0.3f);
-    //    }
-    //}
 
     void CheckOpenBoss()
     {

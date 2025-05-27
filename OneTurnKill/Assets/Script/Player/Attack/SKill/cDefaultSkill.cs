@@ -26,6 +26,38 @@ public class cDefaultSkill : cPlayerSkill, IPlayerAttack
 
     protected override void PlaySound(SkillData skillData)
     {
-        //Debug.Log("Base 사운드 실행");
+        switch (skillData.skillName)
+        {
+            case "수평선":
+                AudioManager.instance.PlayerSKill(AudioManager.Skill.HORIZONTAL);
+                break;
+            case "임팩트":
+                AudioManager.instance.PlayerSKill(AudioManager.Skill.IMPACT);
+                break;
+            case "파워 샷":
+                AudioManager.instance.PlayerSKill(AudioManager.Skill.POWERSHOT);
+                break;
+            case "스트라이크":
+                AudioManager.instance.PlayerSKill(AudioManager.Skill.SWING);
+                break;
+            case "코멧":
+                AudioManager.instance.PlayerSKill(AudioManager.Skill.COMET, 0.7f);    // 0.3 정도 느리게
+                break;
+            case "피니쉬":
+                AudioManager.instance.PlayerSKill(AudioManager.Skill.FINISH);
+                break;
+            case "쇼크":
+                AudioManager.instance.PlayerSKill(AudioManager.Skill.SHOCK);
+                break;
+            case "스타":
+                AudioManager.instance.RepeatPlayerSkill(AudioManager.Skill.STAR, 5, 0.2f);
+                break;
+            case "저지먼트":
+                AudioManager.instance.RepeatPlayerSkill(AudioManager.Skill.JUDGEMENT, 3, 0.1f);
+                break;
+            case "메테오":
+                AudioManager.instance.PlayerSKill(AudioManager.Skill.METEOR, 0.8f);
+                break;
+        }
     }
 }

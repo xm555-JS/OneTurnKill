@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public cPlayer playerCom;
     public cPlayerStats playerStats;
     public cPlayerAttack playerAttack;
+    public cPlayerMouseMoving playerMoving;
 
     cCoinArea coinArea;
 
@@ -23,6 +24,7 @@ public class GameManager : MonoBehaviour
         playerCom = player.GetComponent<cPlayer>();
         playerStats = player.GetComponent<cPlayerStats>();
         playerAttack = player.GetComponent<cPlayerAttack>();
+        playerMoving = player.GetComponent<cPlayerMouseMoving>();
     }
 
     void Start()
@@ -48,22 +50,31 @@ public class GameManager : MonoBehaviour
                 playerCom.enabled = false;
                 playerAttack.enabled = false;
                 playerStats.enabled = false;
+                playerMoving.enabled = false;
+
+                AudioManager.instance.FindBgm();
             }
             else if (scene.name == "1SampleScene")
             {
                 playerCom.enabled = true;
                 playerAttack.enabled = true;
                 playerStats.enabled = true;
+                playerMoving.enabled = false;
 
                 coinArea = GameObject.Find("Coin_PickUp").GetComponent<cCoinArea>();
                 if (player != null && coinArea != null)
                     player.GetComponent<cPlayer>().SubscribeCoinDrop(coinArea);
 
                 GameManager.instance.player.transform.position = Vector3.zero;
+
+                AudioManager.instance.FindBgm();
             }
             else if (scene.name == "2OrcBossLevel")
             {
+                playerMoving.enabled = true;
                 player.transform.position = new Vector3(-2f, player.transform.position.y, player.transform.position.z);
+
+                AudioManager.instance.FindBgm();
             }
 
             preScene = scene;
