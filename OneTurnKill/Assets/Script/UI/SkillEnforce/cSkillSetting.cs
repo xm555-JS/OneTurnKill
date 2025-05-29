@@ -36,13 +36,21 @@ public class cSkillSetting : MonoBehaviour
     public void Initialize(SkillData skillData)
     {
         foreach (var btn in btnArray)
+        {
             btn.onClick.RemoveAllListeners();
+            btn.GetComponent<Image>().sprite = defaultBtnSprite;
+        }
 
         foreach (var btn in btnArray)
+        {
             btn.onClick.AddListener(() => SetSkillBtn(btn, skillData));
+            if (buttonID.ContainsKey(btn))
+                btn.GetComponent<Image>().sprite = buttonID[btn].skillSprite;
+        }
+            
     }
 
-    public void SetSkillBtn(Button btn, SkillData skillData)
+    void SetSkillBtn(Button btn, SkillData skillData)
     {
         DuplicateCheck(btn, skillData);
 

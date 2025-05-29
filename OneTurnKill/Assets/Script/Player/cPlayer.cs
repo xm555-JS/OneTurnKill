@@ -14,12 +14,12 @@ public class cPlayer : MonoBehaviour
 
     cPlayerStats playerStats;
 
-    public int Strength { get => playerStats.strength; }
+    public long Strength { get => playerStats.strength; }
     public int BossStrength { get => playerStats.bossStrength; }
-    public int CriticalChance { get => playerStats.criticalChance; }
-    public int CriticalDamage { get => playerStats.criticalDamage; }
-    public int GoldAcquire { get => playerStats.goldAcquire; }
-    public int ExpAcquire { get => playerStats.expAcquire; }
+    public long CriticalChance { get => playerStats.criticalChance; }
+    public long CriticalDamage { get => playerStats.criticalDamage; }
+    public long GoldAcquire { get => playerStats.goldAcquire; }
+    public long ExpAcquire { get => playerStats.expAcquire; }
 
     public void UpdateEnforceStats(cItemInstance itemData) { playerStats.UpdateStats(itemData); }
 

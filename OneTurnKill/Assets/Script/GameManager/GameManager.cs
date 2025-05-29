@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour
         playerStats = player.GetComponent<cPlayerStats>();
         playerAttack = player.GetComponent<cPlayerAttack>();
         playerMoving = player.GetComponent<cPlayerMouseMoving>();
+
+        Application.targetFrameRate = 60;
     }
 
     void Start()

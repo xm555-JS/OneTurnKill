@@ -15,7 +15,7 @@ public class ItemData
     public string path;
     public bool isInstance;
 
-    public int att;
+    public long att;
     public int bossAtt;
     public int criticalChance;
     public int criticalDamage;

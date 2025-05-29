@@ -7,8 +7,8 @@ public class Stats
 {
     public int statLevel;
     public int statIncrease;
-    public int stat;
-    public int pureStat;
+    public long stat;
+    public long pureStat;
 }
 
 public class CharactorStats

@@ -1286,12 +1286,12 @@ MonoBehaviour:
   - {fileID: 6187908614045066251, guid: cbad54dc38d99434d96a0b7293b5a6d2, type: 3}
   - {fileID: 2588051990155362009, guid: 5c7f3ec3f921eb84d819a6e1ac43d0ff, type: 3}
   dropItemProbs:
-  - 56
+  - 50
   - 30
   - 5
   - 5
-  - 2
-  - 2
+  - 5
+  - 5
 --- !u!50 &7137635591168865856
 Rigidbody2D:
   serializedVersion: 4

@@ -21,6 +21,6 @@ public class cBossBullet : MonoBehaviour
 
     void FixedUpdate()
     {
-        rigid.velocity = this.transform.right * 5f;
+        rigid.velocity = this.transform.right * 10f;
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,17 +6,20 @@ using UnityEngine.UI;
 
 public class cBuyButton : MonoBehaviour
 {
-    enum Type { ARMOR, WEAPON, COIN, BOSSCOIN, CHANGE } 
+    enum Type { ARMOR, WEAPON, COIN, BOSSCOIN, CHANGE, BOSS_ARMOR, BOSS_WEAPON }
     [SerializeField] Type matType;
 
     [SerializeField] int price;
     cPlayer player;
     Button buyBtn;
+    cDateTimeBtn dataBtn;
 
     void Awake()
     {
         player = GameManager.instance.playerCom;
-        buyBtn = this.GetComponent<Button>();
+        buyBtn = GetComponent<Button>();
+        dataBtn = GetComponent<cDateTimeBtn>();
+        buyBtn.interactable = Convert.ToBoolean(PlayerPrefs.GetInt("isInteract" + buyBtn.gameObject.name, 1));
     }
 
     void Start()
@@ -47,6 +51,17 @@ public class cBuyButton : MonoBehaviour
                 player.SpendBossCoin(price);
                 player.AddCoin(1000);
                 break;
+            case Type.BOSS_ARMOR:
+                player.SpendBossCoin(price);
+                player.AddArmorMat(10);
+                break;
+            case Type.BOSS_WEAPON:
+                player.SpendBossCoin(price);
+                player.AddWeaponMat(10);
+                break;
         }
+
+        if (dataBtn)
+            dataBtn.BuyButton();
     }
 }

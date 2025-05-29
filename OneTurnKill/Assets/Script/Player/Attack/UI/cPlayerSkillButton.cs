@@ -64,7 +64,6 @@ public class cPlayerSkillButton : MonoBehaviour
             skillButton.interactable = false;
             isReadyAuto = false;
         }
-            
     }
 
     void GetPlayerAttack()

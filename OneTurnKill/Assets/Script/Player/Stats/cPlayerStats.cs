@@ -8,12 +8,12 @@ public class cPlayerStats : MonoBehaviour
 {
     #region Stats
 
-    public int strength { get; private set; }
+    public long strength { get; private set; }
     public int bossStrength { get; private set; }
-    public int criticalChance { get; private set; }
-    public int criticalDamage { get; private set; }
-    public int goldAcquire { get; private set; }
-    public int expAcquire { get; private set; }
+    public long criticalChance { get; private set; }
+    public long criticalDamage { get; private set; }
+    public long goldAcquire { get; private set; }
+    public long expAcquire { get; private set; }
 
     int hpLevel, strLevel, criChanceLevel, criDamageLevel, goldAcqLevel, expAcqLevel;
 
@@ -29,10 +29,10 @@ public class cPlayerStats : MonoBehaviour
 
     #region PureStats
 
-    int pureAtt;
+    long pureAtt;
     int pureBossAtt;
-    int pureCriChance;
-    int pureCriDamage;
+    long pureCriChance;
+    long pureCriDamage;
 
     #endregion
 
@@ -61,7 +61,7 @@ public class cPlayerStats : MonoBehaviour
     {
         strLevel++;
         strengthIncrease += increaseAmount;
-        strength += strengthIncrease;
+        strength += (long)strengthIncrease;
 
         pureAtt += strengthIncrease;
         Debug.Log("Strength : " + strength);

@@ -12,6 +12,7 @@ public class cSkillUI : MonoBehaviour
     static cEnforceMoving skillEnforceMoving;
     static cSkillEnforce skillEnforce;
     static cSkillSetting skillSetting;
+    static cPassiveSkillSetting passiveSetting;
 
     public SkillData SkillData { get => skillData; }
 
@@ -23,12 +24,22 @@ public class cSkillUI : MonoBehaviour
             skillEnforceMoving = FindObjectOfType<cEnforceMoving>(true);
         if (skillEnforce == null)
             skillEnforce = FindObjectOfType<cSkillEnforce>(true);
-        if (skillSetting == null)
+        if (passiveSetting == null)
+            passiveSetting = FindObjectOfType<cPassiveSkillSetting>(true);
+
+        if (skillSetting == null && skillData.skillType == SkillType.ACTIVE)
             skillSetting = FindObjectOfType<cSkillSetting>(true);
+        else if (passiveSetting == null && skillData.skillType == SkillType.PASSIVE)
+            passiveSetting = FindObjectOfType<cPassiveSkillSetting>(true);
 
         skillButton.onClick.AddListener(() => skillEnforceMoving.MoveToShow());
         skillButton.onClick.AddListener(() => skillEnforce.Initialize(skillData));
-        skillButton.onClick.AddListener(() => skillSetting.Initialize(skillData));
+
+        if (skillData.skillType == SkillType.ACTIVE)
+            skillButton.onClick.AddListener(() => skillSetting.Initialize(skillData));
+        else if (skillData.skillType == SkillType.PASSIVE)
+            skillButton.onClick.AddListener(() => passiveSetting.Initialize(skillData));
+
         skillButton.onClick.AddListener(() => AudioManager.instance.PlayerSfx(AudioManager.Sfx.CLICK));
     }
 }

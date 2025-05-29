@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class cSkillSettingPassive : MonoBehaviour
+public class cPassiveSkillSetting : MonoBehaviour
 {
     [Header("Default")]
     [SerializeField] Sprite defaultBtnSprite;
@@ -16,22 +16,23 @@ public class cSkillSettingPassive : MonoBehaviour
 
     Dictionary<Button, SkillData> buttonID = new Dictionary<Button, SkillData>();
 
-    void Awake()
-    {
-        // initialize
-        btnArray = new Button[] { btn1, btn2, btn3 };
-    }
-
     public void Initialize(SkillData skillData)
     {
         foreach (var btn in btnArray)
+        {
             btn.onClick.RemoveAllListeners();
+            btn.GetComponent<Image>().sprite = defaultBtnSprite;
+        }
 
         foreach (var btn in btnArray)
+        {
             btn.onClick.AddListener(() => SetSkillBtn(btn, skillData));
+            if (buttonID.ContainsKey(btn))
+                btn.GetComponent<Image>().sprite = buttonID[btn].skillSprite;
+        }
     }
 
-    public void SetSkillBtn(Button btn, SkillData skillData)
+    void SetSkillBtn(Button btn, SkillData skillData)
     {
         DuplicateCheck(btn, skillData);
 
@@ -78,6 +79,7 @@ public class cSkillSettingPassive : MonoBehaviour
             otherbtn.GetComponent<Image>().sprite = btn.GetComponent<Image>().sprite;
             ButtonIDChange(otherbtn, skillData);
         }
+            
     }
 
     void ButtonIDRegister(Button btn, SkillData data)   // 버튼 정보 등록
@@ -91,4 +93,10 @@ public class cSkillSettingPassive : MonoBehaviour
     void ButtonIDRemove(Button btn) { buttonID.Remove(btn); }   // 버튼 정보 삭제
 
     void ButtonIDChange(Button btn, SkillData data) { buttonID[btn] = data; }   // 버튼 정보 바꾸기
+
+    void Awake()
+    {
+        // initialize
+        btnArray = new Button[] { btn1, btn2, btn3 };
+    }
 }

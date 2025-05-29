@@ -17,11 +17,11 @@ public class cCoinArea : cItemArea
         }
     }
 
-    int CalculatePrice(int price)
+    long CalculatePrice(int price)
     {
         // 특성도 적용시켜야함
 
-        int resultPrice = price + (price * (GameManager.instance.playerCom.GoldAcquire / 100));
+        long resultPrice = price + (price * (GameManager.instance.playerCom.GoldAcquire / 100));
         return resultPrice;
     }
 }

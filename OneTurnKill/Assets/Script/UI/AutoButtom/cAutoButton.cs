@@ -23,7 +23,7 @@ public class cAutoButton : MonoBehaviour
         else
         {
             isAuto = true;
-            StopCoroutine(AutoSKill());
+            StopAllCoroutines();
         }
         ChangeBtnAlpha();
         PlayerPrefs.SetInt("isAuto", System.Convert.ToInt32(isAuto));

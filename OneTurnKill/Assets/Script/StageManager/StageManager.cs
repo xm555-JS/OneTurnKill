@@ -51,12 +51,12 @@ public class StageManager : MonoBehaviour
     {
         if (spawners[0].MonsterCount <= 0 && isPlayerAttack == false)
         {
+            if (spawners[0].IsEnd)
+                return;
+
             Debug.Log("스테이지 : " + stageNum);
             foreach (var spawn in spawners)
                 spawn.StartSpawn();
-
-            if (spawners[0].IsEnd)
-                return;
 
             PlayerPrefs.SetInt("stageNum", stageNum);
             spawners[0].PrefabIndex(stageNum / 10);
@@ -69,7 +69,7 @@ public class StageManager : MonoBehaviour
     void CheckOpenBoss()
     {
         // Need To Boss Stage
-        if (stageNum == 80)
+        if (stageNum >= 70)
             OnOpenOrcBoss?.Invoke();
         //else if (stageNum == 160)
     }
