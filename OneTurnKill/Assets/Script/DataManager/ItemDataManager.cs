@@ -14,6 +14,7 @@ public class ItemData
     public int level;
     public string path;
     public bool isInstance;
+    public bool isSave;
 
     public long att;
     public int bossAtt;
@@ -87,4 +88,6 @@ public class ItemDataManager : MonoBehaviour
         string json = JsonUtility.ToJson(wrapper, true);
         File.WriteAllText(path, json);
     }
+
+
 }

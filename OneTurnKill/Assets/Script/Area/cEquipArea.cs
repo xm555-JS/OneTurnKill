@@ -10,7 +10,6 @@ public class cEquipArea : cItemArea
 
     protected override void GetItem(Collider2D collision)
     {
-
         cItemData itemData = collision.gameObject.GetComponent<cItem>().ItemData;
         if (!itemData)
             return;

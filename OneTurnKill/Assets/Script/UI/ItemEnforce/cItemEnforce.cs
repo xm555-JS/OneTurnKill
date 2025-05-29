@@ -124,6 +124,8 @@ public class cItemEnforce : MonoBehaviour
 
     void SellEquip(cItemInstance itemData)
     {
+        // Need To Fix
+
         // 해당 아이템 돈+
         GameManager.instance.playerCom.AddCoin(itemData.price);
         // 강화창 닫기
