@@ -172,7 +172,7 @@ public class AudioManager : MonoBehaviour
     IEnumerator StartBgm(string sceneName)
     {
         yield return new WaitForSeconds(1f);
-        Debug.Log(sceneName);
+        //Debug.Log(sceneName);
         switch (sceneName)
         {
             case "0CustomLevel":

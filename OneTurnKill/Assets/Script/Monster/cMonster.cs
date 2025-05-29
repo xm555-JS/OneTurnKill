@@ -101,7 +101,7 @@ public class cMonster : MonoBehaviour
             yield break;
 
         hp -= damage;
-        Debug.Log(damage);
+        //Debug.Log(damage);
 
         OnDamage?.Invoke(this, hp);
 
@@ -149,7 +149,7 @@ public class cMonster : MonoBehaviour
     IEnumerator Dead()
     {
         anim.SetTrigger("Dead");
-        Debug.Log("잘 들어오니?");
+
         yield return new WaitForSeconds(1f);
 
         objectPool.Release(this.gameObject);

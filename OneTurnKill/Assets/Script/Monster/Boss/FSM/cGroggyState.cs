@@ -12,6 +12,8 @@ public class cGroggyState : IState
 
     public void Enter()
     {
+        Debug.Log("cGroggyState - 그로기 상태");
+
         bossHpObj = boss.bossHpObj;
         bossHpObj.SetActive(true);
         BossStageManager.instance.ReadyAttack();

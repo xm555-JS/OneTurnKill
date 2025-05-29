@@ -54,7 +54,7 @@ public class StageManager : MonoBehaviour
             if (spawners[0].IsEnd)
                 return;
 
-            Debug.Log("스테이지 : " + stageNum);
+            //Debug.Log("스테이지 : " + stageNum);
             foreach (var spawn in spawners)
                 spawn.StartSpawn();
 
@@ -92,7 +92,7 @@ public class StageManager : MonoBehaviour
                 spawn.ClearMonster();
 
             stageNum--;
-            Debug.Log("현재 스테이지는 " + stageNum);
+            //Debug.Log("현재 스테이지는 " + stageNum);
             isPlayerAttack = false;
         }
         else

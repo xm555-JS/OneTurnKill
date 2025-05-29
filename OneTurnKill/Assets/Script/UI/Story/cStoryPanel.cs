@@ -79,7 +79,7 @@ public class cStoryPanel : MonoBehaviour
 
     public bool ReturnPanel()
     {
-        Debug.Log("ReturnPanel");
+        //Debug.Log("ReturnPanel");
         StartCoroutine(StartReturn());
         return isFinish;
     }
@@ -93,13 +93,13 @@ public class cStoryPanel : MonoBehaviour
             alpha -= Time.deltaTime;
             panelColor.a = alpha;
             panelImg.color = panelColor;
-            Debug.Log(panelImg.color);
+            //Debug.Log(panelImg.color);
             yield return null;
         }
 
         panelColor.a = 0f;
         panelImg.color = panelColor;
         isFinish = true;
-        Debug.Log(isFinish);
+        //Debug.Log(isFinish);
     }
 }

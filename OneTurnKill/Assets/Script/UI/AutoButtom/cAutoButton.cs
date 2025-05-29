@@ -47,8 +47,8 @@ public class cAutoButton : MonoBehaviour
         while (true)
         {
             yield return null;
-            Debug.Log(isAuto);
-            Debug.Log(skillBtns[0].GetIsReadyAuto());
+            //Debug.Log(isAuto);
+            //Debug.Log(skillBtns[0].GetIsReadyAuto());
             yield return new WaitUntil(() => isAuto && skillBtns[0].GetIsReadyAuto() == true);
 
             ChooseSkillBtn();

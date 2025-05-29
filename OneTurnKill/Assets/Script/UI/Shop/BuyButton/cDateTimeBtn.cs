@@ -27,9 +27,9 @@ public class cDateTimeBtn : MonoBehaviour
         itemImg = GetComponentsInChildren<Image>()[1];
 
         //test
-        DateTime now = DateTime.Now;
-        Debug.Log(now.Month);
-        Debug.Log(now.Minute);
+        //DateTime now = DateTime.Now;
+        //Debug.Log(now.Month);
+        //Debug.Log(now.Minute);
 
         CheckOtherDate();
 
@@ -41,7 +41,7 @@ public class cDateTimeBtn : MonoBehaviour
         while (true)
         {
             DateTime now = DateTime.Now;
-            Debug.Log("cDateTimeBtn : " + now.Minute);
+            //Debug.Log("cDateTimeBtn : " + now.Minute);
             if (now.Hour == 0 && now.Minute == 34)
             {
                 btn.interactable = true;

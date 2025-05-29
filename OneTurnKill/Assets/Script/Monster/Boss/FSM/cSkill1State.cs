@@ -14,6 +14,8 @@ public class cSkill1State : IState
 
     public void Enter()
     {
+        Debug.Log("cSkill1State - 첫 번째 스킬 공격 상태");
+
         spawnerTrans = boss.spawnerTrans;
         bossBullet = boss.bossBullet;
         attackCoroutine = boss.StartCoroutine(StartFire());

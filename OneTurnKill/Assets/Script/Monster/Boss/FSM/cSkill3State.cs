@@ -12,6 +12,8 @@ public class cSkill3State : IState
     
     public void Enter()
     {
+        Debug.Log("cSkill3State - 세 번째 스킬 공격 상태");
+
         bossBullet = boss.bossBullet;
         boss.StartCoroutine(ReadyAttack());
     }

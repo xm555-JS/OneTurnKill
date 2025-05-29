@@ -12,5 +12,6 @@ public class cNormalState : IState
 
     public void Enter()
     {
+        Debug.Log("cNormalState - 평시 상태");
     }
 }

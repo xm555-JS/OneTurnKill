@@ -16,6 +16,8 @@ public class cSkill2State : IState
 
     public void Enter()
     {
+        Debug.Log("cSkill2State - 두 번째 스킬 공격 상태");
+
         this.attackArea = boss.attackArea;
 
         foreach (var area in attackArea)

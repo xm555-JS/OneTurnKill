@@ -9,8 +9,6 @@ public class SkillData : ScriptableObject
 {
     [Header("For_GameObject")]
     public GameObject skillEffect;
-    public AnimationClip sklilAnim;
-    public AudioClip skillSound;
 
     [Header("For_UI")]
     public string skillName;

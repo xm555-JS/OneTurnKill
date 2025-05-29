@@ -74,6 +74,6 @@ public class cBossUIBtn : MonoBehaviour
         PlayerPrefs.SetInt("UnRock", 1);
         bossBtn.interactable = true;
         rockImg.enabled = false;
-        Debug.Log("보스 해방!");
+        //Debug.Log("보스 해방!");
     }
 }

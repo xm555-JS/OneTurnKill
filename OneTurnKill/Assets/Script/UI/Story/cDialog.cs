@@ -42,7 +42,7 @@ public class cDialog : MonoBehaviour
             return;
         preDialog = dialog;
 
-        Debug.Log("대화중");
+        //Debug.Log("대화중");
 
         nameTxt.text = name;
         dialogTxt.text = dialog;
