@@ -22,7 +22,6 @@ public class cItemEnforce : MonoBehaviour
 
     bool isWear;
 
-
     public void Initialize(cItemInstance itemData)
     {
         InitializeEnforce(itemData);
@@ -128,6 +127,8 @@ public class cItemEnforce : MonoBehaviour
         GameManager.instance.playerCom.AddCoin(itemData.price);
         // 강화창 닫기
         itemData.owner.GetComponent<cItemUI>().HideEnforceMoving();
+        // 데이터 저장
+        ItemDataManager.instance.RemoveItemData(itemData);
         // 해당 아이템 삭제
         Destroy(itemData.owner);
     }

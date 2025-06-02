@@ -14,6 +14,7 @@ public class ItemData
     public int level;
     public string path;
     public bool isInstance;
+    public bool isSave;
 
     public long att;
     public int bossAtt;
@@ -80,6 +81,29 @@ public class ItemDataManager : MonoBehaviour
         itemList[index].bossAtt = itemData.itemStats.bossAtt;
         itemList[index].criticalChance = itemData.itemStats.criticalChance;
         itemList[index].criticalDamage = itemData.itemStats.criticalDamage;
+
+        ItemDataListWrapper wrapper = new ItemDataListWrapper();
+        wrapper.Items = itemList;
+
+        string json = JsonUtility.ToJson(wrapper, true);
+        File.WriteAllText(path, json);
+    }
+
+    public void RemoveItemData(cItemInstance itemData)
+    {
+        List<ItemData> itemList = LoadItemdata();
+
+        int index = 0;
+        foreach (var item in itemList)
+        {
+            if (item.ID == itemData.ID)
+            {
+                itemList.RemoveAt(index);
+                break;
+            }
+
+            index++;
+        }
 
         ItemDataListWrapper wrapper = new ItemDataListWrapper();
         wrapper.Items = itemList;

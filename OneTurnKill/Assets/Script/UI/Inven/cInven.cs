@@ -49,8 +49,8 @@ public class cInven : MonoBehaviour
         invenItem.GetComponent<cItemUI>().itemboxInitialize(itemData);
         invenItem.GetComponentsInChildren<Image>()[1].sprite = itemData.itemSprite;
 
-        if (owner.name == "Helmet_Inven" || owner.name == "Armor_Inven" || owner.name == "Weapon_Inven")
-            SaveItem(itemData);
+        //if (owner.name == "Helmet_Inven" || owner.name == "Armor_Inven" || owner.name == "Weapon_Inven")
+        //    SaveItem(itemData);
 
         //count
         CheckResize();
@@ -88,26 +88,26 @@ public class cInven : MonoBehaviour
 
     #region Data
 
-    void SaveItem(cItemData data)
-    {
-        ItemData itemData = new ItemData
-        {
-            ID = data.ID,
-            itemName = data.itemName,
-            type = data.type,
-            itemIndex = data.itemIndex,
-            price = data.price,
-            level = data.level,
-            path = data.path,
+    //void SaveItem(cItemData data)
+    //{
+    //    ItemData itemData = new ItemData
+    //    {
+    //        ID = data.ID,
+    //        itemName = data.itemName,
+    //        type = data.type,
+    //        itemIndex = data.itemIndex,
+    //        price = data.price,
+    //        level = data.level,
+    //        path = data.path,
 
-            att = data.itemStats.att,
-            bossAtt = data.itemStats.bossAtt,
-            criticalChance = data.itemStats.criticalChance,
-            criticalDamage = data.itemStats.criticalDamage
-        };
+    //        att = data.itemStats.att,
+    //        bossAtt = data.itemStats.bossAtt,
+    //        criticalChance = data.itemStats.criticalChance,
+    //        criticalDamage = data.itemStats.criticalDamage
+    //    };
 
-        ItemDataManager.instance.SaveItemData(itemData);
-    }
+    //    ItemDataManager.instance.SaveItemData(itemData);
+    //}
 
     void LoadItem()
     {
@@ -145,7 +145,9 @@ public class cInven : MonoBehaviour
             itemData.itemStats.bossAtt = data.bossAtt;
             itemData.itemStats.criticalChance = data.criticalChance;
             itemData.itemStats.criticalDamage = data.criticalDamage;
+            itemData.path = data.path;
             itemData.isInstance = true;
+            itemData.isSave = data.isSave;
 
             GameObject invenItem = Instantiate(invenBox);
             invenItem.transform.SetParent(owner.transform, false);
