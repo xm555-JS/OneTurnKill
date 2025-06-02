@@ -42,7 +42,6 @@ public class cItemInstance
             itemStats.criticalDamage = itemData.itemStats.criticalDamage;
             return;
         }
-            
 
         if (type == ItemType.ARMOR || type == ItemType.HELMET)
         {
@@ -80,5 +79,27 @@ public class cItemInstance
             criticalDamage = this.itemStats.criticalDamage
         };
         ItemDataManager.instance.SaveItemData(dataItemData);
+    }
+
+    public void SaveItem(cItemInstance data)
+    {
+        ItemData itemData = new ItemData
+        {
+            ID = data.ID,
+            itemName = data.itemName,
+            type = data.type,
+            itemIndex = data.itemIndex,
+            price = data.price,
+            level = data.level,
+            path = data.path,
+            isSave = true,
+
+            att = data.itemStats.att,
+            bossAtt = data.itemStats.bossAtt,
+            criticalChance = data.itemStats.criticalChance,
+            criticalDamage = data.itemStats.criticalDamage
+        };
+
+        ItemDataManager.instance.SaveItemData(itemData);
     }
 }

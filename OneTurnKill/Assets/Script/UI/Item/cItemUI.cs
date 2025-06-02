@@ -22,6 +22,8 @@ public class cItemUI : MonoBehaviour
 
 
         cItemInstance itemInstance = new cItemInstance(itemData);
+        if (!itemData.isSave)
+            itemInstance.SaveItem(itemInstance);
         btn.onClick.AddListener(() => itemEnforceMoving.MoveToShow());
         btn.onClick.AddListener(() => itemEnforce.Initialize(itemInstance));
         btn.onClick.AddListener(() => AudioManager.instance.PlayerSfx(AudioManager.Sfx.CLICK));

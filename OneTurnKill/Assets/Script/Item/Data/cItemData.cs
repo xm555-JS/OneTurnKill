@@ -26,6 +26,7 @@ public class cItemData : ScriptableObject
     public int price;
     public string path;
     public bool isInstance;
+    public bool isSave;
 
     [Header("For_Enforce")]
     public int ID;

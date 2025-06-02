@@ -111,18 +111,19 @@ void LoadItem()
                 continue;
         }
 
-        itemData.ID = data.ID;
-        itemData.itemSprite = Resources.Load<Sprite>(data.path);
-        //Debug.Log(data.path);
-        itemData.itemName = data.itemName;
-        itemData.itemIndex = data.itemIndex;
-        itemData.price = data.price;
-        itemData.level = data.level;
-        itemData.itemStats.att = data.att;
-        itemData.itemStats.bossAtt = data.bossAtt;
-        itemData.itemStats.criticalChance = data.criticalChance;
-        itemData.itemStats.criticalDamage = data.criticalDamage;
-        itemData.isInstance = true;
+            itemData.ID = data.ID;
+            itemData.itemSprite = Resources.Load<Sprite>(data.path);
+            itemData.itemName = data.itemName;
+            itemData.itemIndex = data.itemIndex;
+            itemData.price = data.price;
+            itemData.level = data.level;
+            itemData.itemStats.att = data.att;
+            itemData.itemStats.bossAtt = data.bossAtt;
+            itemData.itemStats.criticalChance = data.criticalChance;
+            itemData.itemStats.criticalDamage = data.criticalDamage;
+            itemData.path = data.path;
+            itemData.isInstance = true;
+            itemData.isSave = data.isSave;
 
         GameObject invenItem = Instantiate(invenBox);
         invenItem.transform.SetParent(owner.transform, false);

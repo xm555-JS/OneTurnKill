@@ -89,5 +89,26 @@ public class ItemDataManager : MonoBehaviour
         File.WriteAllText(path, json);
     }
 
+    public void RemoveItemData(cItemInstance itemData)
+    {
+        List<ItemData> itemList = LoadItemdata();
 
+        int index = 0;
+        foreach (var item in itemList)
+        {
+            if (item.ID == itemData.ID)
+            {
+                itemList.RemoveAt(index);
+                break;
+            }
+
+            index++;
+        }
+
+        ItemDataListWrapper wrapper = new ItemDataListWrapper();
+        wrapper.Items = itemList;
+
+        string json = JsonUtility.ToJson(wrapper, true);
+        File.WriteAllText(path, json);
+    }
 }
