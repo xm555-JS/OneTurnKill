@@ -11,7 +11,6 @@ public class cSkill1State : IState
 
     public cSkill1State(cBoss boss) { this.boss = boss; }
 
-
     public void Enter()
     {
         Debug.Log("cSkill1State - 첫 번째 스킬 공격 상태");

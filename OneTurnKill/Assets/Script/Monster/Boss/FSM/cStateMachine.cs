@@ -33,10 +33,4 @@ public class cStateMachine
         CurrenState = nextState;
         nextState.Enter();
     }
-
-    public void Update()
-    {
-        if (CurrenState != null)
-            CurrenState.Update();
-    }
 }

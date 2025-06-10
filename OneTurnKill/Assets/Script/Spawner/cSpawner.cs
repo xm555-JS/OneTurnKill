@@ -106,10 +106,8 @@ public class cSpawner : MonoBehaviour
     {
         cMonster monster = GetComponentInChildren<cMonster>();
         if (!monster)
-        {
-            Debug.LogError("monster is null");
             return;
-        }
+
         objPool.Release(monster.gameObject);
 
         // 몬스터 count 초기화

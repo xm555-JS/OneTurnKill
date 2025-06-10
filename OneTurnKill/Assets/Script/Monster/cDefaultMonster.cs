@@ -13,10 +13,8 @@ public class cDefaultMonster : cMonster
 
         if (!isArrive)
         {
-            // anim
             anim.SetBool("Run", true);
 
-            // move
             Vector2 moveVec = player.transform.position - this.transform.position;
             rigid.MovePosition(rigid.position + moveVec.normalized * speed * Time.deltaTime);
         }

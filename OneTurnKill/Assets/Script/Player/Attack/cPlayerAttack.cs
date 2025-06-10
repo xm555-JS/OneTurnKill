@@ -6,9 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class cPlayerAttack : MonoBehaviour
 {
-    SkillDataManager dataManager;
     Animator anim;
-    IPlayerAttack skill;
+    SkillDataManager dataManager;
+    cDefaultSkill skill = null;
 
     public event Action OnAttack;
 
@@ -19,18 +19,16 @@ public class cPlayerAttack : MonoBehaviour
 
     void OnEnable()
     {
-        Scene gamePlayScene = SceneManager.GetSceneByName("1SampleScene");
-        if (gamePlayScene.name == "1SampleScene")
+        Scene scene = SceneManager.GetSceneByName("1SampleScene");
+        if (scene.name == "1SampleScene")
             dataManager = GameObject.FindWithTag("SkillData").GetComponent<SkillDataManager>();
     }
 
     void Setskill()
     {
-        cDefaultSkill baseskill = new cDefaultSkill();
-
-        baseskill.SetAnim(anim);
-        baseskill.SetTransform(this.transform);
-        this.skill = baseskill;
+        skill = new cDefaultSkill();
+        skill.SetAnim(anim);
+        skill.SetTransform(this.transform);
     }
 
     public void Attack(string skillName)
@@ -40,6 +38,8 @@ public class cPlayerAttack : MonoBehaviour
             return;
 
         Setskill();
+        if (skill == null)
+            Debug.LogError("cPlayerAttack - skill is null");
         skill.Execution(skillData);
         OnAttack?.Invoke();
     }

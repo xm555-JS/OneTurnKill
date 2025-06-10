@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class cDefaultSkill : cPlayerSkill, IPlayerAttack
+public class cDefaultSkill : cPlayerSkill
 {
     public void Execution(SkillData skillData)
     {
@@ -41,7 +41,7 @@ public class cDefaultSkill : cPlayerSkill, IPlayerAttack
                 AudioManager.instance.PlayerSKill(AudioManager.Skill.SWING);
                 break;
             case "코멧":
-                AudioManager.instance.PlayerSKill(AudioManager.Skill.COMET, 0.7f);    // 0.3 정도 느리게
+                AudioManager.instance.PlayerSKill(AudioManager.Skill.COMET, 0.7f);
                 break;
             case "피니쉬":
                 AudioManager.instance.PlayerSKill(AudioManager.Skill.FINISH);

@@ -61,14 +61,12 @@ public class cBoss : cMonster
 
         if (!isArrive)
         {
-            // anim
             anim.SetBool("Run", true);
-
-            // move
             rigid.MovePosition(rigid.position + Vector2.left.normalized * speed * Time.deltaTime);
         }
         else
         {
+            // 도착했다면 상태 변경
             anim.SetBool("Run", false);
             if (stateMachine == null)
             {

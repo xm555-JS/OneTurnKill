@@ -56,6 +56,12 @@ public class ObjectPool : MonoBehaviour
     {
         objectPool.Clear();
         prefab = monsterPrefab;
-        objectPool = new ObjectPool<GameObject>(CreateObject, OnGetFromPool, OnReleaseFromPool, OnDestroyFromPool, true, defaultCapacity, maxSize);
+        objectPool = new ObjectPool<GameObject>(CreateObject,
+                                                OnGetFromPool,
+                                                OnReleaseFromPool,
+                                                OnDestroyFromPool,
+                                                true,
+                                                defaultCapacity,
+                                                maxSize);
     }
 }

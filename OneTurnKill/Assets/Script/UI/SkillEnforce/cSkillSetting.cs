@@ -47,7 +47,6 @@ public class cSkillSetting : MonoBehaviour
             if (buttonID.ContainsKey(btn))
                 btn.GetComponent<Image>().sprite = buttonID[btn].skillSprite;
         }
-            
     }
 
     void SetSkillBtn(Button btn, SkillData skillData)

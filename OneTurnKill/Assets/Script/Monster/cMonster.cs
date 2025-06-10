@@ -53,7 +53,6 @@ public class cMonster : MonoBehaviour
 
         player = GameManager.instance.player;
 
-        // Drop_Item
         dropItem = GetComponent<cDropItem>();
     }
 

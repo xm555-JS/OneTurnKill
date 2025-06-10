@@ -15,7 +15,7 @@ public class cPlayerStats : MonoBehaviour
     public long goldAcquire { get; private set; }
     public long expAcquire { get; private set; }
 
-    int hpLevel, strLevel, criChanceLevel, criDamageLevel, goldAcqLevel, expAcqLevel;
+    int strLevel, criChanceLevel, criDamageLevel, goldAcqLevel, expAcqLevel;
 
     public int strengthIncrease { get; private set; }
     public int criChanceIncrease { get; private set; }
@@ -445,17 +445,8 @@ public class cPlayerStats : MonoBehaviour
         else
             expAcquire = 0;
 
-        //Stats bossStats = StatsDataManager.instance.LoadStatsData("bossStrength");
-        //if (bossStats != null)
-        //{
-        //    bossStrength = bossStats.stat;
-        //    pureBossAtt = bossStats.pureStat;
-        //}
-        //else
-        //{
-            bossStrength = 10;
-            pureBossAtt = bossStrength;
-        //}
+        bossStrength = 10;
+        pureBossAtt = bossStrength;
     }
 
     void InitializeCharStats()

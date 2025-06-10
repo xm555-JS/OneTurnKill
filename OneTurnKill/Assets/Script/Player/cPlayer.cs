@@ -10,6 +10,27 @@ public class cPlayer : MonoBehaviour
     float armorMaterial;
     float weaponMaterial;
 
+    #region PropertyItem
+
+    public float Coin { get => coin; }
+    public float BossCoin { get => bossCoin; }
+    public float ArmorMaterial { get => armorMaterial; }
+    public float WeaponMaterial { get => weaponMaterial; }
+
+    #endregion
+
+    #region AddSpend
+
+    public void AddCoin(float value) { coin += value; SaveCoin(); }
+    public void SpendCoin(float value) { coin -= value; SaveCoin(); }
+    public void AddBossCoin(float value) { bossCoin += value; SaveBossCoin(); }
+    public void SpendBossCoin(float value) { bossCoin -= value; SaveBossCoin(); }
+    public void AddArmorMat(int value) { armorMaterial += value; SaveArmorMat(); }
+    public void SpendArmorMat(int value) { armorMaterial -= value; SaveArmorMat(); }
+    public void AddWeaponMat(int value) { weaponMaterial += value; SaveWeaponMat(); }
+    public void SpendWeaponMat(int value) { weaponMaterial -= value; SaveWeaponMat(); }
+    #endregion
+
     #region Stats
 
     cPlayerStats playerStats;
@@ -30,27 +51,6 @@ public class cPlayer : MonoBehaviour
     public float CharGoldAcqRate { get => playerStats.charGoldAcqRate; }
     public float CharExpAcqRate { get => playerStats.charExpAcqRate; }
 
-    #endregion
-
-    #region PropertyItem
-
-    public float Coin { get => coin; }
-    public float BossCoin { get => bossCoin; }
-    public float ArmorMaterial { get => armorMaterial; }
-    public float WeaponMaterial { get => weaponMaterial; }
-
-    #endregion
-
-    #region AddSpend
-
-    public void AddCoin(float value) { coin += value; SaveCoin(); }
-    public void SpendCoin(float value) { coin -= value; SaveCoin(); }
-    public void AddBossCoin(float value) { bossCoin += value; SaveBossCoin(); }
-    public void SpendBossCoin(float value) { bossCoin -= value; SaveBossCoin(); }
-    public void AddArmorMat(int value) { armorMaterial += value; SaveArmorMat();  }
-    public void SpendArmorMat(int value) { armorMaterial -= value; SaveArmorMat(); }
-    public void AddWeaponMat(int value) { weaponMaterial += value; SaveWeaponMat(); }
-    public void SpendWeaponMat(int value) { weaponMaterial -= value; SaveWeaponMat(); }
     #endregion
 
     #region Customizing
@@ -116,12 +116,6 @@ public class cPlayer : MonoBehaviour
     float LoadBossCoin() { return PlayerPrefs.GetFloat("bossCoin", bossCoin); }
     float LoadArmorMat() { return PlayerPrefs.GetFloat("armorMaterial", armorMaterial); }
     float LoadWeaponMat() { return PlayerPrefs.GetFloat("weaponMaterial", weaponMaterial); }
-
-
-    #endregion
-
-    #region CatchMoving
-
 
 
     #endregion
