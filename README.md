@@ -17,4 +17,5 @@
 - C#
 - Git, Github
 
-## 포트폴리오 PPT
+## 포트폴리오 PDF
+- [One Turn Kill 포트폴리오 보기](https://drive.google.com/file/d/1YNHF2Q69mUGdX1pm9WfpVsqtP9OnKuw7/view)
